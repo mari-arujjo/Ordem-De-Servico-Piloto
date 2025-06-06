@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ordem_de_servico/app/UI/pages/home_page.dart';
+import 'package:ordem_de_servico/app/UI/pages/login_page.dart';
 
 class AppWidget extends StatelessWidget {
 	// construtor
@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
 	  // retorna um app baseado no Material Design, que é o visual padrão do Android
     return MaterialApp(
       title: 'OS Demo', //nome do ap
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       
       //cores tema do app
       theme: ThemeData(
@@ -24,7 +24,7 @@ class AppWidget extends StatelessWidget {
       ),
       
       //define a tela de inicialização e o título dela
-      home: const HomePage(title: null,),
+      home: const LoginPage(),
     );
   }
 }
