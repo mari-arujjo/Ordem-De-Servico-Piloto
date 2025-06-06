@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:ordem_de_servico/app/UI/pages/home_page.dart';
 
 class ButtonWidget extends StatefulWidget {
   final String txt;
   final Color primaryColor;
   final Color secondaryColor;
+  final VoidCallback aperto;
 
   const ButtonWidget({
     super.key,
@@ -27,7 +29,11 @@ class _ButtonWidgetState extends State<ButtonWidget>{
       width: 200,
 
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()));
+        },
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.resolveWith<Color>(
             (states) {

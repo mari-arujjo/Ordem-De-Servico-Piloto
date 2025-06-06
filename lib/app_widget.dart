@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ordem_de_servico/app/UI/pages/login_page.dart';
+import 'package:ordem_de_servico/app/UI/pages/home_page.dart';
 
 class AppWidget extends StatelessWidget {
 	// construtor
@@ -22,9 +22,9 @@ class AppWidget extends StatelessWidget {
         ),
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF2C2C2C)),
       ),
-      
+
       //define a tela de inicialização e o título dela
-      home: const LoginPage(),
+      home: const HomePage(),
     );
   }
 }

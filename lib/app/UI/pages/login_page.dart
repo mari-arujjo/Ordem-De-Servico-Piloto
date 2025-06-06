@@ -9,6 +9,8 @@ class LoginPage extends StatefulWidget {
 }
 
   class _LoginPageState extends State<LoginPage> {
+    bool isChecked = false;
+    bool obscurePassword = true;
     @override
       Widget build(BuildContext context){
       return Scaffold(
@@ -37,7 +39,7 @@ class LoginPage extends StatefulWidget {
                         SizedBox(height: 20),
 
                         TextFormField(
-                          obscureText: true,
+                          obscureText: obscurePassword,
                           decoration: InputDecoration(
                             labelText: "Senha",
                             prefixIcon: Icon(Icons.password),
@@ -48,7 +50,16 @@ class LoginPage extends StatefulWidget {
                         SizedBox(height: 10),
                         Row(
                           children: [
-
+                            Checkbox(
+                              value: isChecked, 
+                              onChanged: (bool? value){
+                                setState(() {
+                                  isChecked = value!;
+                                  obscurePassword = !isChecked;
+                                });
+                              },
+                            ),
+                            const Text('Mostrar senha'),
                           ],
                         ),
 
