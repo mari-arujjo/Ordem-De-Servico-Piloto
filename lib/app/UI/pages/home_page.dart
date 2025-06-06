@@ -8,11 +8,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home',
+        title: const Text('Bem vindo!',
         style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
       ),
 
-      endDrawer: SafeArea(
+      /*endDrawer: SafeArea(
         child: Drawer(
           width: 220,
           child: Column(
@@ -38,6 +39,14 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
+      ),
+      */
+
+      bottomNavigationBar: NavigationBar(
+        destinations: [
+          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.people), label: 'Perfil'),
+        ],
       ),
 
 
