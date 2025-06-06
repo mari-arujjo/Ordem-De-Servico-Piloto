@@ -8,28 +8,59 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home'),
+        title: const Text('Home',
+        style: TextStyle(fontWeight: FontWeight.bold)),
+      ),
+
+      endDrawer: SafeArea(
+        child: Drawer(
+          width: 220,
+          child: Column(
+            children: [
+              ListTile(
+                title: Text("Home", 
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                leading: Icon(Icons.home),
+              ),
+              Divider(),
+              ListTile(
+                title: Text("Login"),
+                leading: Icon(Icons.login),
+              ),
+              ListTile(
+                title: Text("Meu perfil"),
+                leading: Icon(Icons.people),
+              ), 
+              ListTile(
+                title: Text("Sair"),
+                leading: Icon(Icons.logout),
+              ),
+            ],
+          ),
+        ),
       ),
 
 
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('lib/app/assets/imgs/tudo_em_ordem.png', width: 230, height: 230),
-            SizedBox(height: 20),
+        child: Padding(
+          padding: EdgeInsets.only(top: 70),
+          child: Column(
+            children: [
+              Image.asset('lib/app/assets/imgs/tudo_em_ordem.png', width: 230, height: 230),
+              SizedBox(height: 20),
 
-            ButtonWidget(txt: 'Atendimento'),
-            SizedBox(height: 20),
+              ButtonWidget(txt: 'Atendimento'),
+              SizedBox(height: 20),
 
-            ButtonWidget(txt: 'Manutenção'),
-            SizedBox(height: 20),
+              ButtonWidget(txt: 'Manutenção'),
+              SizedBox(height: 20),
 
-            ButtonWidget(txt: 'Ordem de serviço'),
-            SizedBox(height: 20),
+              ButtonWidget(txt: 'Ordem de serviço'),
+              SizedBox(height: 20),
 
-            ButtonWidget(txt: 'Gestão de usuários'),
-          ],
+              ButtonWidget(txt: 'Gestão de usuários'),
+            ],
+          ),
         ),
       ),
     );
