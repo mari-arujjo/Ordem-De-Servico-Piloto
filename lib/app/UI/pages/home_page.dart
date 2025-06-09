@@ -60,16 +60,36 @@ class HomePage extends StatelessWidget {
               Image.asset('lib/app/assets/imgs/tudo_em_ordem.png', width: 230, height: 230),
               SizedBox(height: 20),
 
-              ButtonWidget(txt: 'Atendimento'),
+              ButtonWidget(
+                txt: 'Atendimento',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/atendimento');
+                },
+              ),
               SizedBox(height: 20),
 
-              ButtonWidget(txt: 'Manutenção'),
+              ButtonWidget(
+                txt: 'Manutenção',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/manutencao');
+                },
+                ),
               SizedBox(height: 20),
 
-              ButtonWidget(txt: 'Ordem de serviço'),
+              ButtonWidget(
+                txt: 'Ordem de serviço',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/ordemOs');
+                },
+                ),
               SizedBox(height: 20),
 
-              ButtonWidget(txt: 'Gestão de usuários'),
+              ButtonWidget(
+                txt: 'Gestão de usuários',
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/gestaoUsuarios');
+                },
+                ),
             ],
           ),
         ),

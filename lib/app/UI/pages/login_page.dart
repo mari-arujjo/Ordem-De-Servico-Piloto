@@ -64,7 +64,12 @@ class LoginPage extends StatefulWidget {
                         ),
 
                         SizedBox(height: 20),
-                        ButtonWidget(txt: 'Entrar'),
+                        ButtonWidget(
+                          txt: 'Entrar',
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/');
+                            },
+                        ),
 
                       ],
                     ),
