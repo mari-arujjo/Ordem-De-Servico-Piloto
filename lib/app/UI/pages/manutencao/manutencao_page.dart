@@ -10,6 +10,12 @@ class ManutencaoPage extends StatefulWidget {
 class _ManutencaoState extends State<ManutencaoPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Manutenção',
+        style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
+      ),
+    );
   }
 }

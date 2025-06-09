@@ -10,6 +10,12 @@ class AtendimentoPage extends StatefulWidget {
 class _AtendimentoState extends State<AtendimentoPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Atendimento',
+        style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
+      ),
+    );
   }
 }

@@ -5,10 +5,10 @@ class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState()=> _LoginPageState();
+  State<LoginPage> createState()=> _LoginState();
 }
 
-  class _LoginPageState extends State<LoginPage> {
+  class _LoginState extends State<LoginPage> {
     bool isChecked = false;
     bool obscurePassword = true;
     @override
@@ -17,7 +17,7 @@ class LoginPage extends StatefulWidget {
 
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(top: 150),
+            padding: EdgeInsets.only(top: 170),
             child: Column(
               children: [
                 Image.asset('lib/app/assets/imgs/tudo_em_ordem.png', width: 200, height: 200),

@@ -10,6 +10,12 @@ class OrdemOsPage extends StatefulWidget {
 class _OrdemOstState extends State<OrdemOsPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ordem de Serviço',
+        style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
+      ),
+    );
   }
 }
