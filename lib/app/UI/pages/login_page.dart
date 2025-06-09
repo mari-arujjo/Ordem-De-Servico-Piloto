@@ -67,7 +67,7 @@ class LoginPage extends StatefulWidget {
                         ButtonWidget(
                           txt: 'Entrar',
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/');
+                            Navigator.of(context).pop();
                             },
                         ),
 

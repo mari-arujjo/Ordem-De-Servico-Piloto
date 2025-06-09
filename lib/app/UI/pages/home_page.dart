@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/navigation_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,6 +20,9 @@ class HomePage extends StatefulWidget {
           centerTitle: true,
         ),
 
+        bottomNavigationBar: NavigationBarWidget(),
+
+        /*
         bottomNavigationBar: NavigationBar(
           destinations: [
             NavigationDestination(icon: Icon(Icons.logout), label: 'Sair'),
@@ -25,7 +30,7 @@ class HomePage extends StatefulWidget {
             NavigationDestination(icon: Icon(Icons.people), label: 'Perfil'),
           ],
           selectedIndex: 1,
-        ),
+        ),*/
 
 
         body: Center(
@@ -39,7 +44,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Atendimento',
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/atendimento');
+                    GoRouter.of(context).push('/meuPerfil');
                   },
                 ),
                 SizedBox(height: 20),
@@ -47,7 +52,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Manutenção',
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/manutencao');
+                    GoRouter.of(context).push('/login');
                   },
                   ),
                 SizedBox(height: 20),
@@ -55,7 +60,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Ordem de serviço',
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/ordemOs');
+                    GoRouter.of(context).push('/meuPerfil');
                   },
                   ),
                 SizedBox(height: 20),
@@ -63,7 +68,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Gestão de usuários',
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/gestaoUsuarios');
+                    GoRouter.of(context).push('/login');
                   },
                   ),
               ],

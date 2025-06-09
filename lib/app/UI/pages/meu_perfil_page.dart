@@ -11,6 +11,12 @@ class MeuPerfilPage extends StatefulWidget {
 class _MeuPerfilState extends State<MeuPerfilPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Meu Perfil',
+        style: TextStyle(fontWeight: FontWeight.bold)),
+        centerTitle: true,
+      ),
+    );
   }
 }
