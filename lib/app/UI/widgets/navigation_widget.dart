@@ -1,5 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/data/controllers/navigation_controller.dart';
+import 'package:go_router/go_router.dart';
 
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
@@ -9,7 +10,6 @@ class NavigationBarWidget extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<NavigationBarWidget> {
-  final NavigationController controller = NavigationController();
   int atualIndex = 1;
 
   @override
@@ -23,10 +23,18 @@ class _NavigationBarState extends State<NavigationBarWidget> {
       indicatorColor: Colors.pinkAccent,
       selectedIndex: atualIndex,
       onDestinationSelected: (int index) {
-        controller.navegacao(context, atualIndex, index);
         setState(() {
-          atualIndex=index;
+          atualIndex = index;
         });
+        if (index==0){
+          exit(0);
+        }
+        else if (index==1){
+          GoRouter.of(context).push('/');
+        }
+        else if (index==2){
+          GoRouter.of(context).push('/login');
+        }
       },
     );
   }
