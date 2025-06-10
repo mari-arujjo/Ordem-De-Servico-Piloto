@@ -19,6 +19,7 @@ class _SearchBarState extends State<SearchBarWidget> {
       ),
       leading: const Icon(Icons.search),
       hintText: 'Pesquisar',
+      elevation: const WidgetStatePropertyAll(0.100),
     );
   }
 }

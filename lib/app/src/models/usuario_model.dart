@@ -1,15 +1,19 @@
 class UsuarioModel{
-  int? id_usuario;
-  String? usuario;
-  String? nome;
-  int? nivel_acesso;
-  String? senha;
+  // ignore: non_constant_identifier_names
+  int id_usuario;
+  String usuario;
+  String nome;
+  // ignore: non_constant_identifier_names
+  int nivel_acesso;
+  String senha;
 
   UsuarioModel({
-    this.id_usuario,
-    this.usuario,
-    this.nome,
-    this.nivel_acesso,
-    this.senha,
+    // ignore: non_constant_identifier_names
+    this.id_usuario =0,
+    this.usuario ="",
+    this.nome="",
+    // ignore: non_constant_identifier_names
+    this.nivel_acesso=0,
+    this.senha="",
   });
 }

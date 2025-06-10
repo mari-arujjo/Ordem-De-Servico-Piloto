@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
+import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 
 class GestaoUsuariosPage extends StatefulWidget {
   const GestaoUsuariosPage({super.key});
@@ -9,6 +10,8 @@ class GestaoUsuariosPage extends StatefulWidget {
 }
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
+  var controller = GestaoUsuariosController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +26,25 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
           padding: EdgeInsets.only(top: 10),
           child: Column(
             children: [
-              SearchBarWidget()
+              const SearchBarWidget(),
+
+              Expanded(child:
+                ListView.separated(
+                  itemCount: controller.allUsers.length,
+                  itemBuilder: (BuildContext context, int i){
+                    final allUsers = controller.allUsers;
+                    return ListTile(
+                      leading: Icon(Icons.people),
+                      title: Text(allUsers[i].nome),
+                      trailing: Text(allUsers[i].usuario),
+                    );
+                  },
+                  separatorBuilder: (_, __) => Divider(), 
+                  padding: EdgeInsets.all(16),
+                ),
+              )
             ]
-          ),          
+          ),
         ),
       ),
     );
