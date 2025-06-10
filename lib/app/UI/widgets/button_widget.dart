@@ -4,6 +4,7 @@ class ButtonWidget extends StatefulWidget {
   final String txt;
   final Color primaryColor;
   final Color secondaryColor;
+  final Color terciaryColor;
   final VoidCallback onPressed;
 
   const ButtonWidget({
@@ -11,7 +12,8 @@ class ButtonWidget extends StatefulWidget {
     required this.txt, 
     required this.onPressed,
     this.primaryColor = const Color(0xFF2C2C2C), 
-    this.secondaryColor = const Color(0xFF616060)
+    this.secondaryColor = const Color(0xFF616060),
+    this.terciaryColor = Colors.pinkAccent
     });
 
   @override
@@ -34,7 +36,7 @@ class _ButtonWidgetState extends State<ButtonWidget>{
           backgroundColor: WidgetStateProperty.resolveWith<Color>(
             (states) {
               if(states.contains(WidgetState.pressed)){
-                return widget.secondaryColor;
+                return widget.terciaryColor;
               }
               return widget.primaryColor;
             },

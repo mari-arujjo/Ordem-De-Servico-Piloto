@@ -44,7 +44,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Atendimento',
                   onPressed: () {
-                    GoRouter.of(context).push('/meuPerfil');
+                    GoRouter.of(context).push('/atendimento');
                   },
                 ),
                 SizedBox(height: 20),
@@ -52,7 +52,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Manutenção',
                   onPressed: () {
-                    GoRouter.of(context).push('/login');
+                    GoRouter.of(context).push('/manutencao');
                   },
                   ),
                 SizedBox(height: 20),
@@ -60,7 +60,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Ordem de serviço',
                   onPressed: () {
-                    GoRouter.of(context).push('/meuPerfil');
+                    GoRouter.of(context).push('/ordemOS');
                   },
                   ),
                 SizedBox(height: 20),
@@ -68,7 +68,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Gestão de usuários',
                   onPressed: () {
-                    GoRouter.of(context).push('/login');
+                    GoRouter.of(context).push('/gestaoUsuarios');
                   },
                   ),
               ],

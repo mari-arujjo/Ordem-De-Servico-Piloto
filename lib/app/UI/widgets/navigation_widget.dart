@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key});
 
@@ -10,10 +11,11 @@ class NavigationBarWidget extends StatefulWidget {
 }
 
 class _NavigationBarState extends State<NavigationBarWidget> {
-  int atualIndex = 1;
-
+  
   @override
   Widget build(BuildContext context) {
+    int atualIndex = 1;
+
     return NavigationBar(
       destinations: const <Widget>[
         NavigationDestination(icon: Icon(Icons.logout), label: 'Sair'),
@@ -24,13 +26,13 @@ class _NavigationBarState extends State<NavigationBarWidget> {
       selectedIndex: atualIndex,
       onDestinationSelected: (int index) {
         setState(() {
-          atualIndex = index;
+          atualIndex == index;
         });
         if (index==0){
           exit(0);
         }
         else if (index==1){
-          GoRouter.of(context).push('/');
+          context.go('/');
         }
         else if (index==2){
           GoRouter.of(context).push('/login');
