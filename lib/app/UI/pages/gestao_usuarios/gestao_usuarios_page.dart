@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
 
 class GestaoUsuariosPage extends StatefulWidget {
   const GestaoUsuariosPage({super.key});
@@ -19,7 +20,13 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 70)),
+          padding: EdgeInsets.only(top: 10),
+          child: Column(
+            children: [
+              SearchBarWidget()
+            ]
+          ),          
+        ),
       ),
     );
   }

@@ -26,16 +26,16 @@ class _NavigationBarState extends State<NavigationBarWidget> {
       selectedIndex: atualIndex,
       onDestinationSelected: (int index) {
         setState(() {
-          atualIndex == index;
+          atualIndex = index;
         });
         if (index==0){
           exit(0);
         }
-        else if (index==1){
+        if (index==1){
           context.go('/');
         }
-        else if (index==2){
-          GoRouter.of(context).push('/login');
+        if (index==2){
+          GoRouter.of(context).push('/meuPerfil');
         }
       },
     );

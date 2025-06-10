@@ -17,6 +17,15 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
         style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
+
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.only(top: 50),
+          child: Column(
+
+          ),
+        ),
+      ),
     );
   }
 }
