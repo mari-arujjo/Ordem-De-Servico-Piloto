@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/pages/atendimento/atendimento_page.dart';
+import 'package:ordem_de_servico/app/UI/pages/gestao_usuarios/cadastro_user_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/gestao_usuarios/gestao_usuarios_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/gestao_usuarios/usuario_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/home_page.dart';
@@ -45,8 +46,12 @@ final GoRouter rotas = GoRouter(
       builder: (context, state) => const GestaoUsuariosPage(),
     ),
     GoRoute(
-      path: '/usuarios',
+      path: '/usuario',
       builder: (context, state) => const UsuarioPage(),
+    ),
+    GoRoute(
+      path: '/cadastroUsuario',
+      builder: (context, state) => const CadastroUserPage(),
     ),
 
   ],

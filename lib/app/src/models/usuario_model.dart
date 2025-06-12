@@ -1,4 +1,4 @@
-class UsuarioModel{
+class Usuario{
   // ignore: non_constant_identifier_names
   int id_usuario;
   String usuario;
@@ -7,7 +7,7 @@ class UsuarioModel{
   int nivel_acesso;
   String senha;
 
-  UsuarioModel({
+  Usuario({
     // ignore: non_constant_identifier_names
     this.id_usuario =0,
     this.usuario ="",
