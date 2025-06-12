@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/colors.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/icons_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
 import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 
@@ -13,6 +15,7 @@ class GestaoUsuariosPage extends StatefulWidget {
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   var controller = GestaoUsuariosController();
+  var colorsClass = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 10, bottom: 20),
+          padding: EdgeInsets.only(top: 10, bottom: 15),
           child: Column(
             children: [
               const SearchBarWidget(),
@@ -33,22 +36,26 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 30, right: 20, left: 20),
-                  padding: EdgeInsets.all(10),
+                  margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
+                  padding: EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 10),
                   decoration: BoxDecoration(
-                    color: Color(0xFFEDEDED),
-                    borderRadius: BorderRadius.circular(10.0),
+                    color: colorsClass.secondaryColor,
+                    borderRadius: BorderRadius.circular(10),
                 ),
+
                   child: ListView.separated(
                     itemCount: controller.allUsers.length,
                     itemBuilder: (BuildContext context, int i){
                       final allUsers = controller.allUsers;
                       return ListTile(
-                        leading: Icon(Icons.people),
-                        title: Text(allUsers[i].nome),
-                        trailing: Text(allUsers[i].usuario),
+                        title: Text('${allUsers[i].id_usuario} - ${allUsers[i].usuario} - ${allUsers[i].nome}'),
+                        trailing: IconsWidget(
+                          ico: Icon(Icons.edit, color: Colors.black), 
+                          onPressed: () {
+                            GoRouter.of(context).push('/usuario');
+                          }),
                         onTap: () {
-                          GoRouter.of(context).push('/usuarios');
+                          
                         },
                       );
                     },

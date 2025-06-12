@@ -41,24 +41,6 @@ class GestaoUsuariosController {
         nome: 'Letícia Alves de Araújo',
         nivel_acesso: 2
       ),
-      Usuario(
-        id_usuario: 9,
-        usuario: 'leticia',
-        nome: 'Letícia Alves de Araújo',
-        nivel_acesso: 2
-      ),
-      Usuario(
-        id_usuario: 9,
-        usuario: 'leticia',
-        nome: 'Letícia Alves de Araújo',
-        nivel_acesso: 2
-      ),
-      Usuario(
-        id_usuario: 9,
-        usuario: 'leticia',
-        nome: 'Letícia Alves de Araújo',
-        nivel_acesso: 2
-      ),
     ];
   }
 }

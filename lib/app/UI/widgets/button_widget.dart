@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ordem_de_servico/colors.dart';
 
 class ButtonWidget extends StatefulWidget {
   final String txt;
-  final Color primaryColor;
-  final Color secondaryColor;
-  final Color terciaryColor;
   final VoidCallback onPressed;
 
   const ButtonWidget({
     super.key,
     required this.txt, 
     required this.onPressed,
-    this.primaryColor = const Color(0xFF2C2C2C), 
-    this.secondaryColor = const Color(0xFF616060),
-    this.terciaryColor = Colors.pinkAccent
     });
 
   @override
@@ -23,6 +18,7 @@ class ButtonWidget extends StatefulWidget {
 
 class _ButtonWidgetState extends State<ButtonWidget>{
   bool pressionado = false;
+  var colorsClass = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +32,9 @@ class _ButtonWidgetState extends State<ButtonWidget>{
           backgroundColor: WidgetStateProperty.resolveWith<Color>(
             (states) {
               if(states.contains(WidgetState.pressed)){
-                return widget.terciaryColor;
+                return colorsClass.terciaryColor;
               }
-              return widget.primaryColor;
+              return colorsClass.primaryColor;
             },
           ),
           overlayColor: WidgetStateProperty.all(Colors.transparent),

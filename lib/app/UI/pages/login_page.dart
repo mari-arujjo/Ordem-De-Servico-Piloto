@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,6 +12,8 @@ class LoginPage extends StatefulWidget {
   class _LoginState extends State<LoginPage> {
     bool isChecked = false;
     bool obscurePassword = true;
+    var colorsClass = ColorsClass();
+
     @override
       Widget build(BuildContext context){
       return Scaffold(
@@ -25,53 +28,64 @@ class LoginPage extends StatefulWidget {
                 
                 Padding(
                   padding: EdgeInsets.only(left: 50, right: 50),
-                  child: Form(
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: InputDecoration(
-                            labelText: "Usuário",
-                            prefixIcon: Icon(Icons.people),
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-
-                        SizedBox(height: 20),
-
-                        TextFormField(
-                          obscureText: obscurePassword,
-                          decoration: InputDecoration(
-                            labelText: "Senha",
-                            prefixIcon: Icon(Icons.password),
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-
-                        SizedBox(height: 10),
-                        Row(
-                          children: [
-                            Checkbox(
-                              value: isChecked, 
-                              onChanged: (bool? value){
-                                setState(() {
-                                  isChecked = value!;
-                                  obscurePassword = !isChecked;
-                                });
-                              },
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        color: colorsClass.primaryColor,
+                        width: 0.7,
+                      ),
+                    ),
+                    child: Form(
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            decoration: InputDecoration(
+                              labelText: "Usuário",
+                              prefixIcon: Icon(Icons.people),
+                              border: OutlineInputBorder(),
                             ),
-                            const Text('Mostrar senha'),
-                          ],
-                        ),
+                          ),
 
-                        SizedBox(height: 20),
-                        ButtonWidget(
-                          txt: 'Entrar',
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                            },
-                        ),
+                          SizedBox(height: 20),
 
-                      ],
+                          TextFormField(
+                            obscureText: obscurePassword,
+                            decoration: InputDecoration(
+                              labelText: "Senha",
+                              prefixIcon: Icon(Icons.password),
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+
+                          SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Checkbox(
+                                value: isChecked, 
+                                onChanged: (bool? value){
+                                  setState(() {
+                                    isChecked = value!;
+                                    obscurePassword = !isChecked;
+                                  });
+                                },
+                              ),
+                              const Text('Mostrar senha'),
+                            ],
+                          ),
+
+                          SizedBox(height: 20),
+                          ButtonWidget(
+                            txt: 'Entrar',
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              },
+                          ),
+
+                        ],
+                      ),
                     ),
                   ),
                 ),

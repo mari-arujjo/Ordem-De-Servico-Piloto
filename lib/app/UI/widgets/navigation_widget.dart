@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/colors.dart';
 
 
 class NavigationBarWidget extends StatefulWidget {
@@ -15,6 +16,8 @@ class _NavigationBarState extends State<NavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     int atualIndex = 1;
+    var colorsClass = ColorsClass();
+
 
     return NavigationBar(
       destinations: const <Widget>[
@@ -22,7 +25,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
         NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
         NavigationDestination(icon: Icon(Icons.people), label: 'Perfil'),
       ],
-      indicatorColor: Colors.pinkAccent,
+      indicatorColor: colorsClass.terciaryColor,
       selectedIndex: atualIndex,
       onDestinationSelected: (int index) {
         setState(() {

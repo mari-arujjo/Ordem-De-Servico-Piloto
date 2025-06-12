@@ -12,8 +12,8 @@ class _SearchBarState extends State<SearchBarWidget> {
   Widget build(BuildContext context) {
     return SearchBar(
       constraints: const BoxConstraints(
-        minWidth: 300,  // Largura mínima
-        maxWidth: 350,  // Largura máxima
+        minWidth: 200,  // Largura mínima
+        maxWidth: 300,  // Largura máxima
         minHeight: 48,  // Altura mínima
         maxHeight: 56,  // Altura máxima
       ),
