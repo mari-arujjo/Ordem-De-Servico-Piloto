@@ -36,11 +36,18 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 10, right: 20, left: 20),
-                  padding: EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 10),
+                  margin: EdgeInsets.only(top: 10, bottom: 20, right: 20, left: 20),
+                  padding: EdgeInsets.only(top: 0, bottom: 10, left: 10, right: 10),
                   decoration: BoxDecoration(
                     color: colorsClass.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 0.5,
+                        offset: Offset(0, 2),
+                      )
+                    ]
                 ),
 
                   child: ListView.separated(
@@ -48,6 +55,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                     itemBuilder: (BuildContext context, int i){
                       final allUsers = controller.allUsers;
                       return ListTile(
+                        tileColor: Colors.white,
                         title: Text('${allUsers[i].id_usuario} - ${allUsers[i].usuario} - ${allUsers[i].nome}'),
                         trailing: IconsWidget(
                           ico: Icon(Icons.edit, color: Colors.black), 

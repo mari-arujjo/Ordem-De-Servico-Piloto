@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ordem_de_servico/colors.dart';
 
 class SearchBarWidget extends StatefulWidget {
   const SearchBarWidget({super.key});
@@ -8,6 +9,8 @@ class SearchBarWidget extends StatefulWidget {
 }
 
 class _SearchBarState extends State<SearchBarWidget> {
+  var colorsClass = ColorsClass();
+
   @override
   Widget build(BuildContext context) {
     return SearchBar(
@@ -17,9 +20,10 @@ class _SearchBarState extends State<SearchBarWidget> {
         minHeight: 48,  // Altura mínima
         maxHeight: 56,  // Altura máxima
       ),
+      backgroundColor: WidgetStatePropertyAll(colorsClass.secondaryColor),
       leading: const Icon(Icons.search),
       hintText: 'Pesquisar',
-      elevation: const WidgetStatePropertyAll(0.100),
+      elevation: const WidgetStatePropertyAll(0.5),
     );
   }
 }
