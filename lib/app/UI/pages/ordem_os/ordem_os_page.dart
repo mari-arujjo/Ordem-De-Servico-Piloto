@@ -12,9 +12,7 @@ class _OrdemOstState extends State<OrdemOsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ordem de Serviço',
-        style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
+        title: const Text('Ordem de Serviço')
       ),
     );
   }

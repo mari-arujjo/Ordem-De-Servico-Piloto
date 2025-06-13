@@ -15,9 +15,7 @@ class HomePage extends StatefulWidget {
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Bem vindo!',
-          style: TextStyle(fontWeight: FontWeight.bold)),
-          centerTitle: true,
+          title: const Text('Bem vindo!')
         ),
 
         bottomNavigationBar: NavigationBarWidget(),

@@ -17,9 +17,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cadastro de usuários',
-        style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
+        title: const Text('Cadastro de usuários')
       ),
 
       body: Center(

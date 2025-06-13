@@ -12,9 +12,7 @@ class _ManutencaoState extends State<ManutencaoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Manutenção',
-        style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
+        title: const Text('Manutenção')
       ),
     );
   }

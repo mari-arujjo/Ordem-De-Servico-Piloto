@@ -21,9 +21,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gestão de usuários',
-        style: TextStyle(fontWeight: FontWeight.bold),),
-        centerTitle: true,
+        title: const Text('Gestão de usuários')
       ),
 
       body: Center(
@@ -54,9 +52,11 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                     itemCount: controller.allUsers.length,
                     itemBuilder: (BuildContext context, int i){
                       final allUsers = controller.allUsers;
+
                       return ListTile(
-                        tileColor: Colors.white,
-                        title: Text('${allUsers[i].id_usuario} - ${allUsers[i].usuario} - ${allUsers[i].nome}'),
+                        title: Text('${allUsers[i].id_usuario} - ${allUsers[i].usuario} - ${allUsers[i].nome}',
+                        overflow: TextOverflow.ellipsis,
+                        ),
                         trailing: IconsWidget(
                           ico: Icon(Icons.edit, color: Colors.black), 
                           onPressed: () {
@@ -67,7 +67,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                         },
                       );
                     },
-                    separatorBuilder: (_, __) => Divider(), 
+                    separatorBuilder: (_, __) => SizedBox(height: 8), 
                     padding: EdgeInsets.all(16),
                   ),
                 ),

@@ -12,9 +12,7 @@ class _AtendimentoState extends State<AtendimentoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Atendimento',
-        style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
+        title: const Text('Atendimento')
       ),
     );
   }

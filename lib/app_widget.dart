@@ -9,10 +9,22 @@ class AppWidget extends StatelessWidget {
 	// método que constrói a tela
   @override
   Widget build(BuildContext context) {
+
       return MaterialApp.router(
       title: 'OS Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.black,
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold
+          )
+        ),
         textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme
         ),

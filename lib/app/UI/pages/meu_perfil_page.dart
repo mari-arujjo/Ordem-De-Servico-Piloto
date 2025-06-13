@@ -15,9 +15,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Meu Perfil',
-        style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
+        title: const Text('Meu Perfil')
       ),
 
       body: Center(
