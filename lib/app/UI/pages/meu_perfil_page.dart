@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/navigation_widget.dart';
+import 'package:ordem_de_servico/app/src/helper/popup.dart';
 
 class MeuPerfilPage extends StatefulWidget {
   const MeuPerfilPage({super.key});
@@ -12,6 +12,7 @@ class MeuPerfilPage extends StatefulWidget {
 
 
 class _MeuPerfilState extends State<MeuPerfilPage> {
+  var popUpSair = PopUp();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +20,6 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
         title: const Text('Meu Perfil')
       ),
 
-      bottomNavigationBar: NavigationBarWidget(),
 
       body: Center(
         child: Padding(
@@ -30,6 +30,15 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                 txt: 'Fazer login!', 
                 onPressed: (){
                   GoRouter.of(context).push('/login');
+                },
+                tam: 200,
+               ),
+
+               SizedBox(height: 20),
+               ButtonWidget(
+                txt: 'Sair', 
+                onPressed: (){
+                  popUpSair.PopUpSair(context);
                 },
                 tam: 200,
                ),

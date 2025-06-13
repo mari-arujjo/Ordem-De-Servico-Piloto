@@ -8,11 +8,18 @@ import 'package:ordem_de_servico/app/UI/pages/login_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/meu_perfil_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/ordem_os/ordem_os_page.dart';
+import 'package:ordem_de_servico/app/UI/widgets/navigation_widget.dart';
 
 final GoRouter rotas = GoRouter(
+  initialLocation: '/',
   routes: [
-    GoRoute(
+GoRoute(
       path: '/',
+      builder: (context, state) => const NavigationBarWidget(),
+    ),
+
+    GoRoute(
+      path: '/home',
       builder: (context, state) => const HomePage(),
     ),
 
