@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 
@@ -15,9 +16,10 @@ class _NavigationBarState extends State<NavigationBarWidget> {
   
   @override
   Widget build(BuildContext context) {
-    int atualIndex = 1;
+    // ignore: no_leading_underscores_for_local_identifiers
+    int _selectedIndex = 1;
     var colorsClass = ColorsClass();
-
+    var popUpSair = PopUp();
 
     return NavigationBar(
       destinations: const <Widget>[
@@ -26,13 +28,13 @@ class _NavigationBarState extends State<NavigationBarWidget> {
         NavigationDestination(icon: Icon(Icons.people), label: 'Perfil'),
       ],
       indicatorColor: colorsClass.terciaryColor,
-      selectedIndex: atualIndex,
+      selectedIndex: _selectedIndex,
       onDestinationSelected: (int index) {
         setState(() {
-          atualIndex = index;
+          _selectedIndex = index;
         });
         if (index==0){
-          exit(0);
+          popUpSair.PopUpSair(context);
         }
         if (index==1){
           context.go('/');

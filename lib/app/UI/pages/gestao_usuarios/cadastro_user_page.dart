@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 
@@ -16,6 +17,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
     bool isChecked2 = false;
     bool obscurePassword2 = true;
     var colorsClass = ColorsClass();
+    var popUp = PopUp();
 
   @override
   Widget build(BuildContext context) {
@@ -190,7 +192,10 @@ class _CadastroUserState extends State<CadastroUserPage> {
                 children: [
                   ButtonWidget(txt: 'Salvar dados', onPressed: (){}, tam: 150),
                   SizedBox(width: 20),
-                  ButtonWidget(txt: 'Cancelar', onPressed: (){}, tam: 150)
+                  ButtonWidget(txt: 'Cancelar', onPressed: (){
+                    popUp.PopUpCancel(context);
+                  }, 
+                  tam: 150)
                 ],
               )
             ],

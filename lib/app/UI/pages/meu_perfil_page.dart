@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/navigation_widget.dart';
 
 class MeuPerfilPage extends StatefulWidget {
   const MeuPerfilPage({super.key});
@@ -17,6 +18,8 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
       appBar: AppBar(
         title: const Text('Meu Perfil')
       ),
+
+      bottomNavigationBar: NavigationBarWidget(),
 
       body: Center(
         child: Padding(
