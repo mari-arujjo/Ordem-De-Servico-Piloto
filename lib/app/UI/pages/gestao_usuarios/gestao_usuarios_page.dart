@@ -38,16 +38,17 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                     borderRadius: BorderRadius.circular(10),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 0.5,
+                        color: colorsClass.secondaryColor,
+                        blurRadius: 0,
                         offset: Offset(0, 2),
                       )
                     ]
                 ),
 
                   child: ListView.separated(
-                    itemCount: controller.allUsers.length,
                     padding: EdgeInsets.all(16),
+                    itemCount: controller.allUsers.length,
+                    separatorBuilder: (_, __) => SizedBox(height:13),
                     itemBuilder: (BuildContext context, int i){
                       final allUsers = controller.allUsers;
 
@@ -59,7 +60,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black12,
-                              blurRadius: 0.5,
+                              blurRadius: 1,
                               offset: Offset(0, 4),
                             )
                           ]
@@ -82,8 +83,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                           ],
                         ),
                       );
-                    },
-                    separatorBuilder: (_, __) => SizedBox(height:13), 
+                    }, 
                   ),
                 ),
               ),
@@ -92,7 +92,9 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                 txt: 'Novo', 
                 onPressed: (){
                   GoRouter.of(context).push('/cadastroUsuario');
-                }),
+                },
+                tam: 200,
+              ),
             ]
           ),
         ),

@@ -23,7 +23,7 @@ class _SearchBarState extends State<SearchBarWidget> {
       backgroundColor: WidgetStatePropertyAll(colorsClass.secondaryColor),
       leading: const Icon(Icons.search),
       hintText: 'Pesquisar',
-      elevation: const WidgetStatePropertyAll(0.5),
+      elevation: const WidgetStatePropertyAll(1),
     );
   }
 }

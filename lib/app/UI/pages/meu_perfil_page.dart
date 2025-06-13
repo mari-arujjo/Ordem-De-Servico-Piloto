@@ -27,7 +27,9 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                 txt: 'Fazer login!', 
                 onPressed: (){
                   GoRouter.of(context).push('/login');
-                }),
+                },
+                tam: 200,
+               ),
             ],
           ),
         ),

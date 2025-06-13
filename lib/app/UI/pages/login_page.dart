@@ -64,6 +64,7 @@ class LoginPage extends StatefulWidget {
                           Row(
                             children: [
                               Checkbox(
+                                activeColor: colorsClass.terciaryColor,
                                 value: isChecked, 
                                 onChanged: (bool? value){
                                   setState(() {
@@ -81,7 +82,8 @@ class LoginPage extends StatefulWidget {
                             txt: 'Entrar',
                             onPressed: () {
                               Navigator.of(context).pop();
-                              },
+                            },
+                            tam: 200,
                           ),
 
                         ],
