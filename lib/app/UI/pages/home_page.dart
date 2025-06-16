@@ -28,7 +28,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Atendimento',
                   onPressed: () {
-                    GoRouter.of(context).push('/atendimento');
+                    context.goNamed("atendimento");
                   },
                   tam: 200,
                 ),
@@ -37,7 +37,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Manutenção',
                   onPressed: () {
-                    GoRouter.of(context).push('/manutencao');
+                    context.goNamed("manutencao");
                   },
                   tam: 200,
                 ),
@@ -46,7 +46,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Ordem de serviço',
                   onPressed: () {
-                    GoRouter.of(context).push('/ordemOS');
+                    context.goNamed("ordemOS");
                   },
                   tam: 200,
                 ),
@@ -55,7 +55,7 @@ class HomePage extends StatefulWidget {
                 ButtonWidget(
                   txt: 'Gestão de usuários',
                   onPressed: () {
-                    GoRouter.of(context).push('/gestaoUsuarios');
+                    context.goNamed("gestaoUsuarios");
                   },
                   tam: 200,
                 ),

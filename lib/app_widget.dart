@@ -32,9 +32,7 @@ class AppWidget extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF2C2C2C)),
       ),
 
-      routerDelegate: rotas.routerDelegate,
-      routeInformationParser: rotas.routeInformationParser,
-      routeInformationProvider: rotas.routeInformationProvider,
+      routerConfig: AppNavigation.rotas,
     );
   }
 }

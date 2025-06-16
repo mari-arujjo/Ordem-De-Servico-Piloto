@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/pages/atendimento/atendimento_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/gestao_usuarios/cadastro_user_page.dart';
@@ -8,58 +9,136 @@ import 'package:ordem_de_servico/app/UI/pages/login_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/meu_perfil_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/ordem_os/ordem_os_page.dart';
-import 'package:ordem_de_servico/app/UI/widgets/navigation_widget.dart';
+import 'package:ordem_de_servico/navigation.dart';
 
-final GoRouter rotas = GoRouter(
-  initialLocation: '/',
-  routes: [
-GoRoute(
-      path: '/',
-      builder: (context, state) => const NavigationBarWidget(),
-    ),
+class AppNavigation{
+  AppNavigation._();
+  static String initR = '/home';
 
-    GoRoute(
-      path: '/home',
-      builder: (context, state) => const HomePage(),
-    ),
+/// KEYS DE NAVEGAÇÃO
+  /// navegação global raiz do app, serve para navegar em telas fora da estrutura do shell, como:
+  /// tela de login, splash screen e pags que nao fazem parte da navegação por abas
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>(); 
 
-    GoRoute(
-      path: '/login',
-      builder: (context, state) => const LoginPage(),
-    ),
+  /// navegadores independentes, usados por cada StatefulShellBranch.
+  /// mantém pilhas de navegação separadas
+  static final _rootNavigatorHome = GlobalKey<NavigatorState>(debugLabel: 'shellHome');
+  static final _rootNavigatorPerfil = GlobalKey<NavigatorState>(debugLabel: 'shellPerfil');
 
-    GoRoute(
-      path: '/meuPerfil',
-      builder: (context, state) => const MeuPerfilPage(),
-    ),
 
-    GoRoute(
-      path: '/atendimento',
-      builder: (context, state) => const AtendimentoPage(),
-    ),
+  static final GoRouter rotas = 
+  GoRouter(
+    debugLogDiagnostics: true,
+    initialLocation: initR,
+    navigatorKey: _rootNavigatorKey,
+    routes: <RouteBase>[
 
-    GoRoute(
-      path: '/manutencao',
-      builder: (context, state) => const ManutencaoPage(),
-    ),
+      ///MainNavigation!!
+      StatefulShellRoute.indexedStack(
+        builder: (context, state, navigationShell) {
+          return  NavigationBarWidget(navigationShell: navigationShell,);
+        },
+        
+        branches: <StatefulShellBranch>[
+          /// Branch -> HOME
+          StatefulShellBranch(
+            navigatorKey: _rootNavigatorHome,
+            routes: [
+              GoRoute(
+                path: '/home',
+                name: 'Home',
+                builder: (context, state) { 
+                  return HomePage(
+                    key: state.pageKey,
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    path: '/atendimento',
+                    name: 'atendimento',
+                    builder: (context, state) { 
+                      return AtendimentoPage(
+                        key: state.pageKey,
+                      );
+                    }
+                  ),
 
-    GoRoute(
-      path: '/ordemOS',
-      builder: (context, state) => const OrdemOsPage(),
-    ),
+                  GoRoute(
+                    path: '/manutencao',
+                    name: 'manutencao',
+                    builder: (context, state) { 
+                      return ManutencaoPage(
+                        key: state.pageKey,
+                      );
+                    }
+                  ),
 
-    GoRoute(
-      path: '/gestaoUsuarios',
-      builder: (context, state) => const GestaoUsuariosPage(),
-    ),
-    GoRoute(
-      path: '/usuario',
-      builder: (context, state) => const UsuarioPage(),
-    ),
-    GoRoute(
-      path: '/cadastroUsuario',
-      builder: (context, state) => const CadastroUserPage(),
-    ),
+                  GoRoute(
+                    path: '/ordemOS',
+                    name: 'ordemOS',
+                    builder: (context, state) { 
+                      return OrdemOsPage(
+                        key: state.pageKey,
+                      );
+                    }
+                  ),
 
-  ],
-);
+                  GoRoute(
+                    path: '/gestaoUsuarios',
+                    name: 'gestaoUsuarios',
+                     builder: (context, state) { 
+                      return GestaoUsuariosPage(
+                        key: state.pageKey
+                      );
+                    },
+                    routes: [
+                      GoRoute(
+                        path: '/usuario',
+                        name: 'usuario',
+                        builder: (context, state) { 
+                          return UsuarioPage(
+                            key: state.pageKey
+                          );
+                        },
+                      ),
+                      GoRoute(
+                        path: '/cadastroUsuario',
+                        name: 'cadastroUsuario',
+                        builder: (context, state) { 
+                          return CadastroUserPage(
+                            key: state.pageKey
+                          );
+                        },
+                      ),
+                    ]
+                  ),
+
+                ],
+              ),
+            ]
+          ),
+
+          /// Branch -> PERFIL
+          StatefulShellBranch(
+            navigatorKey: _rootNavigatorPerfil,
+            routes: [
+              GoRoute(
+                path: '/perfil',
+                name: 'Perfil',
+                builder: (context, state) { 
+                  return MeuPerfilPage(
+                    key: state.pageKey,
+                  );
+                },
+              ),
+            ]
+          ),
+
+
+        ],
+      ),
+
+      
+    ],
+  );
+}

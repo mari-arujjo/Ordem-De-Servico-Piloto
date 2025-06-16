@@ -21,7 +21,6 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Gestão de usuários'),
-        backgroundColor: Colors.white,
       ),
 
       body: Center(
@@ -71,7 +70,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                             Expanded(
                               child: GestureDetector(
                                 onTap: () {
-                                  GoRouter.of(context).push('/usuario');
+                                  context.goNamed("usuario");
                                 },
                               child: Text('${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
                                 overflow: TextOverflow.ellipsis,
@@ -92,7 +91,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
               ButtonWidget(
                 txt: 'Novo', 
                 onPressed: (){
-                  GoRouter.of(context).push('/cadastroUsuario');
+                  context.goNamed("cadastroUsuario");
                 },
                 tam: 200,
               ),
