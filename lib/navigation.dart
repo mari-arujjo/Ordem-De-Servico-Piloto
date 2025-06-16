@@ -3,12 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-
 class NavigationBarWidget extends StatefulWidget {
-  const NavigationBarWidget({
-    super.key, 
-    required this.navigationShell
-  });
+  const NavigationBarWidget({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
@@ -21,7 +17,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
   var colorsClass = ColorsClass();
   var popUpSair = PopUp();
 
-  void _goToBranch(int index){
+  void _goToBranch(int index) {
     widget.navigationShell.goBranch(
       index,
       initialLocation: index == widget.navigationShell.currentIndex,
@@ -32,6 +28,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        backgroundColor: colorsClass.secondaryColor,
         indicatorColor: colorsClass.terciaryColor,
         selectedIndex: _selectedIndex,
         destinations: const <Widget>[
@@ -46,10 +43,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
         },
       ),
 
-      body: SizedBox(
-        child: widget.navigationShell,
-      ),
-
+      body: SizedBox(child: widget.navigationShell),
     );
   }
 }
