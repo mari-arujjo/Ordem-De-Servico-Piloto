@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 
@@ -18,9 +19,13 @@ class LoginPage extends StatefulWidget {
       Widget build(BuildContext context){
       return Scaffold(
 
+        appBar: AppBar(
+          title: const Text("Login"),
+        ),
+
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(top: 170),
+            padding: EdgeInsets.only(top: 70),
             child: Column(
               children: [
                 Image.asset('lib/app/assets/imgs/tudo_em_ordem.png', width: 200, height: 200),
@@ -81,7 +86,6 @@ class LoginPage extends StatefulWidget {
                           ButtonWidget(
                             txt: 'Entrar',
                             onPressed: () {
-                              Navigator.of(context).pop();
                             },
                             tam: 200,
                           ),

@@ -29,7 +29,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
               ButtonWidget(
                 txt: 'Fazer login!', 
                 onPressed: (){
-                  GoRouter.of(context).push('/login');
+                  context.push(context.namedLocation("Login"));
                 },
                 tam: 200,
                ),

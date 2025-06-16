@@ -13,6 +13,7 @@ class AppWidget extends StatelessWidget {
       return MaterialApp.router(
       title: 'OS Demo',
       debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
@@ -26,9 +27,11 @@ class AppWidget extends StatelessWidget {
             fontWeight: FontWeight.bold
           )
         ),
+
         textTheme: GoogleFonts.interTextTheme(
           Theme.of(context).textTheme
         ),
+        
         colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF2C2C2C)),
       ),
 

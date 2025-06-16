@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/app/UI/widgets/flutuante_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
-import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
 import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 
@@ -23,6 +23,10 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
         title: const Text('Gestão de usuários'),
       ),
 
+      floatingActionButton: FlutuanteWidget(),
+      
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+
       body: Center(
         child: Padding(
           padding: EdgeInsets.only(top: 10, bottom: 15),
@@ -32,7 +36,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.all(20),
+                  margin: EdgeInsets.only(top: 20, bottom: 8, left: 20, right: 20),
                   decoration: BoxDecoration(
                     color: colorsClass.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
@@ -48,7 +52,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                   child: ListView.separated(
                     padding: EdgeInsets.all(16),
                     itemCount: controller.allUsers.length,
-                    separatorBuilder: (_, __) => SizedBox(height:13),
+                    separatorBuilder: (_, __) => SizedBox(height:12),
                     itemBuilder: (BuildContext context, int i){
                       final allUsers = controller.allUsers;
 
@@ -86,14 +90,6 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                     }, 
                   ),
                 ),
-              ),
-
-              ButtonWidget(
-                txt: 'Novo', 
-                onPressed: (){
-                  context.goNamed("cadastroUsuario");
-                },
-                tam: 200,
               ),
             ]
           ),

@@ -33,7 +33,8 @@ class AppNavigation{
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
 
-      ///MainNavigation!!
+
+      ///MainNavigation route
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
           return  NavigationBarWidget(navigationShell: navigationShell,);
@@ -134,11 +135,20 @@ class AppNavigation{
             ]
           ),
 
-
         ],
       ),
 
-      
+      // Login route
+      GoRoute(
+        path: '/login',
+        name: 'Login',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          return LoginPage(
+            key: state.pageKey,
+          );
+        },
+      )
     ],
   );
 }

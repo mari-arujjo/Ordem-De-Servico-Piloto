@@ -17,7 +17,7 @@ class PopUp {
           actions: [
             TextButton(
               onPressed: (){
-                GoRouter.of(context).pop();
+                context.pop();
               }, 
               child: Text(
                 'Não',
@@ -26,7 +26,9 @@ class PopUp {
             ),
             TextButton(
               onPressed: (){
-                context.go('/');
+                ///context.push(context.namedLocation('Home'));
+                context.pop();
+                context.pop();
               }, 
               child: Text(
                 'Sim', 
@@ -50,7 +52,7 @@ class PopUp {
           actions: [
             TextButton(
               onPressed: (){
-                GoRouter.of(context).pop();
+                context.pop();
               }, 
               child: Text(
                 'Não',
