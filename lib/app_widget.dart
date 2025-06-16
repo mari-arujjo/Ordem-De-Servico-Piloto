@@ -17,6 +17,7 @@ class AppWidget extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
           backgroundColor: Colors.white,
+          scrolledUnderElevation: 0,
           foregroundColor: Colors.black,
           centerTitle: true,
           titleTextStyle: TextStyle(

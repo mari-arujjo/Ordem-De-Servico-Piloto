@@ -20,7 +20,8 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gestão de usuários')
+        title: const Text('Gestão de usuários'),
+        backgroundColor: Colors.white,
       ),
 
       body: Center(
