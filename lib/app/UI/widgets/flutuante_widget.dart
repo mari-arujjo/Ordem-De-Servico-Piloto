@@ -11,17 +11,36 @@ class FlutuanteWidget extends StatefulWidget {
 
 class _FlutuanteState extends State<FlutuanteWidget> {
   var colorsClass = ColorsClass();
+  bool pressed = false;
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      backgroundColor: colorsClass.terciaryColor,
+    Color corFundo;
+    if(pressed==false){
+      corFundo = colorsClass.primaryColor;
+    }
+    else{
+      corFundo = colorsClass.terciaryColor;
+    }
+
+    return FloatingActionButton.extended(
+      foregroundColor: Colors.white,
+      backgroundColor: corFundo,
       onPressed: (){
-        context.goNamed('cadastroUsuario');
+        setState(() {
+          pressed = true;
+        });
+        Future.delayed(const Duration(milliseconds: 100), (){
+          context.goNamed('cadastroUsuario');
+          setState(() {
+            pressed = false;
+          });
+        });
       },
-      child: Icon(Icons.add),
       
+      label: const Text('Novo'),
+      icon: Icon(Icons.add),
+        
     );
-     
   }
 }

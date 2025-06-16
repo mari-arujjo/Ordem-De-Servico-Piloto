@@ -24,7 +24,6 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
       ),
 
       floatingActionButton: FlutuanteWidget(),
-      
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
       body: Center(
