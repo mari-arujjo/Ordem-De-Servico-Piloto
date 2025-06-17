@@ -27,20 +27,29 @@ class _NavigationBarState extends State<NavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: colorsClass.secondaryColor,
-        indicatorColor: colorsClass.terciaryColor,
-        selectedIndex: _selectedIndex,
-        destinations: const <Widget>[
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.people), label: 'Perfil'),
-        ],
-        onDestinationSelected: (int index) {
-          setState(() {
-            _selectedIndex = index;
-          });
-          _goToBranch(_selectedIndex);
-        },
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            height: 2,
+            color: Colors.white,
+          ),
+          NavigationBar(
+            backgroundColor: colorsClass.secondaryColor,
+            indicatorColor: colorsClass.terciaryColor,
+            selectedIndex: _selectedIndex,
+            destinations: const <Widget>[
+              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+              NavigationDestination(icon: Icon(Icons.people), label: 'Perfil'),
+            ],
+            onDestinationSelected: (int index) {
+              setState(() {
+                _selectedIndex = index;
+              });
+              _goToBranch(_selectedIndex);
+            },
+          ),
+        ]
       ),
 
       body: SizedBox(child: widget.navigationShell),
