@@ -47,46 +47,50 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                       )
                     ]
                 ),
+                  child: Scrollbar(
+                    thumbVisibility: true,
+                    child: ListView.separated(
+                      padding: EdgeInsets.all(16),
+                      itemCount: controller.allUsers.length,
+                      separatorBuilder: (_, __) => SizedBox(height:12),
+                      itemBuilder: (BuildContext context, int i){
+                        final allUsers = controller.allUsers;
 
-                  child: ListView.separated(
-                    padding: EdgeInsets.all(16),
-                    itemCount: controller.allUsers.length,
-                    separatorBuilder: (_, __) => SizedBox(height:12),
-                    itemBuilder: (BuildContext context, int i){
-                      final allUsers = controller.allUsers;
-
-                      return Container(
-                        padding: EdgeInsets.only(left:15,top: 10, right: 10, bottom: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 1,
-                              offset: Offset(0, 4),
-                            )
-                          ]
-                        ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: () {
-                                  context.goNamed("usuario");
-                                },
-                              child: Text('${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(fontSize:16),
+                        return Container(
+                          padding: EdgeInsets.only(left:15,top: 10, right: 10, bottom: 10),
+                          decoration: BoxDecoration(
+                            color:  Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black12,
+                                blurRadius: 1,
+                                offset: Offset(0, 4),
+                              )
+                            ]
+                          ),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                    });
+                                    context.goNamed("usuario");
+                                  },
+                                child: Text('${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(fontSize:16),
+                                  ),
                                 ),
                               ),
-                            ),
 
-                            Icon(Icons.edit)
-                          ],
-                        ),
-                      );
-                    }, 
+                              Icon(Icons.edit)
+                            ],
+                          ),
+                        );
+                      }, 
+                    ),
                   ),
                 ),
               ),

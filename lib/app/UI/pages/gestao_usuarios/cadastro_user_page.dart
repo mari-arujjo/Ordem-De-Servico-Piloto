@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/dropdown_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/input1_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
@@ -18,7 +19,6 @@ class _CadastroUserState extends State<CadastroUserPage> {
     bool isChecked2 = false;
     bool obscurePassword2 = true;
     final List <String> listNivel = ["1 - Administrador", "2 - Moderador", "3 - Padrão"];
-    String? nivelSelecionado;
     var colorsClass = ColorsClass();
     var popUp = PopUp();
 
@@ -65,6 +65,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           Input1Widget(obscure: false),
                           SizedBox(height: 20),
 
+
                           /// USUARIO
                           Align(
                             alignment: Alignment.centerLeft,
@@ -78,6 +79,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           Input1Widget(obscure: false),
                           SizedBox(height: 20),
 
+
                           /// NIVEL
                           Align(
                             alignment: Alignment.centerLeft,
@@ -88,39 +90,12 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color.fromARGB(255, 73, 73, 73),
-                                  offset: Offset(0, 1)
-                                )
-                              ]
-                            ),
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10, right: 10),
-                              child: DropdownButton(
-                                value: nivelSelecionado,
-                                dropdownColor: Colors.white,
-                                isExpanded: true,
-                                hint: const Text('Selecione o nível de acesso ao sistema'),
-                                items: listNivel.map((String nivel){
-                                  return DropdownMenuItem(
-                                    value: nivel,
-                                    child: Text(nivel)
-                                  );
-                                }).toList(),
-                                onChanged:(value) {
-                                  setState(() {
-                                    nivelSelecionado = value;
-                                  });
-                                },
-                              ),
-                            )
+                          DropdownWidget(
+                            listNivel: listNivel, 
+                            txt: 'Selecione o nível de acesso ao sistema'
                           ),
                           SizedBox(height: 20),
+
 
                           /// SENHA
                           Align(
@@ -151,6 +126,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           ),
                           SizedBox(height: 20),
 
+
                           /// CONFIMAR SENHA
                           Align(
                             alignment: Alignment.centerLeft,
@@ -178,15 +154,19 @@ class _CadastroUserState extends State<CadastroUserPage> {
                               ),
                             ],
                           ),
+
+
                         ],
                       )
                     ),
                   )
                 ),
 
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    
                     ButtonWidget(
                       txt: 'Salvar dados', 
                       onPressed: (){
@@ -205,6 +185,8 @@ class _CadastroUserState extends State<CadastroUserPage> {
                     )
                   ],
                 )
+
+
               ],
             ),
           ),
