@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/input1_widget.dart';
+import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class UsuarioPage extends StatefulWidget {
@@ -14,12 +16,13 @@ class UsuarioPage extends StatefulWidget {
 
 class _UsuarioState extends State<UsuarioPage> {
   var colorsClass = ColorsClass();
+  var popUp = PopUp();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('@mari')
+        title: Text('Gestão de usuários')
       ),
 
       body: SingleChildScrollView(
@@ -47,7 +50,15 @@ class _UsuarioState extends State<UsuarioPage> {
                 ),
               ),
               SizedBox(height: 10),
-              Text('ID: 1'),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('ID:', style: TextStyle(fontWeight: FontWeight.bold)),
+                  SizedBox(width: 5),
+                  Text('1')
+                ],
+              ),
 
               SizedBox(height: 20),
               
@@ -104,7 +115,7 @@ class _UsuarioState extends State<UsuarioPage> {
               Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  '  Mudar senha',
+                  ' Mudar senha',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
@@ -113,6 +124,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
               Container(
                 padding: EdgeInsets.all(20),
+                margin: EdgeInsets.only(bottom: 25),
                 decoration: BoxDecoration(
                   color: colorsClass.secondaryColor,
                   borderRadius: BorderRadius.circular(10)
@@ -144,10 +156,44 @@ class _UsuarioState extends State<UsuarioPage> {
                       SizedBox(height: 10),
                       Input1Widget(obscure: true),
 
+                      
                     ],
                   )
                 ),
               ),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ButtonWidget(
+                    txt: 'Salvar alterações', 
+                    onPressed: (){
+                      popUp.PopUpAlterar(context);
+                    }, 
+                    tam: 160
+                  ),
+
+                  SizedBox(width: 20),
+
+                  ButtonWidget(
+                    txt: 'Excluir', 
+                    onPressed: (){
+                      popUp.PopUpExcluir(context);
+                    }, 
+                    tam: 160
+                  )
+                ],
+              ),
+
+              SizedBox(height: 20),
+
+              ButtonWidget(
+                    txt: 'Cancelar', 
+                    onPressed: (){
+                      popUp.PopUpCancel(context);
+                    }, 
+                    tam: 160
+                  ),
 
             ],
           ),

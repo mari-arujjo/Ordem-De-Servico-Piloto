@@ -1,13 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class PopUp {
+  var colorsClass = ColorsClass();
+
   // ignore: non_constant_identifier_names
   void PopUpCancel(BuildContext context){
-    var colorsClass = ColorsClass();
     showDialog(
       context: context, 
       builder: (context){
@@ -42,7 +42,6 @@ class PopUp {
 
   // ignore: non_constant_identifier_names
   void PopUpSair(BuildContext context){
-    var colorsClass = ColorsClass();
     showDialog(
       context: context, 
       builder: (context){
@@ -76,13 +75,12 @@ class PopUp {
 
   // ignore: non_constant_identifier_names
   void PopUpSalvar(BuildContext context){
-    var colorsClass = ColorsClass();
     showDialog(
       context: context, 
       builder: (context){
         return AlertDialog(
           title: const Text('Salvar'),
-          content: const Text('Dados salvos com sucesso!'),
+          content: const Text('Cadastro realizado com sucesso!'),
           actions: [
             TextButton(
               onPressed: (){
@@ -93,6 +91,94 @@ class PopUp {
                 'Ok',
                 style: TextStyle(color: colorsClass.terciaryColor),
               )
+            )
+          ]
+        );
+      },
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void PopUpExcluir(BuildContext context){
+    showDialog(
+      context: context, 
+      builder: (context){
+        return AlertDialog(
+          title: const Text('Excluir'),
+          content: const Text('Tem certeza que deseja excluir? Os dados não poderão ser recuperados.'),
+          actions: [
+            TextButton(
+              onPressed: (){
+                context.pop();
+              }, 
+              child: Text(
+                'Não',
+                style: TextStyle(color: colorsClass.terciaryColor),
+              )
+            ),
+            
+            TextButton(
+              onPressed: (){
+                context.pop();
+                context.pop();
+                showDialog(
+                  context: context, 
+                  builder: (context){
+                    return AlertDialog(
+                      
+                      content: Text('Dados excluídos com sucesso.'),
+                    );
+                  }
+                );
+                
+              }, 
+              child: Text(
+                'Sim', 
+                style: TextStyle(color: colorsClass.terciaryColor)),
+            )
+          ]
+        );
+      },
+    );
+  }
+
+  // ignore: non_constant_identifier_names
+  void PopUpAlterar(BuildContext context){
+    showDialog(
+      context: context, 
+      builder: (context){
+        return AlertDialog(
+          title: const Text('Salvar alterações'),
+          content: const Text('Quer salvar as mudanças feitas? Isso vai atualizar os dados no sistema.'),
+          actions: [
+            TextButton(
+              onPressed: (){
+                context.pop();
+              }, 
+              child: Text(
+                'Não',
+                style: TextStyle(color: colorsClass.terciaryColor),
+              )
+            ),
+            
+            TextButton(
+              onPressed: (){
+                context.pop();
+                context.pop();
+                showDialog(
+                  context: context, 
+                  builder: (context){
+                    return AlertDialog(
+                      
+                      content: Text('Dados excluídos com sucesso.'),
+                    );
+                  }
+                );
+                
+              }, 
+              child: Text(
+                'Sim', 
+                style: TextStyle(color: colorsClass.terciaryColor)),
             )
           ]
         );

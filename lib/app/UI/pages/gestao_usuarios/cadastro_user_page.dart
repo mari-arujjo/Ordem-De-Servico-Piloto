@@ -176,6 +176,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                     ),
 
                     SizedBox(width: 20),
+                    
                     ButtonWidget(
                       txt: 'Cancelar', 
                       onPressed: (){
