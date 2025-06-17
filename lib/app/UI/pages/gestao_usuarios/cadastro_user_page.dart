@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/input1_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
@@ -16,6 +17,8 @@ class _CadastroUserState extends State<CadastroUserPage> {
     bool obscurePassword = true;
     bool isChecked2 = false;
     bool obscurePassword2 = true;
+    final List <String> listNivel = ["1 - Administrador", "2 - Moderador", "3 - Padrão"];
+    String? nivelSelecionado;
     var colorsClass = ColorsClass();
     var popUp = PopUp();
 
@@ -26,7 +29,8 @@ class _CadastroUserState extends State<CadastroUserPage> {
 
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Cadastro de usuários')
+          title: const Text('Cadastro de usuários'),
+          automaticallyImplyLeading: false,
         ),
 
         body: SingleChildScrollView(
@@ -47,6 +51,8 @@ class _CadastroUserState extends State<CadastroUserPage> {
                     child: Form(
                       child: Column(
                         children: [
+
+                          /// NOME
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -56,14 +62,10 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white
-                            ),
-                          ),
+                          Input1Widget(obscure: false),
                           SizedBox(height: 20),
 
+                          /// USUARIO
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -73,14 +75,10 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white
-                            ),
-                          ),
+                          Input1Widget(obscure: false),
                           SizedBox(height: 20),
 
+                          /// NIVEL
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -90,32 +88,41 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 73, 73, 73),
+                                  offset: Offset(0, 1)
+                                )
+                              ]
                             ),
-                          ),
-                          SizedBox(height: 20),
-
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Nível de acesso:', 
-                              style: TextStyle(fontSize: 16,
+                            child: Container(
+                              margin: EdgeInsets.only(left: 10, right: 10),
+                              child: DropdownButton(
+                                value: nivelSelecionado,
+                                dropdownColor: Colors.white,
+                                isExpanded: true,
+                                hint: const Text('Selecione o nível de acesso ao sistema'),
+                                items: listNivel.map((String nivel){
+                                  return DropdownMenuItem(
+                                    value: nivel,
+                                    child: Text(nivel)
+                                  );
+                                }).toList(),
+                                onChanged:(value) {
+                                  setState(() {
+                                    nivelSelecionado = value;
+                                  });
+                                },
                               ),
-                            ),
-                          ),
-                          SizedBox(height: 5),
-                          TextFormField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white
-                            ),
+                            )
                           ),
                           SizedBox(height: 20),
 
-
+                          /// SENHA
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -128,14 +135,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: TextFormField(
-                                  obscureText: obscurePassword,
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.white
-                                  ),
-                                ),
-
+                                child: Input1Widget(obscure: obscurePassword),
                               ),
                               Checkbox(
                                 activeColor: colorsClass.terciaryColor,
@@ -151,6 +151,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           ),
                           SizedBox(height: 20),
 
+                          /// CONFIMAR SENHA
                           Align(
                             alignment: Alignment.centerLeft,
                             child: Text(
@@ -163,14 +164,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: TextFormField(
-                                  obscureText: obscurePassword2,
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.white
-                                  ),
-                                ),
-
+                                child: Input1Widget(obscure: obscurePassword2),
                               ),
                               Checkbox(
                                 activeColor: colorsClass.terciaryColor,
@@ -193,12 +187,22 @@ class _CadastroUserState extends State<CadastroUserPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ButtonWidget(txt: 'Salvar dados', onPressed: (){}, tam: 150),
+                    ButtonWidget(
+                      txt: 'Salvar dados', 
+                      onPressed: (){
+                        popUp.PopUpSalvar(context);
+                      }, 
+                      tam: 150
+                    ),
+
                     SizedBox(width: 20),
-                    ButtonWidget(txt: 'Cancelar', onPressed: (){
-                      popUp.PopUpCancel(context);
-                    }, 
-                    tam: 150)
+                    ButtonWidget(
+                      txt: 'Cancelar', 
+                      onPressed: (){
+                        popUp.PopUpCancel(context);
+                      }, 
+                      tam: 150
+                    )
                   ],
                 )
               ],

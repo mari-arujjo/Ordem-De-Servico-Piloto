@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/button_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/input2_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -45,23 +46,18 @@ class LoginPage extends StatefulWidget {
                     child: Form(
                       child: Column(
                         children: [
-                          TextFormField(
-                            decoration: InputDecoration(
-                              labelText: "Usuário",
-                              prefixIcon: Icon(Icons.people),
-                              border: OutlineInputBorder(),
-                            ),
+                          Input2Widget(
+                            obscure: false, 
+                            txt: "Usuário", 
+                            ico: Icon(Icons.people)
                           ),
 
                           SizedBox(height: 20),
-
-                          TextFormField(
-                            obscureText: obscurePassword,
-                            decoration: InputDecoration(
-                              labelText: "Senha",
-                              prefixIcon: Icon(Icons.password),
-                              border: OutlineInputBorder(),
-                            ),
+                          
+                          Input2Widget(
+                            obscure: obscurePassword, 
+                            txt: "Senha", 
+                            ico: Icon(Icons.password)
                           ),
 
                           SizedBox(height: 10),
@@ -81,7 +77,7 @@ class LoginPage extends StatefulWidget {
                             ],
                           ),
 
-                          SizedBox(height: 20),
+                          SizedBox(height: 10),
                           ButtonWidget(
                             txt: 'Entrar',
                             onPressed: () {

@@ -72,4 +72,32 @@ class PopUp {
       },
     );
   }
+
+
+  // ignore: non_constant_identifier_names
+  void PopUpSalvar(BuildContext context){
+    var colorsClass = ColorsClass();
+    showDialog(
+      context: context, 
+      builder: (context){
+        return AlertDialog(
+          title: const Text('Salvar'),
+          content: const Text('Dados salvos com sucesso!'),
+          actions: [
+            TextButton(
+              onPressed: (){
+                context.pop();
+                context.pop();
+              }, 
+              child: Text(
+                'Ok',
+                style: TextStyle(color: colorsClass.terciaryColor),
+              )
+            )
+          ]
+        );
+      },
+    );
+  }
+
 }

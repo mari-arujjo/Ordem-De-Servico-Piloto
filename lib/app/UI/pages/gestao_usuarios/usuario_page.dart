@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class UsuarioPage extends StatefulWidget {
-  const UsuarioPage({super.key});
+
+  const UsuarioPage({
+    super.key,
+  });
 
   @override
   State<UsuarioPage> createState() => _UsuarioState();
@@ -12,7 +15,24 @@ class _UsuarioState extends State<UsuarioPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gestão de usuário')
+        title: Text('@mari')
+      ),
+
+      body: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: [
+
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+
+                ),
+              ),
+            ),
+
+          ],
+        ),
       ),
     );
   }
