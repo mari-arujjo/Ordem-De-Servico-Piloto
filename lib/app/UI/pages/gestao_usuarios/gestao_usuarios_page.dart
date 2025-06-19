@@ -19,9 +19,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Gestão de usuários'),
-      ),
+      appBar: AppBar(title: const Text('Gestão de usuários')),
 
       floatingActionButton: FlutuanteWidget(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
@@ -35,7 +33,12 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(top: 20, bottom: 8, left: 20, right: 20),
+                  margin: EdgeInsets.only(
+                    top: 20,
+                    bottom: 8,
+                    left: 20,
+                    right: 20,
+                  ),
                   decoration: BoxDecoration(
                     color: colorsClass.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
@@ -44,57 +47,68 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                         color: colorsClass.secondaryColor,
                         blurRadius: 0,
                         offset: Offset(0, 2),
-                      )
-                    ]
-                ),
+                      ),
+                    ],
+                  ),
                   child: Scrollbar(
                     thumbVisibility: true,
                     child: ListView.separated(
                       padding: EdgeInsets.all(16),
                       itemCount: controller.allUsers.length,
-                      separatorBuilder: (_, __) => SizedBox(height:12),
-                      itemBuilder: (BuildContext context, int i){
+                      separatorBuilder: (_, __) => SizedBox(height: 12),
+                      itemBuilder: (BuildContext context, int i) {
                         final allUsers = controller.allUsers;
 
-                        return Container(
-                          padding: EdgeInsets.only(left:15,top: 10, right: 10, bottom: 10),
-                          decoration: BoxDecoration(
-                            color:  Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 1,
-                                offset: Offset(0, 4),
-                              )
-                            ]
-                          ),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                    });
-                                    context.goNamed("usuario");
-                                  },
-                                child: Text('${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(fontSize:16),
+                        return SizedBox(
+                          height: 50,
+                          width: 100,
+
+                          child: ElevatedButton(
+                            onPressed: () {
+                              context.goNamed("usuario");
+                            },
+                            style: ButtonStyle(
+                              elevation: const WidgetStatePropertyAll(3),
+                              shadowColor: const WidgetStatePropertyAll(
+                                Colors.black,
+                              ),
+                              backgroundColor:
+                                  WidgetStateProperty.resolveWith<Color>((
+                                    states,
+                                  ) {
+                                    if (states.contains(WidgetState.pressed)) {
+                                      return colorsClass.terciaryColor;
+                                    }
+                                    return Colors.white;
+                                  }),
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    '${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: colorsClass.primaryColor,
+                                    ),
                                   ),
                                 ),
-                              ),
 
-                              Icon(Icons.edit)
-                            ],
+                                Icon(
+                                  Icons.edit,
+                                  color: colorsClass.primaryColor,
+                                ),
+                              ],
+                            ),
                           ),
                         );
-                      }, 
+                      },
                     ),
                   ),
                 ),
               ),
-            ]
+            ],
           ),
         ),
       ),
