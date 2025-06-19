@@ -8,17 +8,16 @@ class ButtonWidget extends StatefulWidget {
 
   const ButtonWidget({
     super.key,
-    required this.txt, 
+    required this.txt,
     required this.onPressed,
     required this.tam,
-    });
+  });
 
   @override
-    State<ButtonWidget> createState()=> _ButtonWidgetState();
+  State<ButtonWidget> createState() => _ButtonWidgetState();
 }
 
-
-class _ButtonWidgetState extends State<ButtonWidget>{
+class _ButtonWidgetState extends State<ButtonWidget> {
   bool pressionado = false;
   var colorsClass = ColorsClass();
 
@@ -33,25 +32,20 @@ class _ButtonWidgetState extends State<ButtonWidget>{
         style: ButtonStyle(
           elevation: const WidgetStatePropertyAll(3),
           shadowColor: const WidgetStatePropertyAll(Colors.black),
-          backgroundColor: WidgetStateProperty.resolveWith<Color>(
-            (states) {
-              if(states.contains(WidgetState.pressed)){
-                return colorsClass.terciaryColor;
-              }
-              return colorsClass.primaryColor;
-            },
-          ),
+          backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
+            if (states.contains(WidgetState.pressed)) {
+              return colorsClass.terciaryColor;
+            }
+            return colorsClass.primaryColor;
+          }),
           overlayColor: WidgetStateProperty.all(Colors.transparent),
         ),
-        
+
         child: Text(
           widget.txt,
-          style: TextStyle(
-            color: Color(0xFFFFFFFF),
-            fontSize: 15,
-          ),
+          style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15),
         ),
-      ), 
+      ),
     );
   }
 }

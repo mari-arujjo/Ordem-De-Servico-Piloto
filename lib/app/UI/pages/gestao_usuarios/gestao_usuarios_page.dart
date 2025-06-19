@@ -81,7 +81,13 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                                     }
                                     return Colors.white;
                                   }),
+                              shape: WidgetStatePropertyAll(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
                             ),
+
                             child: Row(
                               children: [
                                 Expanded(
