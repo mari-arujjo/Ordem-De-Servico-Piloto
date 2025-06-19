@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class ButtonWidget extends StatefulWidget {
+class Button2Widget extends StatefulWidget {
   final String txt;
   final VoidCallback onPressed;
-  final double tam;
 
-  const ButtonWidget({
-    super.key,
-    required this.txt,
-    required this.onPressed,
-    required this.tam,
-  });
+  const Button2Widget({super.key, required this.txt, required this.onPressed});
 
   @override
-  State<ButtonWidget> createState() => _ButtonWidgetState();
+  State<Button2Widget> createState() => _Button2WidgetState();
 }
 
-class _ButtonWidgetState extends State<ButtonWidget> {
+class _Button2WidgetState extends State<Button2Widget> {
   bool pressionado = false;
   var colorsClass = ColorsClass();
 
@@ -25,7 +19,6 @@ class _ButtonWidgetState extends State<ButtonWidget> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
-      width: widget.tam,
 
       child: ElevatedButton(
         onPressed: widget.onPressed,
@@ -36,14 +29,25 @@ class _ButtonWidgetState extends State<ButtonWidget> {
             if (states.contains(WidgetState.pressed)) {
               return colorsClass.terciaryColor;
             }
-            return colorsClass.primaryColor;
+            return Colors.white;
           }),
-          overlayColor: WidgetStateProperty.all(Colors.transparent),
+          shape: WidgetStatePropertyAll(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
         ),
 
-        child: Text(
-          widget.txt,
-          style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                widget.txt,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 16, color: colorsClass.primaryColor),
+              ),
+            ),
+
+            Icon(Icons.edit, color: colorsClass.primaryColor),
+          ],
         ),
       ),
     );

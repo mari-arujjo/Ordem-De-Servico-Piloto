@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/app/UI/widgets/button2_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/flutuante_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
@@ -59,55 +60,12 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                       itemBuilder: (BuildContext context, int i) {
                         final allUsers = controller.allUsers;
 
-                        return SizedBox(
-                          height: 50,
-                          width: 100,
-
-                          child: ElevatedButton(
-                            onPressed: () {
-                              context.goNamed("usuario");
-                            },
-                            style: ButtonStyle(
-                              elevation: const WidgetStatePropertyAll(3),
-                              shadowColor: const WidgetStatePropertyAll(
-                                Colors.black,
-                              ),
-                              backgroundColor:
-                                  WidgetStateProperty.resolveWith<Color>((
-                                    states,
-                                  ) {
-                                    if (states.contains(WidgetState.pressed)) {
-                                      return colorsClass.terciaryColor;
-                                    }
-                                    return Colors.white;
-                                  }),
-                              shape: WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ),
-
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    '${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: colorsClass.primaryColor,
-                                    ),
-                                  ),
-                                ),
-
-                                Icon(
-                                  Icons.edit,
-                                  color: colorsClass.primaryColor,
-                                ),
-                              ],
-                            ),
-                          ),
+                        return Button2Widget(
+                          txt:
+                              '${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
+                          onPressed: () {
+                            context.goNamed('usuario');
+                          },
                         );
                       },
                     ),
