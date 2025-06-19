@@ -30,10 +30,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            height: 2,
-            color: Colors.white,
-          ),
+          Container(height: 2, color: Colors.white),
           NavigationBar(
             backgroundColor: colorsClass.secondaryColor,
             indicatorColor: colorsClass.terciaryColor,
@@ -49,7 +46,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
               _goToBranch(_selectedIndex);
             },
           ),
-        ]
+        ],
       ),
 
       body: SizedBox(child: widget.navigationShell),

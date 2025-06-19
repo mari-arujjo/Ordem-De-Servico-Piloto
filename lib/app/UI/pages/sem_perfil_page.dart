@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button3_widget.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/container1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
-import 'package:ordem_de_servico/app/src/helper/popup.dart';
-import 'package:ordem_de_servico/colors.dart';
 
-class MeuPerfilPage extends StatefulWidget {
-  const MeuPerfilPage({super.key});
+class SemPerfilPage extends StatefulWidget {
+  const SemPerfilPage({super.key});
 
   @override
-  State<MeuPerfilPage> createState() => _MeuPerfilState();
+  State<SemPerfilPage> createState() => _SemPerfilPageState();
 }
 
-class _MeuPerfilState extends State<MeuPerfilPage> {
-  var colorsClass = ColorsClass();
-  var popUpSair = PopUp();
+class _SemPerfilPageState extends State<SemPerfilPage> {
+  get popUpSair => null;
 
   @override
   Widget build(BuildContext context) {
@@ -67,12 +65,12 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
               ),
 
               SizedBox(height: 30),
-              Button3Widget(
-                txt: 'Logout',
+              Button1Widget(
+                txt: 'Fazer login!',
                 onPressed: () {
-                  popUpSair.PopUpSair(context);
+                  context.push(context.namedLocation("Login"));
                 },
-                tam: 140,
+                tam: 200,
               ),
             ],
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/container1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input1_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
@@ -32,6 +33,7 @@ class _UsuarioState extends State<UsuarioPage> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(30),
+
             child: Column(
               children: [
                 FotoPerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
@@ -48,12 +50,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
                 SizedBox(height: 20),
 
-                Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: colorsClass.secondaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                Container1Widget(
                   child: Form(
                     child: Column(
                       children: [
@@ -94,6 +91,7 @@ class _UsuarioState extends State<UsuarioPage> {
                 ),
 
                 SizedBox(height: 30),
+
                 Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -102,14 +100,7 @@ class _UsuarioState extends State<UsuarioPage> {
                   ),
                 ),
                 SizedBox(height: 5),
-
-                Container(
-                  padding: EdgeInsets.all(20),
-                  margin: EdgeInsets.only(bottom: 25),
-                  decoration: BoxDecoration(
-                    color: colorsClass.secondaryColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
+                Container1Widget(
                   child: Form(
                     child: Column(
                       children: [
@@ -140,6 +131,7 @@ class _UsuarioState extends State<UsuarioPage> {
                   ),
                 ),
 
+                SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

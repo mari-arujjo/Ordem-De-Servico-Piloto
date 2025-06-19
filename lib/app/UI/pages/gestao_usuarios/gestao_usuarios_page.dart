@@ -35,23 +35,23 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
               Expanded(
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
                   decoration: BoxDecoration(
                     color: colorsClass.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: colorsClass.secondaryColor,
-                        blurRadius: 0,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
                   ),
 
                   child: Scrollbar(
                     thumbVisibility: true,
+                    radius: Radius.circular(10),
 
                     child: ListView.separated(
-                      padding: EdgeInsets.all(16),
+                      padding: EdgeInsets.only(
+                        right: 15,
+                        left: 15,
+                        top: 10,
+                        bottom: 12,
+                      ),
                       itemCount: controller.allUsers.length,
                       separatorBuilder: (_, __) => SizedBox(height: 12),
                       itemBuilder: (BuildContext context, int i) {
