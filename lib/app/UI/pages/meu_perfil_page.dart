@@ -28,7 +28,18 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
           child: Column(
             children: [
               FotoPerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
-              SizedBox(height: 30),
+              SizedBox(height: 10),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('ID:', style: TextStyle(fontWeight: FontWeight.bold)),
+                  SizedBox(width: 5),
+                  Text('1'),
+                ],
+              ),
+
+              SizedBox(height: 20),
 
               Container1Widget(
                 child: Form(
