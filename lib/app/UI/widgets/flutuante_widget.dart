@@ -16,31 +16,30 @@ class _FlutuanteState extends State<FlutuanteWidget> {
   @override
   Widget build(BuildContext context) {
     Color corFundo;
-    if(pressed==false){
+    if (pressed == false) {
       corFundo = colorsClass.primaryColor;
-    }
-    else{
+    } else {
       corFundo = colorsClass.terciaryColor;
     }
 
     return FloatingActionButton.extended(
       foregroundColor: Colors.white,
       backgroundColor: corFundo,
-      onPressed: (){
+      onPressed: () {
         setState(() {
           pressed = true;
         });
-        Future.delayed(const Duration(milliseconds: 100), (){
+        Future.delayed(const Duration(milliseconds: 100), () {
+          // ignore: use_build_context_synchronously
           context.goNamed('cadastroUsuario');
           setState(() {
             pressed = false;
           });
         });
       },
-      
+
       label: const Text('Novo'),
       icon: Icon(Icons.add),
-        
     );
   }
 }

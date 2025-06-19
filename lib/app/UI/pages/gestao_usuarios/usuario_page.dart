@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/button1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/input1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input1_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
@@ -24,6 +25,7 @@ class _UsuarioState extends State<UsuarioPage> {
           popUp.PopUpCancel(context);
         }
       },
+
       child: Scaffold(
         appBar: AppBar(title: Text('Gestão de usuários')),
 
@@ -32,25 +34,7 @@ class _UsuarioState extends State<UsuarioPage> {
             padding: EdgeInsets.all(30),
             child: Column(
               children: [
-                Container(
-                  width: 120,
-                  height: 120,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    boxShadow: [
-                      BoxShadow(
-                        color: colorsClass.gray,
-                        blurRadius: 10,
-                        offset: Offset(0, 5),
-                      ),
-                    ],
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                  child: Image.asset(
-                    'lib/app/assets/imgs/eu.png',
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                FotoPerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
                 SizedBox(height: 10),
 
                 Row(

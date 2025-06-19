@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
+import 'package:ordem_de_servico/colors.dart';
 
 class MeuPerfilPage extends StatefulWidget {
   const MeuPerfilPage({super.key});
@@ -11,17 +13,21 @@ class MeuPerfilPage extends StatefulWidget {
 }
 
 class _MeuPerfilState extends State<MeuPerfilPage> {
+  var colorsClass = ColorsClass();
   var popUpSair = PopUp();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Meu Perfil')),
 
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 50),
+          padding: EdgeInsets.all(30),
           child: Column(
             children: [
+              FotoPerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
+
               Button1Widget(
                 txt: 'Fazer login!',
                 onPressed: () {

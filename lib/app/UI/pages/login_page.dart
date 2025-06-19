@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/button1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/input2_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input2_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class LoginPage extends StatefulWidget {

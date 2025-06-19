@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/dropdown_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/input1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input1_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 

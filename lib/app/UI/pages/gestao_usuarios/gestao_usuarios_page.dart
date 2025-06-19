@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/button2_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button2_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/flutuante_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
@@ -27,19 +27,14 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
       body: Center(
         child: Padding(
-          padding: EdgeInsets.only(top: 10, bottom: 15),
+          padding: EdgeInsets.only(top: 10, bottom: 20, left: 20, right: 20),
           child: Column(
             children: [
               const SearchBarWidget(),
 
               Expanded(
                 child: Container(
-                  margin: EdgeInsets.only(
-                    top: 20,
-                    bottom: 8,
-                    left: 20,
-                    right: 20,
-                  ),
+                  margin: EdgeInsets.only(top: 20),
                   decoration: BoxDecoration(
                     color: colorsClass.secondaryColor,
                     borderRadius: BorderRadius.circular(10),
@@ -51,8 +46,10 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                       ),
                     ],
                   ),
+
                   child: Scrollbar(
                     thumbVisibility: true,
+
                     child: ListView.separated(
                       padding: EdgeInsets.all(16),
                       itemCount: controller.allUsers.length,
