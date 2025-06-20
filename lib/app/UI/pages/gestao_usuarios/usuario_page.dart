@@ -4,11 +4,13 @@ import 'package:ordem_de_servico/app/UI/widgets/container1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/variacoes/input1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/variacoes/input3_widget.dart';
+import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class UsuarioPage extends StatefulWidget {
-  const UsuarioPage({super.key});
+  final int idUsuario;
+  const UsuarioPage({super.key, required this.idUsuario});
 
   @override
   State<UsuarioPage> createState() => _UsuarioState();
@@ -17,6 +19,30 @@ class UsuarioPage extends StatefulWidget {
 class _UsuarioState extends State<UsuarioPage> {
   var colorsClass = ColorsClass();
   var popUp = PopUp();
+
+  late final usuario;
+  late TextEditingController nomeController;
+  late TextEditingController usuarioController;
+  late TextEditingController nivelController;
+
+  @override
+  void initState() {
+    super.initState();
+    final controller = GestaoUsuariosController();
+    usuario = controller.allUsers.firstWhere((u) => u.id_usuario == widget.idUsuario);
+
+    nomeController = TextEditingController(text: usuario.nome);
+    usuarioController = TextEditingController(text: usuario.usuario);
+    nivelController = TextEditingController(text: usuario.nivel_acesso.toString());
+  }
+  
+  @override
+  void dispose(){
+    nomeController.dispose();
+    usuarioController.dispose();
+    nivelController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +63,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                FotoPerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
+                FotoPerfilWidget(img: usuario.foto!),
                 SizedBox(height: 10),
 
                 Row(
@@ -45,7 +71,7 @@ class _UsuarioState extends State<UsuarioPage> {
                   children: [
                     Text('ID:', style: TextStyle(fontWeight: FontWeight.bold)),
                     SizedBox(width: 5),
-                    Text('1'),
+                    Text('${usuario.id_usuario}'),
                   ],
                 ),
 
@@ -60,8 +86,8 @@ class _UsuarioState extends State<UsuarioPage> {
                           alignment: Alignment.centerLeft,
                           child: Text('Nome:', style: TextStyle(fontSize: 16)),
                         ),
-                        SizedBox(height: 10),
-                        Input1Widget(),
+                        SizedBox(height: 5),
+                        Input1Widget(controller: nomeController),
                         SizedBox(height: 20),
 
                         /// USUARIO
@@ -72,8 +98,8 @@ class _UsuarioState extends State<UsuarioPage> {
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Input1Widget(),
+                        SizedBox(height: 5),
+                        Input1Widget(controller: usuarioController),
                         SizedBox(height: 20),
 
                         /// NIVEL
@@ -84,8 +110,8 @@ class _UsuarioState extends State<UsuarioPage> {
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Input1Widget(),
+                        SizedBox(height: 5),
+                        Input1Widget(controller: nivelController),
                       ],
                     ),
                   ),
@@ -113,7 +139,7 @@ class _UsuarioState extends State<UsuarioPage> {
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 5),
                         Input3Widget(),
                         SizedBox(height: 20),
 
@@ -125,7 +151,7 @@ class _UsuarioState extends State<UsuarioPage> {
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        SizedBox(height: 5),
                         Input3Widget(),
                       ],
                     ),

@@ -61,7 +61,12 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                           txt:
                               '${allUsers[i].id_usuario} - @${allUsers[i].usuario} - ${allUsers[i].nome}',
                           onPressed: () {
-                            context.goNamed('usuario');
+                            context.goNamed(
+                              'usuarioDetalhe',
+                              pathParameters: {
+                                'id': controller.allUsers[i].id_usuario.toString(),
+                              },
+                            );
                           },
                         );
                       },

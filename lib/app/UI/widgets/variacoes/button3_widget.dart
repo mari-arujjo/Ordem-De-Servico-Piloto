@@ -41,7 +41,7 @@ class _Button3WidgetState extends State<Button3Widget> {
             return colorsClass.primaryColor;
           }),
 
-          ///overlayColor: WidgetStateProperty.all(Colors.transparent),
+          overlayColor: WidgetStateProperty.all(colorsClass.quarternaryColor),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),

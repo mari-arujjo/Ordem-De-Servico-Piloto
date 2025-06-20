@@ -9,7 +9,6 @@ import 'package:ordem_de_servico/app/UI/pages/login_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/meu_perfil_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/ordem_os/ordem_os_page.dart';
-import 'package:ordem_de_servico/app/UI/pages/teste.dart';
 import 'package:ordem_de_servico/navigation.dart';
 
 class AppNavigation{
@@ -95,11 +94,13 @@ class AppNavigation{
                     },
                     routes: [
                       GoRoute(
-                        path: '/usuario',
-                        name: 'usuario',
+                        path: '/usuario/:id',
+                        name: 'usuarioDetalhe',
                         builder: (context, state) { 
+                          final id = int.parse(state.pathParameters['id']!);
                           return UsuarioPage(
-                            key: state.pageKey
+                            key: state.pageKey, 
+                            idUsuario: id,
                           );
                         },
                       ),
@@ -108,7 +109,7 @@ class AppNavigation{
                         name: 'cadastroUsuario',
                         builder: (context, state) { 
                           return CadastroUserPage(
-                            key: state.pageKey
+                            key: state.pageKey,
                           );
                         },
                       ),
@@ -152,7 +153,7 @@ class AppNavigation{
       ),
 
       // TESTE API
-      GoRoute(
+      /*GoRoute(
         path: '/teste',
         name: 'Teste',
         parentNavigatorKey: _rootNavigatorKey,
@@ -161,7 +162,7 @@ class AppNavigation{
             key: state.pageKey,
           );
         },
-      )
+      )*/
     ],
   );
 }

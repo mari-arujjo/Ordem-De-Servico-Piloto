@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class Input1Widget extends StatefulWidget {
+  final TextEditingController? controller;
   const Input1Widget({
-    super.key, 
+    super.key, this.controller, 
   });
 
   @override
@@ -12,9 +13,11 @@ class Input1Widget extends StatefulWidget {
 
 class _Input1State extends State<Input1Widget> {
   var colorsClass = ColorsClass();
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       cursorColor: colorsClass.terciaryColor,
       decoration: InputDecoration(
         filled: true,

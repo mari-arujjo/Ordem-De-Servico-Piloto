@@ -58,6 +58,8 @@ flutter:
     - lib/app/assets/imgs/tudo_em_ordem.png
     - lib/app/assets/imgs/pencil.png
     - lib/app/assets/imgs/eu.png
+    - lib/app/assets/imgs/semFoto.png
+    - lib/app/assets/imgs/luyz.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
