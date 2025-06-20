@@ -1,30 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Input2Widget extends StatefulWidget {
+class Input3Widget extends StatefulWidget {
   final String txt;
-  final Icon ico;
   
-  const Input2Widget({
-    super.key,  
+  const Input3Widget({
+    super.key, 
     required this.txt, 
-    required this.ico, 
   });
 
   @override
-  State<Input2Widget> createState() => _Input2State();
+  State<Input3Widget> createState() => _Input2State();
 }
 
-class _Input2State extends State<Input2Widget> {
+class _Input2State extends State<Input3Widget> {
   var colorsClass = ColorsClass();
+  bool isObscured = true;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: isObscured,
       cursorColor: colorsClass.terciaryColor,
+
       decoration: InputDecoration(
         labelText: widget.txt,
         labelStyle: TextStyle(color: colorsClass.terciaryColor),
-        prefixIcon: widget.ico,
+        prefixIcon: IconButton(
+          icon: Icon(
+            isObscured ? Icons.visibility_off :  Icons.visibility,
+          ),
+          onPressed: (){
+            setState(() {
+              isObscured = !isObscured;
+            });
+          }, 
+        ),
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
@@ -36,6 +47,7 @@ class _Input2State extends State<Input2Widget> {
             color: colorsClass.terciaryColor
           )
         ),
+
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button3_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/container1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input1_widget.dart';
@@ -50,7 +51,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                         child: Text('Nome:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(obscure: false),
+                      Input1Widget(),
 
                       SizedBox(height: 20),
 
@@ -59,7 +60,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                         child: Text('Usuário:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(obscure: false),
+                      Input1Widget(),
 
                       SizedBox(height: 20),
 
@@ -71,7 +72,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(obscure: false),
+                      Input1Widget(),
                     ],
                   ),
                 ),
@@ -79,11 +80,21 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
 
               SizedBox(height: 30),
               Button3Widget(
+                txt: 'Login',
+                onPressed: () {
+                  context.goNamed('Login');
+                },
+                tam: 140,
+                ico: Icon(Icons.login, color: Colors.white),
+              ),
+              SizedBox(height: 10),
+              Button3Widget(
                 txt: 'Logout',
                 onPressed: () {
                   popUpSair.PopUpSair(context);
                 },
-                tam: 140,
+                tam: 140, 
+                ico: Icon(Icons.logout, color: Colors.white),
               ),
             ],
           ),

@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class Input1Widget extends StatefulWidget {
-  final bool obscure;
   const Input1Widget({
     super.key, 
-    required this.obscure, 
   });
 
   @override
@@ -18,7 +16,6 @@ class _Input1State extends State<Input1Widget> {
   Widget build(BuildContext context) {
     return TextFormField(
       cursorColor: colorsClass.terciaryColor,
-      obscureText: widget.obscure,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,

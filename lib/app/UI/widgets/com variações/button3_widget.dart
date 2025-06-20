@@ -5,12 +5,14 @@ class Button3Widget extends StatefulWidget {
   final String txt;
   final VoidCallback onPressed;
   final double tam;
+  final Icon ico;
 
   const Button3Widget({
     super.key,
     required this.txt,
     required this.onPressed,
-    required this.tam,
+    required this.tam, 
+    required this.ico,
   });
 
   @override
@@ -49,7 +51,7 @@ class _Button3WidgetState extends State<Button3Widget> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(Icons.logout, color: Colors.white),
+            widget.ico,
             SizedBox(width: 5),
             Text(
               widget.txt,

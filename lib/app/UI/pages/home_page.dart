@@ -61,6 +61,15 @@ class _HomeState extends State<HomePage> {
                 },
                 tam: 200,
               ),
+
+              SizedBox(height: 20),
+              Button1Widget(
+                txt: 'TESTE DA API',
+                onPressed: () {
+                  context.goNamed("Teste");
+                },
+                tam: 200,
+              ),
             ],
           ),
         ),

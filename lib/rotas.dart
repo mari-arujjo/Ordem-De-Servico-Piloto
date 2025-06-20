@@ -9,6 +9,7 @@ import 'package:ordem_de_servico/app/UI/pages/login_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/meu_perfil_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/ordem_os/ordem_os_page.dart';
+import 'package:ordem_de_servico/app/UI/pages/teste.dart';
 import 'package:ordem_de_servico/navigation.dart';
 
 class AppNavigation{
@@ -145,6 +146,18 @@ class AppNavigation{
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
           return LoginPage(
+            key: state.pageKey,
+          );
+        },
+      ),
+
+      // TESTE API
+      GoRoute(
+        path: '/teste',
+        name: 'Teste',
+        parentNavigatorKey: _rootNavigatorKey,
+        builder: (context, state) {
+          return TesteApiPage(
             key: state.pageKey,
           );
         },

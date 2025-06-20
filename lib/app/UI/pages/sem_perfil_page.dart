@@ -37,7 +37,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                         child: Text('Nome:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(obscure: false),
+                      Input1Widget(),
 
                       SizedBox(height: 20),
 
@@ -46,7 +46,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                         child: Text('Usuário:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(obscure: false),
+                      Input1Widget(),
 
                       SizedBox(height: 20),
 
@@ -58,7 +58,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(obscure: false),
+                      Input1Widget(),
                     ],
                   ),
                 ),

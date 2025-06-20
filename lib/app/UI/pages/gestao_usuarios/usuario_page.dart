@@ -60,7 +60,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           child: Text('Nome:', style: TextStyle(fontSize: 16)),
                         ),
                         SizedBox(height: 10),
-                        Input1Widget(obscure: false),
+                        Input1Widget(),
                         SizedBox(height: 20),
 
                         /// USUARIO
@@ -72,7 +72,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Input1Widget(obscure: false),
+                        Input1Widget(),
                         SizedBox(height: 20),
 
                         /// NIVEL
@@ -84,7 +84,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Input1Widget(obscure: false),
+                        Input1Widget(),
                       ],
                     ),
                   ),
@@ -113,7 +113,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Input1Widget(obscure: true),
+                        Input1Widget(),
                         SizedBox(height: 20),
 
                         /// USUARIO
@@ -125,7 +125,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 10),
-                        Input1Widget(obscure: true),
+                        Input1Widget(),
                       ],
                     ),
                   ),

@@ -64,7 +64,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Input1Widget(obscure: false),
+                          Input1Widget(),
                           SizedBox(height: 20),
 
                           /// USUARIO
@@ -76,7 +76,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Input1Widget(obscure: false),
+                          Input1Widget(),
                           SizedBox(height: 20),
 
                           /// NIVEL
@@ -106,7 +106,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: Input1Widget(obscure: obscurePassword),
+                                child: Input1Widget(),
                               ),
                               Checkbox(
                                 activeColor: colorsClass.terciaryColor,
@@ -134,7 +134,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           Row(
                             children: [
                               Expanded(
-                                child: Input1Widget(obscure: obscurePassword2),
+                                child: Input1Widget(),
                               ),
                               Checkbox(
                                 activeColor: colorsClass.terciaryColor,
