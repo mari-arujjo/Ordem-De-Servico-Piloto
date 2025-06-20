@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/input3_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/dropdown_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/input1_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
@@ -103,23 +104,8 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Input1Widget(),
-                              ),
-                              Checkbox(
-                                activeColor: colorsClass.terciaryColor,
-                                value: isChecked,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                    obscurePassword = !isChecked;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
+                          Input3Widget(),
+
                           SizedBox(height: 20),
 
                           /// CONFIMAR SENHA
@@ -131,23 +117,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Input1Widget(),
-                              ),
-                              Checkbox(
-                                activeColor: colorsClass.terciaryColor,
-                                value: isChecked2,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    isChecked2 = value!;
-                                    obscurePassword2 = !isChecked2;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
+                          Input3Widget(),
                         ],
                       ),
                     ),

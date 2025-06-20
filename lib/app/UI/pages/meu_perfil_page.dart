@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button3_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/container1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/button3_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/container1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/input1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';

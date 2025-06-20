@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -62,14 +62,14 @@ class _HomeState extends State<HomePage> {
                 tam: 200,
               ),
 
-              SizedBox(height: 20),
+              /*SizedBox(height: 20),
               Button1Widget(
                 txt: 'TESTE DA API',
                 onPressed: () {
                   context.goNamed("Teste");
                 },
                 tam: 200,
-              ),
+              ),*/
             ],
           ),
         ),

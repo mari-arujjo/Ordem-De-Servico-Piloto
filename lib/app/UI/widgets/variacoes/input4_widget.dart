@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Input3Widget extends StatefulWidget {
+class Input4Widget extends StatefulWidget {
   final String txt;
   
-  const Input3Widget({
+  const Input4Widget({
     super.key, 
     required this.txt, 
   });
 
   @override
-  State<Input3Widget> createState() => _Input2State();
+  State<Input4Widget> createState() => _Input4State();
 }
 
-class _Input2State extends State<Input3Widget> {
+class _Input4State extends State<Input4Widget> {
   var colorsClass = ColorsClass();
   bool isObscured = true;
 
@@ -26,7 +26,8 @@ class _Input2State extends State<Input3Widget> {
       decoration: InputDecoration(
         labelText: widget.txt,
         labelStyle: TextStyle(color: colorsClass.terciaryColor),
-        prefixIcon: IconButton(
+        prefixIcon: Icon(Icons.password),
+        suffixIcon: IconButton(
           icon: Icon(
             isObscured ? Icons.visibility_off :  Icons.visibility,
           ),
@@ -36,11 +37,13 @@ class _Input2State extends State<Input3Widget> {
             });
           }, 
         ),
+
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10)
         ),
+
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(

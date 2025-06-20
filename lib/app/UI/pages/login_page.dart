@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/button1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input2_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/com%20varia%C3%A7%C3%B5es/input3_widget.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/input2_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/variacoes/input4_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -55,15 +56,24 @@ class _LoginState extends State<LoginPage> {
 
                         SizedBox(height: 20),
 
-                        Input3Widget(
+                        Input4Widget(
                           txt: "Senha",
                         ),
 
-                        SizedBox(height: 10),
+                        SizedBox(height: 20),
                         Button1Widget(
                           txt: 'Entrar',
                           onPressed: () {},
-                          tam: 200,
+                          tam: 150,
+                        ),
+
+                        SizedBox(height: 20),
+                        Button1Widget(
+                          txt: 'Entrar sem logar',
+                          onPressed: () {
+                            context.goNamed('Home');
+                          },
+                          tam: 150,
                         ),
                       ],
                     ),
