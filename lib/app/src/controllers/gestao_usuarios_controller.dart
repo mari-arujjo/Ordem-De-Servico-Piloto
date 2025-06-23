@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/src/models/usuario_model.dart';
 
-class GestaoUsuariosController {
+class GestaoUsuariosController extends ChangeNotifier{
   List<Usuario> allUsers = [];
+  List<Usuario> filteredUsers = [];
 
   GestaoUsuariosController() {
     allUsers = [
@@ -47,29 +49,227 @@ class GestaoUsuariosController {
         nivel_acesso: 2,
         foto: 'lib/app/assets/imgs/semFoto.png'
       ),
-      Usuario(id_usuario: 10, usuario: 'rafa', nome: 'Rafaela Souza Lima', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 11, usuario: 'lucas.m', nome: 'Lucas Matheus Oliveira', nivel_acesso: 3, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 12, usuario: 'duda.a', nome: 'Maria Eduarda Andrade', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 13, usuario: 'caique', nome: 'Caique Ferreira da Silva', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 14, usuario: 'yasmin.b', nome: 'Yasmin Beatriz Cunha', nivel_acesso: 3, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 15, usuario: 'danilo.s', nome: 'Danilo Santos Ramos', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 16, usuario: 'bianca.r', nome: 'Bianca Rocha Alves', nivel_acesso: 1, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 17, usuario: 'andre.m', nome: 'André Moura Barreto', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 18, usuario: 'aline.c', nome: 'Aline Cristina Duarte', nivel_acesso: 3, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 19, usuario: 'bruno.l', nome: 'Bruno Leonardo Viana', nivel_acesso: 1, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 20, usuario: 'joana.f', nome: 'Joana Figueiredo Peixoto', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 21, usuario: 'hugo.c', nome: 'Hugo César Martins', nivel_acesso: 3, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 22, usuario: 'natalia.s', nome: 'Natália Souza Ribeiro', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 23, usuario: 'caio.p', nome: 'Caio Pedro Albuquerque', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 24, usuario: 'mirela.t', nome: 'Mirela Tavares Lima', nivel_acesso: 1, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 25, usuario: 'felipe.m', nome: 'Felipe Mendes Rocha', nivel_acesso: 3, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 26, usuario: 'ana.j', nome: 'Ana Júlia Costa', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 27, usuario: 'tiago.b', nome: 'Tiago Batista Ramos', nivel_acesso: 1, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 28, usuario: 'juliana.k', nome: 'Juliana Karla Teixeira', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 29, usuario: 'marco.t', nome: 'Marco Túlio Fernandes', nivel_acesso: 3, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 30, usuario: 'isabela.n', nome: 'Isabela Nunes Soares', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 31, usuario: 'rodrigo.a', nome: 'Rodrigo Alves Pinto', nivel_acesso: 1, foto: 'lib/app/assets/imgs/semFoto.png'),
-      Usuario(id_usuario: 32, usuario: 'vanessa.r', nome: 'Vanessa Rocha Barreto', nivel_acesso: 2, foto: 'lib/app/assets/imgs/semFoto.png'),
+      Usuario(
+        id_usuario: 10,
+        usuario: 'marcos',
+        nome: 'Marcos Vinícius da Silva',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 11,
+        usuario: 'juliana',
+        nome: 'Juliana Pereira Lima',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 12,
+        usuario: 'ricardo',
+        nome: 'Ricardo Almeida Sousa',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 13,
+        usuario: 'patricia',
+        nome: 'Patrícia Fernandes Costa',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 14,
+        usuario: 'carlos',
+        nome: 'Carlos Henrique Moura',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 15,
+        usuario: 'aline',
+        nome: 'Aline Rodrigues Santos',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 16,
+        usuario: 'eduardo',
+        nome: 'Eduardo Ramos Pinto',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 17,
+        usuario: 'fernanda',
+        nome: 'Fernanda Martins Braga',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 18,
+        usuario: 'rodrigo',
+        nome: 'Rodrigo Teixeira Lima',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 19,
+        usuario: 'amanda',
+        nome: 'Amanda Souza Rocha',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 20,
+        usuario: 'lucas',
+        nome: 'Lucas Ferreira Nunes',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 21,
+        usuario: 'beatriz',
+        nome: 'Beatriz Oliveira Melo',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 22,
+        usuario: 'gustavo',
+        nome: 'Gustavo Carvalho Mendes',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 23,
+        usuario: 'carolina',
+        nome: 'Carolina Dias Freitas',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 24,
+        usuario: 'joao',
+        nome: 'João Pedro Andrade',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 25,
+        usuario: 'larissa',
+        nome: 'Larissa Ribeiro Monteiro',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 26,
+        usuario: 'felipe',
+        nome: 'Felipe Costa Barros',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 27,
+        usuario: 'camila',
+        nome: 'Camila Antunes Rocha',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 28,
+        usuario: 'renan',
+        nome: 'Renan Lima Tavares',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 29,
+        usuario: 'gabriela',
+        nome: 'Gabriela Duarte Souza',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 30,
+        usuario: 'rafael',
+        nome: 'Rafael Nogueira Costa',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 31,
+        usuario: 'nathalia',
+        nome: 'Nathalia Mendes Silva',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 32,
+        usuario: 'henrique',
+        nome: 'Henrique Barbosa Farias',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 33,
+        usuario: 'tamires',
+        nome: 'Tamires Lopes da Costa',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 34,
+        usuario: 'tiago',
+        nome: 'Tiago Fernandes Ramos',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 35,
+        usuario: 'vanessa',
+        nome: 'Vanessa Rocha Pinheiro',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 36,
+        usuario: 'daniel',
+        nome: 'Daniel Martins Leal',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 37,
+        usuario: 'tatiane',
+        nome: 'Tatiane Soares Cruz',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 38,
+        usuario: 'paulo',
+        nome: 'Paulo Sérgio Lima',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      ),
+      Usuario(
+        id_usuario: 39,
+        usuario: 'eliane',
+        nome: 'Eliane Costa Andrade',
+        nivel_acesso: 2,
+        foto: 'lib/app/assets/imgs/semFoto.png'
+      )
+
     ];
+    filteredUsers = [...allUsers];
+  }
+
+  void filtrarUsuarios(String textSearch){
+    filteredUsers = allUsers.where((usuario){
+      return usuario.usuario.toLowerCase().contains(textSearch.toLowerCase()) ||
+            usuario.nome.toLowerCase().contains(textSearch.toLowerCase()) ||
+            usuario.id_usuario.toString().contains(textSearch);
+    }).toList();
+    notifyListeners();
   }
 }

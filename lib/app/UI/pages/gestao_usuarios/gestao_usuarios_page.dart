@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/variacoes/button2_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/flutuante_widget.dart';
-import 'package:ordem_de_servico/app/src/models/usuario_model.dart';
 import 'package:ordem_de_servico/colors.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
 import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
+import 'package:provider/provider.dart';
 
 class GestaoUsuariosPage extends StatefulWidget {
   const GestaoUsuariosPage({super.key});
@@ -15,28 +15,16 @@ class GestaoUsuariosPage extends StatefulWidget {
 }
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
-  var controller = GestaoUsuariosController();
   var colorsClass = ColorsClass();
-  List<Usuario> filteredUsers = [];
-
-  @override
-  void initState() {
-    super.initState();
-    filteredUsers = controller.allUsers; // Inicializa com todos os usuários
+  void filtrarUsuarios(String text) {
+    context.read<GestaoUsuariosController>().filtrarUsuarios(text);
   }
 
-  void filtrarUsuarios(String textSearch){
-    setState(() {
-      filteredUsers = controller.allUsers.where((usuario){
-        return usuario.usuario.toLowerCase().contains(textSearch.toLowerCase()) ||
-              usuario.nome.toLowerCase().contains(textSearch.toLowerCase()) ||
-              usuario.id_usuario.toString().contains(textSearch);
-      }).toList();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.watch<GestaoUsuariosController>();
+
     return Scaffold(
       appBar: AppBar(title: const Text('Gestão de usuários')),
 
@@ -72,10 +60,10 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                         bottom: 12,
                       ),
 
-                      itemCount: filteredUsers.length,
+                      itemCount: controller.filteredUsers.length,
                       separatorBuilder: (_, __) => SizedBox(height: 12),
                       itemBuilder: (BuildContext context, int i) {
-                        final user = filteredUsers[i];
+                        final user = controller.filteredUsers[i];
                         
                         return Button2Widget(
                           txt:
@@ -84,7 +72,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                             context.goNamed(
                               'usuarioDetalhe',
                               pathParameters: {
-                                'id': controller.allUsers[i].id_usuario.toString(),
+                                'id': controller.filteredUsers[i].id_usuario.toString(),
                               },
                             );
                           },
