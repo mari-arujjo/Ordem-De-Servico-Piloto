@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 
 class Api {
@@ -10,6 +11,7 @@ class Api {
       return await dio.get(endPoint);
     }
     on DioException catch (e){
+      // ignore: avoid_print
       print('Erro do DIO: ${e.message}');
       rethrow;
     }
