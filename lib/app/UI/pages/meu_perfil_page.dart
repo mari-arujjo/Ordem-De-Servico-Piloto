@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_icon_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/container1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
@@ -28,7 +28,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
           padding: EdgeInsets.all(30),
           child: Column(
             children: [
-              FotoPerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
+              FotoDePerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
               SizedBox(height: 10),
 
               Row(
@@ -42,7 +42,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
 
               SizedBox(height: 20),
 
-              Container1Widget(
+              ContainerPadrao(
                 child: Form(
                   child: Column(
                     children: [

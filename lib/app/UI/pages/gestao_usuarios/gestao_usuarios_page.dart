@@ -28,7 +28,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Gestão de usuários')),
 
-      floatingActionButton: FlutuanteWidget(),
+      floatingActionButton: BotaoFlutuanteWidget(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
       body: Center(

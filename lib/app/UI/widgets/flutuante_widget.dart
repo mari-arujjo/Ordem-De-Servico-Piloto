@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class FlutuanteWidget extends StatefulWidget {
-  const FlutuanteWidget({super.key});
+class BotaoFlutuanteWidget extends StatefulWidget {
+  const BotaoFlutuanteWidget({super.key});
 
   @override
-  State<FlutuanteWidget> createState() => _FlutuanteState();
+  State<BotaoFlutuanteWidget> createState() => _FlutuanteState();
 }
 
-class _FlutuanteState extends State<FlutuanteWidget> {
+class _FlutuanteState extends State<BotaoFlutuanteWidget> {
   var colorsClass = ColorsClass();
   bool pressed = false;
 

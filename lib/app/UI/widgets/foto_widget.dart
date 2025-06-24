@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class FotoPerfilWidget extends StatefulWidget {
+class FotoDePerfilWidget extends StatefulWidget {
   final String img;
 
-  const FotoPerfilWidget({super.key, required this.img});
+  const FotoDePerfilWidget({super.key, required this.img});
 
   @override
-  State<FotoPerfilWidget> createState() => _FotoPerfilWidgetState();
+  State<FotoDePerfilWidget> createState() => _FotoDePerfilWidgetState();
 }
 
-class _FotoPerfilWidgetState extends State<FotoPerfilWidget> {
+class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
   var colorsClass = ColorsClass();
 
   @override

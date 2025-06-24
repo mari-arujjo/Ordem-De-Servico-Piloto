@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/container1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
@@ -63,7 +63,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                FotoPerfilWidget(img: usuario.foto!),
+                FotoDePerfilWidget(img: usuario.foto!),
                 SizedBox(height: 10),
 
                 Row(
@@ -77,7 +77,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
                 SizedBox(height: 20),
 
-                Container1Widget(
+                ContainerPadrao(
                   child: Form(
                     child: Column(
                       children: [
@@ -127,7 +127,7 @@ class _UsuarioState extends State<UsuarioPage> {
                   ),
                 ),
                 SizedBox(height: 5),
-                Container1Widget(
+                ContainerPadrao(
                   child: Form(
                     child: Column(
                       children: [

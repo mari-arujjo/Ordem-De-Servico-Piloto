@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Container1Widget extends StatefulWidget {
+class ContainerPadrao extends StatefulWidget {
   final Widget child;
-  const Container1Widget({super.key, required this.child});
+  const ContainerPadrao({super.key, required this.child});
 
   @override
-  State<Container1Widget> createState() => _Container1WidgetState();
+  State<ContainerPadrao> createState() => _ContainerPadraoState();
 }
 
-class _Container1WidgetState extends State<Container1Widget> {
+class _ContainerPadraoState extends State<ContainerPadrao> {
   var colorsClass = ColorsClass();
 
   @override
