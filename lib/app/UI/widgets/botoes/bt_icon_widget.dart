@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Button2Widget extends StatefulWidget {
+class ButtonComIcon extends StatefulWidget {
   final String txt;
   final VoidCallback onPressed;
+  final double tam;
+  final Icon ico;
 
-  const Button2Widget({super.key, required this.txt, required this.onPressed});
+  const ButtonComIcon({
+    super.key,
+    required this.txt,
+    required this.onPressed,
+    required this.tam, 
+    required this.ico,
+  });
 
   @override
-  State<Button2Widget> createState() => _Button2WidgetState();
+  State<ButtonComIcon> createState() => _ButtonComIconState();
 }
 
-class _Button2WidgetState extends State<Button2Widget> {
+class _ButtonComIconState extends State<ButtonComIcon> {
   bool pressionado = false;
   var colorsClass = ColorsClass();
 
@@ -19,6 +27,7 @@ class _Button2WidgetState extends State<Button2Widget> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
+      width: widget.tam,
 
       child: ElevatedButton(
         onPressed: widget.onPressed,
@@ -29,8 +38,9 @@ class _Button2WidgetState extends State<Button2Widget> {
             if (states.contains(WidgetState.pressed)) {
               return colorsClass.terciaryColor;
             }
-            return Colors.white;
+            return colorsClass.primaryColor;
           }),
+
           overlayColor: WidgetStateProperty.all(colorsClass.quarternaryColor),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -38,16 +48,15 @@ class _Button2WidgetState extends State<Button2Widget> {
         ),
 
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Expanded(
-              child: Text(
-                widget.txt,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 16, color: colorsClass.primaryColor),
-              ),
+            widget.ico,
+            SizedBox(width: 5),
+            Text(
+              widget.txt,
+              style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15),
             ),
-
-            Icon(Icons.edit, color: colorsClass.primaryColor),
           ],
         ),
       ),

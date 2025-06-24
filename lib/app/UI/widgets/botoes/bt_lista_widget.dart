@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Button1Widget extends StatefulWidget {
+class ButtonLista extends StatefulWidget {
   final String txt;
   final VoidCallback onPressed;
-  final double tam;
 
-  const Button1Widget({
-    super.key,
-    required this.txt,
-    required this.onPressed,
-    required this.tam,
-  });
+  const ButtonLista({super.key, required this.txt, required this.onPressed});
 
   @override
-  State<Button1Widget> createState() => _Button1WidgetState();
+  State<ButtonLista> createState() => _ButtonListaState();
 }
 
-class _Button1WidgetState extends State<Button1Widget> {
+class _ButtonListaState extends State<ButtonLista> {
   bool pressionado = false;
   var colorsClass = ColorsClass();
 
@@ -25,7 +19,6 @@ class _Button1WidgetState extends State<Button1Widget> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 50,
-      width: widget.tam,
 
       child: ElevatedButton(
         onPressed: widget.onPressed,
@@ -36,18 +29,26 @@ class _Button1WidgetState extends State<Button1Widget> {
             if (states.contains(WidgetState.pressed)) {
               return colorsClass.terciaryColor;
             }
-            return colorsClass.primaryColor;
+            return Colors.white;
           }),
-          
           overlayColor: WidgetStateProperty.all(colorsClass.quarternaryColor),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
         ),
 
-        child: Text(
-          widget.txt,
-          style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                widget.txt,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 16, color: colorsClass.primaryColor),
+              ),
+            ),
+
+            Icon(Icons.edit, color: colorsClass.primaryColor),
+          ],
         ),
       ),
     );

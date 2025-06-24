@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Button3Widget extends StatefulWidget {
+class ButtonPadrao extends StatefulWidget {
   final String txt;
   final VoidCallback onPressed;
   final double tam;
-  final Icon ico;
 
-  const Button3Widget({
+  const ButtonPadrao({
     super.key,
     required this.txt,
     required this.onPressed,
-    required this.tam, 
-    required this.ico,
+    required this.tam,
   });
 
   @override
-  State<Button3Widget> createState() => _Button3WidgetState();
+  State<ButtonPadrao> createState() => _ButtonPadraoState();
 }
 
-class _Button3WidgetState extends State<Button3Widget> {
+class _ButtonPadraoState extends State<ButtonPadrao> {
   bool pressionado = false;
   var colorsClass = ColorsClass();
 
@@ -40,24 +38,16 @@ class _Button3WidgetState extends State<Button3Widget> {
             }
             return colorsClass.primaryColor;
           }),
-
+          
           overlayColor: WidgetStateProperty.all(colorsClass.quarternaryColor),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
         ),
 
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            widget.ico,
-            SizedBox(width: 5),
-            Text(
-              widget.txt,
-              style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15),
-            ),
-          ],
+        child: Text(
+          widget.txt,
+          style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15),
         ),
       ),
     );

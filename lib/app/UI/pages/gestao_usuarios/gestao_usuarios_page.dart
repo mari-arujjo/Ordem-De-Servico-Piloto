@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/button2_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_lista_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/flutuante_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
@@ -65,7 +65,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                       itemBuilder: (BuildContext context, int i) {
                         final user = controller.filteredUsers[i];
                         
-                        return Button2Widget(
+                        return ButtonLista(
                           txt:
                               '${user.id_usuario} - @${user.usuario} - ${user.nome}',
                           onPressed: () {

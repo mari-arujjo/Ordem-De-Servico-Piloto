@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/container1_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input3_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
@@ -87,7 +87,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           child: Text('Nome:', style: TextStyle(fontSize: 16)),
                         ),
                         SizedBox(height: 5),
-                        Input1Widget(controller: nomeController),
+                        InputPadrao(controller: nomeController),
                         SizedBox(height: 20),
 
                         /// USUARIO
@@ -99,7 +99,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Input1Widget(controller: usuarioController),
+                        InputPadrao(controller: usuarioController),
                         SizedBox(height: 20),
 
                         /// NIVEL
@@ -111,7 +111,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Input1Widget(controller: nivelController),
+                        InputPadrao(controller: nivelController),
                       ],
                     ),
                   ),
@@ -140,7 +140,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Input3Widget(),
+                        InputPadraoSenha(),
                         SizedBox(height: 20),
 
                         /// USUARIO
@@ -152,7 +152,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        Input3Widget(),
+                        InputPadraoSenha(),
                       ],
                     ),
                   ),
@@ -162,7 +162,7 @@ class _UsuarioState extends State<UsuarioPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Button1Widget(
+                    ButtonPadrao(
                       txt: 'Salvar alterações',
                       onPressed: () {
                         popUp.PopUpAlterar(context);
@@ -172,7 +172,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
                     SizedBox(width: 20),
 
-                    Button1Widget(
+                    ButtonPadrao(
                       txt: 'Excluir',
                       onPressed: () {
                         popUp.PopUpExcluir(context);
@@ -184,7 +184,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
                 SizedBox(height: 20),
 
-                Button1Widget(
+                ButtonPadrao(
                   txt: 'Cancelar',
                   onPressed: () {
                     popUp.PopUpCancel(context);

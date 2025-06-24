@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input2_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input4_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_outline_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_outline_senha_widget.dart';
 import 'package:ordem_de_servico/colors.dart';
 
 class LoginPage extends StatefulWidget {
@@ -49,26 +49,26 @@ class _LoginState extends State<LoginPage> {
                   child: Form(
                     child: Column(
                       children: [
-                        Input2Widget(
+                        InputOutline(
                           txt: "Usuário",
                           ico: Icon(Icons.people),
                         ),
 
                         SizedBox(height: 20),
 
-                        Input4Widget(
+                        InputOutlineSenha(
                           txt: "Senha",
                         ),
 
                         SizedBox(height: 20),
-                        Button1Widget(
+                        ButtonPadrao(
                           txt: 'Entrar',
                           onPressed: () {},
                           tam: 150,
                         ),
 
                         SizedBox(height: 20),
-                        Button1Widget(
+                        ButtonPadrao(
                           txt: 'Entrar sem logar',
                           onPressed: () {
                             context.goNamed('Home');

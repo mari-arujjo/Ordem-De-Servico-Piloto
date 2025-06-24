@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Input2Widget extends StatefulWidget {
+class InputOutline extends StatefulWidget {
   final String txt;
   final Icon ico;
   
-  const Input2Widget({
+  const InputOutline({
     super.key,  
     required this.txt, 
     required this.ico, 
   });
 
   @override
-  State<Input2Widget> createState() => _Input2State();
+  State<InputOutline> createState() => _Input2State();
 }
 
-class _Input2State extends State<Input2Widget> {
+class _Input2State extends State<InputOutline> {
   var colorsClass = ColorsClass();
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class _Input2State extends State<Input2Widget> {
         labelStyle: TextStyle(color: colorsClass.terciaryColor),
         prefixIcon: widget.ico,
         filled: true,
-        fillColor: Colors.white,
+        fillColor: Colors.transparent,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10)
         ),

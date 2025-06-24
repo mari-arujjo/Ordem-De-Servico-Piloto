@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,7 +27,7 @@ class _HomeState extends State<HomePage> {
               ),
               SizedBox(height: 20),
 
-              Button1Widget(
+              ButtonPadrao(
                 txt: 'Atendimento',
                 onPressed: () {
                   context.goNamed("atendimento");
@@ -36,7 +36,7 @@ class _HomeState extends State<HomePage> {
               ),
               SizedBox(height: 20),
 
-              Button1Widget(
+              ButtonPadrao(
                 txt: 'Manutenção',
                 onPressed: () {
                   context.goNamed("manutencao");
@@ -45,7 +45,7 @@ class _HomeState extends State<HomePage> {
               ),
               SizedBox(height: 20),
 
-              Button1Widget(
+              ButtonPadrao(
                 txt: 'Ordem de serviço',
                 onPressed: () {
                   context.goNamed("ordemOS");
@@ -54,7 +54,7 @@ class _HomeState extends State<HomePage> {
               ),
               SizedBox(height: 20),
 
-              Button1Widget(
+              ButtonPadrao(
                 txt: 'Gestão de usuários',
                 onPressed: () {
                   context.goNamed("gestaoUsuarios");

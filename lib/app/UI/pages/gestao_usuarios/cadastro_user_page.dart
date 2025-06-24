@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input3_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/dropdown_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
 
@@ -65,7 +65,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Input1Widget(),
+                          InputPadrao(),
                           SizedBox(height: 20),
 
                           /// USUARIO
@@ -77,7 +77,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Input1Widget(),
+                          InputPadrao(),
                           SizedBox(height: 20),
 
                           /// NIVEL
@@ -104,7 +104,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Input3Widget(),
+                          InputPadraoSenha(),
 
                           SizedBox(height: 20),
 
@@ -117,7 +117,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          Input3Widget(),
+                          InputPadraoSenha(),
                         ],
                       ),
                     ),
@@ -127,7 +127,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Button1Widget(
+                    ButtonPadrao(
                       txt: 'Salvar dados',
                       onPressed: () {
                         popUp.PopUpSalvar(context);
@@ -137,7 +137,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
 
                     SizedBox(width: 20),
 
-                    Button1Widget(
+                    ButtonPadrao(
                       txt: 'Cancelar',
                       onPressed: () {
                         popUp.PopUpCancel(context);

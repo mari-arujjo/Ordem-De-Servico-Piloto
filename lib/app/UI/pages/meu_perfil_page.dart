@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/button3_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_icon_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/container1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/colors.dart';
@@ -51,7 +51,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                         child: Text('Nome:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(),
+                      InputPadrao(),
 
                       SizedBox(height: 20),
 
@@ -60,7 +60,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                         child: Text('Usuário:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(),
+                      InputPadrao(),
 
                       SizedBox(height: 20),
 
@@ -72,14 +72,14 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(),
+                      InputPadrao(),
                     ],
                   ),
                 ),
               ),
 
               SizedBox(height: 30),
-              Button3Widget(
+              ButtonComIcon(
                 txt: 'Login',
                 onPressed: () {
                   context.goNamed('Login');
@@ -88,7 +88,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
                 ico: Icon(Icons.login, color: Colors.white),
               ),
               SizedBox(height: 10),
-              Button3Widget(
+              ButtonComIcon(
                 txt: 'Logout',
                 onPressed: () {
                   popUpSair.PopUpSair(context);

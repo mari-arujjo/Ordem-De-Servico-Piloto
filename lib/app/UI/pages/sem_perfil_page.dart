@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/button1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/container1_widget.dart';
-import 'package:ordem_de_servico/app/UI/widgets/variacoes/input1_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 
 class SemPerfilPage extends StatefulWidget {
@@ -37,7 +37,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                         child: Text('Nome:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(),
+                      InputPadrao(),
 
                       SizedBox(height: 20),
 
@@ -46,7 +46,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                         child: Text('Usuário:', style: TextStyle(fontSize: 16)),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(),
+                      InputPadrao(),
 
                       SizedBox(height: 20),
 
@@ -58,14 +58,14 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                         ),
                       ),
                       SizedBox(height: 5),
-                      Input1Widget(),
+                      InputPadrao(),
                     ],
                   ),
                 ),
               ),
 
               SizedBox(height: 30),
-              Button1Widget(
+              ButtonPadrao(
                 txt: 'Fazer login!',
                 onPressed: () {
                   context.push(context.namedLocation("Login"));

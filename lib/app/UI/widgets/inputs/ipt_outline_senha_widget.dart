@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/colors.dart';
 
-class Input4Widget extends StatefulWidget {
+class InputOutlineSenha extends StatefulWidget {
   final String txt;
   
-  const Input4Widget({
+  const InputOutlineSenha({
     super.key, 
     required this.txt, 
   });
 
   @override
-  State<Input4Widget> createState() => _Input4State();
+  State<InputOutlineSenha> createState() => _Input4State();
 }
 
-class _Input4State extends State<Input4Widget> {
+class _Input4State extends State<InputOutlineSenha> {
   var colorsClass = ColorsClass();
   bool isObscured = true;
 
