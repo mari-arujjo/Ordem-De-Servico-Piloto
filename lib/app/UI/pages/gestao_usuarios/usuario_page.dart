@@ -20,6 +20,7 @@ class _UsuarioState extends State<UsuarioPage> {
   var colorsClass = ColorsClass();
   var popUp = PopUp();
 
+  // ignore: prefer_typing_uninitialized_variables
   late final usuario;
   late TextEditingController nomeController;
   late TextEditingController usuarioController;

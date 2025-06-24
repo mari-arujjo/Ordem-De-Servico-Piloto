@@ -4,10 +4,10 @@ import 'package:ordem_de_servico/app/UI/pages/atendimento/atendimento_page.dart'
 import 'package:ordem_de_servico/app/UI/pages/gestao_usuarios/cadastro_user_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/gestao_usuarios/gestao_usuarios_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/gestao_usuarios/usuario_page.dart';
-import 'package:ordem_de_servico/app/UI/pages/home_page.dart';
-import 'package:ordem_de_servico/app/UI/pages/login_page.dart';
+import 'package:ordem_de_servico/app/UI/pages/principais/home_page.dart';
+import 'package:ordem_de_servico/app/UI/pages/principais/login_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/manutencao/manutencao_page.dart';
-import 'package:ordem_de_servico/app/UI/pages/meu_perfil_page.dart';
+import 'package:ordem_de_servico/app/UI/pages/principais/meu_perfil_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/ordem_os/ordem_os_page.dart';
 import 'package:ordem_de_servico/navigation.dart';
 
