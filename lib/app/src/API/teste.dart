@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/src/api/api.dart';
 
 class TesteApiPage extends StatefulWidget {
@@ -14,7 +16,22 @@ class _TesteApiPageState extends State<TesteApiPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Teste de API')),
-      body: Center(child: Text(resultado)),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Text(resultado),
+              ButtonPadrao(
+                txt: 'HOME', 
+                onPressed: (){
+                  context.goNamed('Home');
+                }, 
+                tam: 100)
+            ],
+          )
+        ),
+      )
     );
   }
 

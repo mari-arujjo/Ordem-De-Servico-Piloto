@@ -3,7 +3,8 @@ import 'package:dio/dio.dart';
 
 class Api {
   final dio = (Dio(BaseOptions(
-    baseUrl: 'http://192.168.56.1:5214/')
+    baseUrl: 'https://api-ordem-de-servico-tfyb.onrender.com')
+    
     ));
 
   Future<Response> get (String endPoint) async{
