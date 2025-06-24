@@ -5,7 +5,7 @@ import 'package:ordem_de_servico/app/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
-import 'package:ordem_de_servico/colors.dart';
+import 'package:ordem_de_servico/app/assets/color/colors.dart';
 
 class MeuPerfilPage extends StatefulWidget {
   const MeuPerfilPage({super.key});

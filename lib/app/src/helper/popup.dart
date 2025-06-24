@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/colors.dart';
+import 'package:ordem_de_servico/app/assets/color/colors.dart';
 
 class PopUp {
   var colorsClass = ColorsClass();

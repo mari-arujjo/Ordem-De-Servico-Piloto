@@ -6,7 +6,7 @@ import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
-import 'package:ordem_de_servico/colors.dart';
+import 'package:ordem_de_servico/app/assets/color/colors.dart';
 
 class UsuarioPage extends StatefulWidget {
   final int idUsuario;

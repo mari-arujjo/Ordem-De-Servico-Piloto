@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_lista_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/flutuante_widget.dart';
-import 'package:ordem_de_servico/colors.dart';
+import 'package:ordem_de_servico/app/assets/color/colors.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
 import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 import 'package:provider/provider.dart';

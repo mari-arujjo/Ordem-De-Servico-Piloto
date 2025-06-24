@@ -4,7 +4,7 @@ import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.d
 import 'package:ordem_de_servico/app/UI/widgets/dropdown_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
-import 'package:ordem_de_servico/colors.dart';
+import 'package:ordem_de_servico/app/assets/color/colors.dart';
 
 class CadastroUserPage extends StatefulWidget {
   const CadastroUserPage({super.key});

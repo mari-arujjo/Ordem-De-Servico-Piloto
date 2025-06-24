@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_outline_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_outline_senha_widget.dart';
-import 'package:ordem_de_servico/colors.dart';
+import 'package:ordem_de_servico/app/assets/color/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

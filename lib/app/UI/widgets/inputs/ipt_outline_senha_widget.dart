@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/colors.dart';
+import 'package:ordem_de_servico/app/assets/color/colors.dart';
 
 class InputOutlineSenha extends StatefulWidget {
   final String txt;
