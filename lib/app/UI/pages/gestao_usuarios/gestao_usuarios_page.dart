@@ -16,6 +16,7 @@ class GestaoUsuariosPage extends StatefulWidget {
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   var colorsClass = ColorsClass();
+  
   void filtrarUsuarios(String text) {
     context.read<GestaoUsuariosController>().filtrarUsuarios(text);
   }

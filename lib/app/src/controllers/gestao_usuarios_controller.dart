@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ordem_de_servico/app/src/API/api.dart';
 import 'package:ordem_de_servico/app/src/models/usuario_model.dart';
-import 'package:ordem_de_servico/app/src/repository/usuario_repository.dart';
 
 class GestaoUsuariosController extends ChangeNotifier{
-  final repositorio = UsuarioRepository();
+  final api = Api();
   List<Usuario> allUsers = [];
   List<Usuario> filteredUsers = [];
 
   GestaoUsuariosController(){
-    allUsers = repositorio.all;
-    filteredUsers = repositorio.filtered;
+    obterTodosUsuarios();
   }
 
   void filtrarUsuarios(String textSearch){
@@ -19,5 +18,30 @@ class GestaoUsuariosController extends ChangeNotifier{
             usuario.id_usuario.toString().contains(textSearch);
     }).toList();
     notifyListeners();
+  }
+
+  /// ---> END POINTS
+  Future<void> obterTodosUsuarios() async {
+    try {
+      final response = await api.get('/api/usuario'); 
+      debugPrint('Resposta da API: ${response.data}');
+      final List<dynamic> dados = response.data;
+      allUsers = dados.map((json) => Usuario.fromJson(json)).toList()..sort((a,b) => a.id_usuario.compareTo(b.id_usuario));
+      filteredUsers = [...allUsers];
+      notifyListeners();
+    } 
+    catch (e){
+      debugPrint('Erro: $e');
+    }
+  }
+
+  Future<String> obterUsuarioPorId() async {
+    try{
+      final response = await api.get('/api/usuarios/{id}');
+      return response.data.toString();
+    }
+    catch (e){
+      return 'Erro: $e';
+    }
   }
 }
