@@ -4,8 +4,7 @@ import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_lista_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/flutuante_widget.dart';
 import 'package:ordem_de_servico/app/assets/color/colors.dart';
 import 'package:ordem_de_servico/app/UI/widgets/search_widget.dart';
-import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 class GestaoUsuariosPage extends StatefulWidget {
   const GestaoUsuariosPage({super.key});
@@ -16,14 +15,10 @@ class GestaoUsuariosPage extends StatefulWidget {
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   var colorsClass = ColorsClass();
-  void filtrarUsuarios(String text) {
-    context.read<GestaoUsuariosController>().filtrarUsuarios(text);
-  }
 
 
   @override
   Widget build(BuildContext context) {
-    final controller = context.watch<GestaoUsuariosController>();
 
     return Scaffold(
       appBar: AppBar(title: const Text('Gestão de usuários')),
@@ -37,7 +32,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
           child: Column(
             children: [
               
-              SearchBarWidget(onSearch: filtrarUsuarios),
+              SearchBarWidget(/*onSearch: filtrarUsuarios*/),
 
               Expanded(
                 child: Container(
@@ -60,19 +55,19 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                         bottom: 12,
                       ),
 
-                      itemCount: controller.filteredUsers.length,
+                      itemCount: 1,
                       separatorBuilder: (_, __) => SizedBox(height: 12),
                       itemBuilder: (BuildContext context, int i) {
-                        final user = controller.filteredUsers[i];
+                        //final user = controller.filteredUsers[i];
                         
                         return ButtonLista(
                           txt:
-                              '${user.id_usuario} - @${user.usuario} - ${user.nome}',
+                              'A',//'${user.id_usuario} - @${user.usuario} - ${user.nome}',
                           onPressed: () {
                             context.goNamed(
                               'usuarioDetalhe',
                               pathParameters: {
-                                'id': controller.filteredUsers[i].id_usuario.toString(),
+                                //'id': controller.filteredUsers[i].id_usuario.toString(),
                               },
                             );
                           },

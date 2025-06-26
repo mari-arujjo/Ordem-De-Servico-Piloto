@@ -4,10 +4,9 @@ import 'package:ordem_de_servico/app/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
-import 'package:ordem_de_servico/app/src/controllers/gestao_usuarios_controller.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/app/assets/color/colors.dart';
-import 'package:provider/provider.dart';
+//import 'package:provider/provider.dart';
 
 class UsuarioPage extends StatefulWidget {
   final int idUsuario;
@@ -30,12 +29,10 @@ class _UsuarioState extends State<UsuarioPage> {
   @override
   void initState() {
     super.initState();
-    final controller = context.read<GestaoUsuariosController>();
-    final user = controller.allUsers.firstWhere((u) => u.id_usuario == widget.idUsuario);
 
-    nomeController = TextEditingController(text: user.nome);
+    /*nomeController = TextEditingController(text: user.nome);
     usuarioController = TextEditingController(text: user.usuario);
-    nivelController = TextEditingController(text: user.nivel_acesso.toString());
+    nivelController = TextEditingController(text: user.nivel_acesso.toString());*/
   }
   
   @override

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/assets/color/colors.dart';
 
 class SearchBarWidget extends StatefulWidget {
-  final Function(String) onSearch;
-  const SearchBarWidget({super.key, required this.onSearch});
+  //final Function(String) onSearch;
+  const SearchBarWidget({
+    super.key, 
+    //required this.onSearch
+  });
 
   @override
   State<SearchBarWidget> createState() => _SearchBarState();
@@ -14,7 +17,7 @@ class _SearchBarState extends State<SearchBarWidget> {
   var colorsClass = ColorsClass();
   final TextEditingController controller = TextEditingController();
   void _onTextChanged(String text){
-    widget.onSearch(text);
+    //widget.onSearch(text);
   }
 
 
