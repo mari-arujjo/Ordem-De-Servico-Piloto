@@ -1,4 +1,4 @@
-/*import 'package:ordem_de_servico/app/src/API/api.dart';
+import 'package:ordem_de_servico/app/src/API/api.dart';
 
 class EndPointsUsuario{
   Future<String> testarApi() async {
@@ -11,5 +11,3 @@ class EndPointsUsuario{
       return'Erro ao acessar API: $e';
     }
 }
-  
-*/

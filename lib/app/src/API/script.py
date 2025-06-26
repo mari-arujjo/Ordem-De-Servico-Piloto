@@ -10,4 +10,6 @@ while True:
     except Exception as e:
         print(f"Erro ao acessar o endpoint: {e}")
     
-    time.sleep(120)  # Espera 2 minutos (120 segundos)
+    time.sleep(60)
+
+# pip install requests
