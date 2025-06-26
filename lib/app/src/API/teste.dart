@@ -43,9 +43,8 @@ class _TesteApiPageState extends State<TesteApiPage> {
 
   Future<void> testarApi() async {
     final api = Api();
-
     try {
-      final response = await api.get('api/usuario'); // Substitua pelo seu endpoint real
+      final response = await api.get('/api/OK'); 
       setState(() {
         resultado = response.data.toString();
       });
