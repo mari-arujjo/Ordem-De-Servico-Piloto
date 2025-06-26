@@ -26,7 +26,7 @@ class GestaoUsuariosController extends ChangeNotifier{
       final response = await api.get('/api/usuario'); 
       debugPrint('Resposta da API: ${response.data}');
       final List<dynamic> dados = response.data;
-      allUsers = dados.map((json) => Usuario.fromJson(json)).toList()..sort((a,b) => a.id_usuario.compareTo(b.id_usuario));
+      allUsers = dados.map((json) => Usuario.fromJson(json)).toList();
       filteredUsers = [...allUsers];
       notifyListeners();
     } 

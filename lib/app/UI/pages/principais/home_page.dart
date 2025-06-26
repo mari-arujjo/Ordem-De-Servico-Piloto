@@ -27,37 +27,46 @@ class _HomeState extends State<HomePage> {
               ),
               SizedBox(height: 20),
 
-              ButtonPadrao(
+              /*ButtonPadrao(
                 txt: 'Atendimento',
                 onPressed: () {
                   context.goNamed("atendimento");
                 },
                 tam: 200,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20),*/
 
-              ButtonPadrao(
+              /*ButtonPadrao(
                 txt: 'Manutenção',
                 onPressed: () {
                   context.goNamed("manutencao");
                 },
                 tam: 200,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20),*/
 
-              ButtonPadrao(
+              /*ButtonPadrao(
                 txt: 'Ordem de serviço',
                 onPressed: () {
                   context.goNamed("ordemOS");
                 },
                 tam: 200,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20),*/
 
               ButtonPadrao(
                 txt: 'Gestão de usuários',
                 onPressed: () {
                   context.goNamed("gestaoUsuarios");
+                },
+                tam: 200,
+              ),
+              SizedBox(height: 20),
+
+              ButtonPadrao(
+                txt: 'Endpoints',
+                onPressed: () {
+                  context.goNamed("EndPoints");
                 },
                 tam: 200,
               ),
