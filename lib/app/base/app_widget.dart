@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:ordem_de_servico/rotas.dart';
+import 'package:ordem_de_servico/app/base/rotas.dart';
 
 class AppWidget extends StatelessWidget {
 	// construtor
