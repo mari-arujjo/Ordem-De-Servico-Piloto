@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/app/src/usuario/controller.dart';
+import 'package:ordem_de_servico/app/src/usuario/u_store.dart';
 import 'package:ordem_de_servico/app/src/API/http_client.dart';
-import 'package:ordem_de_servico/app/src/usuario/repository.dart';
+import 'package:ordem_de_servico/app/src/usuario/u_repository.dart';
 
 class EndPointsPage extends StatefulWidget {
   const EndPointsPage({super.key});
@@ -11,8 +11,8 @@ class EndPointsPage extends StatefulWidget {
 }
 
 class _EndPointsPageState extends State<EndPointsPage> {
-  final ControllerTeste controller = ControllerTeste(
-    repositorio: RepositoryTeste(
+  final UsuarioStore controller = UsuarioStore(
+    repositorio: UsuarioRepository(
       client: HttpClient()
     ),
   );

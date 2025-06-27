@@ -1,13 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
-class ModelTeste {
+class UsuarioModel {
   final int id_usuario;
   final String usuario;
   final String nome;
   final int nivel_acesso;
   final String? senha;
 
-  ModelTeste({
+  UsuarioModel({
     required this.id_usuario,
     required this.usuario,
     required this.nome,
@@ -16,8 +16,8 @@ class ModelTeste {
   });
 
   // vai retonrar um mapa que a key=string e value=dynamic(int, string, float etc)
-  factory ModelTeste.fromMap(Map<String, dynamic> map) {
-    return ModelTeste(
+  factory UsuarioModel.fromMap(Map<String, dynamic> map) {
+    return UsuarioModel(
       id_usuario: map['id_usuario'],
       usuario: map['usuario'],
       nome: map['nome'],

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ordem_de_servico/app/src/API/alerts.dart';
-import 'package:ordem_de_servico/app/src/usuario/model.dart';
-import 'package:ordem_de_servico/app/src/usuario/repository.dart';
+import 'package:ordem_de_servico/app/src/usuario/u_model.dart';
+import 'package:ordem_de_servico/app/src/usuario/u_repository.dart';
 
-class ControllerTeste {
-  final IRepositoryTeste repositorio;
-  ControllerTeste({required this.repositorio});
+class UsuarioStore {
+  final IUsuarioRepository repositorio;
+  UsuarioStore({required this.repositorio});
 
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
 
-  final ValueNotifier<List<ModelTeste>> state = ValueNotifier<List<ModelTeste>>([]);
+  final ValueNotifier<List<UsuarioModel>> state = ValueNotifier<List<UsuarioModel>>([]);
 
   final ValueNotifier<String> erro = ValueNotifier<String>('');
 
