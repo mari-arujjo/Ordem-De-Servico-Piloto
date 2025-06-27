@@ -20,19 +20,21 @@ class _LoginState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Login")),
-
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 70),
           child: Column(
             children: [
-              Image.asset(
-                'lib/app/assets/imgs/tudo_em_ordem.png',
-                width: 200,
-                height: 200,
+              SizedBox(height: 150),
+
+              Text(
+                'Login',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 5),
+              Text('Bem vindo de volta!', style: TextStyle(fontSize: 18)),
+
+              SizedBox(height: 40),
 
               Padding(
                 padding: EdgeInsets.only(left: 50, right: 50),
@@ -49,23 +51,14 @@ class _LoginState extends State<LoginPage> {
                   child: Form(
                     child: Column(
                       children: [
-                        InputOutline(
-                          txt: "Usuário",
-                          ico: Icon(Icons.people),
-                        ),
+                        InputOutline(txt: "Usuário", ico: Icon(Icons.people)),
 
                         SizedBox(height: 20),
 
-                        InputOutlineSenha(
-                          txt: "Senha",
-                        ),
+                        InputOutlineSenha(txt: "Senha"),
 
                         SizedBox(height: 20),
-                        ButtonPadrao(
-                          txt: 'Entrar',
-                          onPressed: () {},
-                          tam: 150,
-                        ),
+                        ButtonPadrao(txt: 'Entrar', onPressed: () {}, tam: 150),
 
                         SizedBox(height: 20),
                         ButtonPadrao(

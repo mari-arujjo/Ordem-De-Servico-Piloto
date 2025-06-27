@@ -12,6 +12,6 @@ class ColorsClass {
     secondaryColor = const Color(0xFFEDEDED);
     terciaryColor = const Color(0xFFFF4081);
     quarternaryColor = const Color.fromARGB(255, 240, 166, 191);
-    gray = const Color.fromARGB(255, 129, 129, 129);
+    gray = const Color(0xFF818181);
   }
 }

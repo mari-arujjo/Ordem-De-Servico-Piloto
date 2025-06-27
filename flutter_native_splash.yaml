@@ -1,0 +1,7 @@
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: lib/app/assets/imgs/tudo_em_ordem.png
+  android: true
+  ios: true
+
+# flutter pub run flutter_native_splash:create

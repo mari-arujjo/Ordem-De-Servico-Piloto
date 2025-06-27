@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="ordem_de_servico"
+        android:label="Ordem de Serviço"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
