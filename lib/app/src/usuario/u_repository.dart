@@ -23,10 +23,10 @@ class UsuarioRepository implements IUsuarioRepository {
       return body.map((item) => UsuarioModel.fromMap(item)).toList();
     }
     else if(response.statusCode==404){
-      throw NotFound('URL N EXISTE');
+      throw NotFound('A URL não é válida');
     }
     else{
-      throw Exception('deu b.o');
+      throw Exception('deu b.o D:');
     }
   }
 }

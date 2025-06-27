@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/app/UI/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_de_servico/app/UI/widgets/carregando_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
+import 'package:ordem_de_servico/app/src/API/http_client.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
 import 'package:ordem_de_servico/app/assets/color/colors.dart';
-//import 'package:provider/provider.dart';
+import 'package:ordem_de_servico/app/src/usuario/u_repository.dart';
+import 'package:ordem_de_servico/app/src/usuario/u_store.dart';
 
 class UsuarioPage extends StatefulWidget {
   final int idUsuario;
@@ -17,34 +20,64 @@ class UsuarioPage extends StatefulWidget {
 }
 
 class _UsuarioState extends State<UsuarioPage> {
-  var colorsClass = ColorsClass();
-  var popUp = PopUp();
-
   // ignore: prefer_typing_uninitialized_variables
-  late final usuario;
+  var user;
+  bool isLoading = true;
+  var popUp = PopUp();
   late TextEditingController nomeController;
   late TextEditingController usuarioController;
   late TextEditingController nivelController;
+  final UsuarioStore store = UsuarioStore(
+    repositorio: UsuarioRepository(
+      client: HttpClient(),
+    ),
+  );
+  
 
   @override
   void initState() {
     super.initState();
-
-    /*nomeController = TextEditingController(text: user.nome);
-    usuarioController = TextEditingController(text: user.usuario);
-    nivelController = TextEditingController(text: user.nivel_acesso.toString());*/
+    carregarUser();
   }
-  
+
+  Future <void> carregarUser() async{
+    await store.getUsuarios();
+
+    final encontrado = store.state.value.firstWhere(
+      (u) => u.id_usuario == widget.idUsuario,
+      orElse: () => throw Exception('Usuário não encontrado.'),
+    );
+
+    setState(() {
+      user = encontrado;
+      nomeController = TextEditingController(text: user.nome);
+      usuarioController = TextEditingController(text: user.usuario);
+      nivelController = TextEditingController(text: user.nivel_acesso.toString());
+      isLoading = false;
+    });
+
+  }
+
   @override
-  void dispose(){
+  void dispose() {
     nomeController.dispose();
     usuarioController.dispose();
     nivelController.dispose();
     super.dispose();
   }
 
+
   @override
   Widget build(BuildContext context) {
+
+    if(isLoading){
+      return const Scaffold(
+        body: Center(
+          child: CarregandoWidget(),
+        ),
+      );
+    }
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
@@ -62,7 +95,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                FotoDePerfilWidget(img: usuario.foto!),
+                FotoDePerfilWidget(img: ''),
                 SizedBox(height: 10),
 
                 Row(
@@ -70,7 +103,7 @@ class _UsuarioState extends State<UsuarioPage> {
                   children: [
                     Text('ID:', style: TextStyle(fontWeight: FontWeight.bold)),
                     SizedBox(width: 5),
-                    Text('${usuario.id_usuario}'),
+                    Text('${user.id_usuario}'),
                   ],
                 ),
 

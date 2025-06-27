@@ -11,7 +11,7 @@ class EndPointsPage extends StatefulWidget {
 }
 
 class _EndPointsPageState extends State<EndPointsPage> {
-  final UsuarioStore controller = UsuarioStore(
+  final UsuarioStore store = UsuarioStore(
     repositorio: UsuarioRepository(
       client: HttpClient()
     ),
@@ -20,7 +20,7 @@ class _EndPointsPageState extends State<EndPointsPage> {
   @override
   void initState(){
     super.initState();
-    controller.getUsuarios();
+    store.getUsuarios();
   }
   @override
   Widget build(BuildContext context) {
@@ -29,20 +29,20 @@ class _EndPointsPageState extends State<EndPointsPage> {
 
       body: AnimatedBuilder(
         animation: Listenable.merge([
-          controller.isLoading,
-          controller.erro,
-          controller.state,
+          store.isLoading,
+          store.erro,
+          store.state,
         ]), 
 
         builder:(context, child) {
-          if(controller.isLoading.value){
+          if(store.isLoading.value){
             return const CircularProgressIndicator();
           }
 
-          if(controller.erro.value.isNotEmpty){
+          if(store.erro.value.isNotEmpty){
             return Center(
               child: Text(
-                controller.erro.value,
+                store.erro.value,
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20
@@ -51,10 +51,10 @@ class _EndPointsPageState extends State<EndPointsPage> {
             );
           }
 
-          if(controller.state.value.isEmpty){
+          if(store.state.value.isEmpty){
             return Center(
               child: Text(
-                'nenhum item na lista',
+                'Nenhum registro encontrado.',
                 style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20
@@ -65,9 +65,9 @@ class _EndPointsPageState extends State<EndPointsPage> {
             return ListView.separated(
               separatorBuilder:(context, index) => const SizedBox(height: 20), 
               padding: EdgeInsets.all(20),
-              itemCount: controller.state.value.length,
+              itemCount: store.state.value.length,
               itemBuilder:(_, index) {
-                final user = controller.state.value[index];
+                final user = store.state.value[index];
                 return Column(
                   children: [
                     ListTile(
