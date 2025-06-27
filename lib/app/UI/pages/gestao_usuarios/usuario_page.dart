@@ -7,7 +7,6 @@ import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/app/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/app/src/API/http_client.dart';
 import 'package:ordem_de_servico/app/src/helper/popup.dart';
-import 'package:ordem_de_servico/app/assets/color/colors.dart';
 import 'package:ordem_de_servico/app/src/usuario/u_repository.dart';
 import 'package:ordem_de_servico/app/src/usuario/u_store.dart';
 
