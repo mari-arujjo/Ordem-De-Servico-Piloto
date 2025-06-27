@@ -9,7 +9,7 @@ import 'package:ordem_de_servico/app/UI/pages/principais/login_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/principais/meu_perfil_page.dart';
 import 'package:ordem_de_servico/app/UI/pages/ordem_os/ordem_os_page.dart';
-import 'package:ordem_de_servico/app/src/API/endpoins.dart';
+import 'package:ordem_de_servico/app/src/usuario/endpoins.dart';
 import 'package:ordem_de_servico/app/base/navigation.dart';
 
 class AppNavigation{
