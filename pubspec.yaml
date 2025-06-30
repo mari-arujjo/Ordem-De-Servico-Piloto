@@ -25,11 +25,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - lib/app/assets/imgs/tudo_em_ordem.png
-    - lib/app/assets/imgs/pencil.png
-    - lib/app/assets/imgs/eu.png
-    - lib/app/assets/imgs/semFoto.png
-    - lib/app/assets/imgs/luyz.jpg
+    - lib/assets/imgs/tudo_em_ordem.png
+    - lib/assets/imgs/pencil.png
+    - lib/assets/imgs/eu.png
+    - lib/assets/imgs/semFoto.png
+    - lib/assets/imgs/luyz.jpg
 
 flutter_icons:
   android: true
