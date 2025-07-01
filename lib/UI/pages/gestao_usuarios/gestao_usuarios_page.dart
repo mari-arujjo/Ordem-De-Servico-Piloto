@@ -6,8 +6,10 @@ import 'package:ordem_de_servico/UI/widgets/flutuante_widget.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
 import 'package:ordem_de_servico/UI/widgets/search_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
+import 'package:ordem_de_servico/src/usuario/u_controller.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 import 'package:ordem_de_servico/src/usuario/u_store.dart';
+import 'package:provider/provider.dart';
 
 class GestaoUsuariosPage extends StatefulWidget {
   const GestaoUsuariosPage({super.key});
@@ -18,6 +20,7 @@ class GestaoUsuariosPage extends StatefulWidget {
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   var colorsClass = ColorsClass();
+
   final UsuarioStore store = UsuarioStore(
     repositorio: UsuarioRepository(
       client: HttpClient()
@@ -28,10 +31,14 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   void initState(){
     super.initState();
     store.getUsuarios();
+    void filtrarUsuarios(String text){
+      context.read<UsuarioController>().filtrarUsuarios(text);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.watch<UsuarioController>();
 
     return Scaffold(
       appBar: AppBar(title: const Text('Gestão de usuários')),

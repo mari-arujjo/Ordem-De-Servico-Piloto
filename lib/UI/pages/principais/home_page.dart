@@ -21,9 +21,9 @@ class _HomeState extends State<HomePage> {
           child: Column(
             children: [
               Image.asset(
-                'lib/app/assets/imgs/tudo_em_ordem.png',
-                width: 230,
-                height: 230,
+                'lib/assets/imgs/tudo_em_ordem.png',
+                width: 180,
+                height: 180,
               ),
               SizedBox(height: 20),
 
@@ -32,7 +32,7 @@ class _HomeState extends State<HomePage> {
                 onPressed: () {
                   context.goNamed("atendimento");
                 },
-                tam: 200,
+                tam: 250,
               ),
               SizedBox(height: 20),
 
@@ -41,7 +41,7 @@ class _HomeState extends State<HomePage> {
                 onPressed: () {
                   context.goNamed("manutencao");
                 },
-                tam: 200,
+                tam: 250,
               ),
               SizedBox(height: 20),
 
@@ -50,7 +50,7 @@ class _HomeState extends State<HomePage> {
                 onPressed: () {
                   context.goNamed("ordemOS");
                 },
-                tam: 200,
+                tam: 250,
               ),
               SizedBox(height: 20),
 
@@ -59,7 +59,7 @@ class _HomeState extends State<HomePage> {
                 onPressed: () {
                   context.goNamed("gestaoUsuarios");
                 },
-                tam: 200,
+                tam: 250,
               ),
               SizedBox(height: 20),
             ],
