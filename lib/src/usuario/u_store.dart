@@ -8,9 +8,8 @@ class UsuarioStore {
   UsuarioStore({required this.repositorio});
 
   final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
-
   final ValueNotifier<List<UsuarioModel>> state = ValueNotifier<List<UsuarioModel>>([]);
-
+  final ValueNotifier<List<UsuarioModel>> allUsers = ValueNotifier<List<UsuarioModel>>([]);
   final ValueNotifier<String> erro = ValueNotifier<String>('');
 
   Future getUsuarios() async{
@@ -18,6 +17,7 @@ class UsuarioStore {
 
     try{
       final result = await repositorio.obterUsuarios();
+      allUsers.value=result;
       state.value=result;
     } on NotFound catch (e){
       erro.value=e.message;
@@ -26,6 +26,18 @@ class UsuarioStore {
     }
 
     isLoading.value = false;
+  }
+
+  void filtrarUsuarios(String termo) {
+    if (termo.isEmpty) {
+      state.value = allUsers.value;
+    } else {
+      state.value = allUsers.value
+          .where((user) =>
+              user.nome.toLowerCase().contains(termo.toLowerCase()) ||
+              user.usuario.toLowerCase().contains(termo.toLowerCase()))
+          .toList();
+    }
   }
 
 }
