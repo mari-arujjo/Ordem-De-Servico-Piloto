@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:ordem_de_servico/src/API/alerts.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
 
@@ -23,10 +22,10 @@ class UsuarioRepository implements IUsuarioRepository {
       return body.map((item) => UsuarioModel.fromMap(item)).toList();
     }
     else if(response.statusCode==404){
-      throw NotFound('A URL não é válida');
+      throw Exception('A URL não é válida');
     }
     else{
-      throw Exception('deu b.o D:');
+      throw Exception('pode sacrificar');
     }
   }
 
@@ -40,7 +39,7 @@ class UsuarioRepository implements IUsuarioRepository {
       return body.map((item) => UsuarioModel.fromMap(item)).toList();
     }
     else if(response.statusCode==404){
-      throw NotFound('A URL não é válida');
+      throw Exception('A URL não é válida');
     }
     else{
       throw Exception('deu b.o D:');

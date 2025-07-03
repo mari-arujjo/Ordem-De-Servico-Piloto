@@ -94,7 +94,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                FotoDePerfilWidget(img: "lib/app/assets/imgs/semFoto.png"),
+                FotoDePerfilWidget(img: "lib/assets/imgs/semFoto.png"),
                 SizedBox(height: 10),
 
                 Row(

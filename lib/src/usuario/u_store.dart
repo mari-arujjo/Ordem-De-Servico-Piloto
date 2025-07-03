@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:ordem_de_servico/src/API/alerts.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 
@@ -19,8 +18,6 @@ class UsuarioStore {
       final result = await repositorio.obterUsuarios();
       allUsers.value=result;
       state.value=result;
-    } on NotFound catch (e){
-      erro.value=e.message;
     } catch (e){
       erro.value = e.toString();
     }
