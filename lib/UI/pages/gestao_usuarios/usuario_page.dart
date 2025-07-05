@@ -27,11 +27,8 @@ class _UsuarioState extends State<UsuarioPage> {
   late TextEditingController usuarioController;
   late TextEditingController nivelController;
   final UsuarioStore store = UsuarioStore(
-    repositorio: UsuarioRepository(
-      client: HttpClient(),
-    ),
+    repositorio: UsuarioRepository(client: HttpClient()),
   );
-  
 
   @override
   void initState() {
@@ -39,7 +36,7 @@ class _UsuarioState extends State<UsuarioPage> {
     carregarUser();
   }
 
-  Future <void> carregarUser() async{
+  Future<void> carregarUser() async {
     await store.getUsuarios();
 
     final encontrado = store.state.value.firstWhere(
@@ -51,10 +48,11 @@ class _UsuarioState extends State<UsuarioPage> {
       user = encontrado;
       nomeController = TextEditingController(text: user.nome);
       usuarioController = TextEditingController(text: user.usuario);
-      nivelController = TextEditingController(text: user.nivel_acesso.toString());
+      nivelController = TextEditingController(
+        text: user.nivel_acesso.toString(),
+      );
       isLoading = false;
     });
-
   }
 
   @override
@@ -65,16 +63,10 @@ class _UsuarioState extends State<UsuarioPage> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
-
-    if(isLoading){
-      return const Scaffold(
-        body: Center(
-          child: CarregandoWidget(),
-        ),
-      );
+    if (isLoading) {
+      return const Scaffold(body: Center(child: CarregandoWidget()));
     }
 
     return PopScope(
@@ -94,7 +86,7 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                FotoDePerfilWidget(img: "lib/assets/imgs/semFoto.png"),
+                FotoDePerfilWidget(img: user.foto_url),
                 SizedBox(height: 10),
 
                 Row(

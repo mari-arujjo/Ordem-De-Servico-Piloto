@@ -6,6 +6,7 @@ class UsuarioModel {
   final String nome;
   final int nivel_acesso;
   final String? senha;
+  final String? foto_url;
 
   UsuarioModel({
     required this.id_usuario,
@@ -13,6 +14,7 @@ class UsuarioModel {
     required this.nome,
     required this.nivel_acesso,
     this.senha,
+    this.foto_url
   });
 
   // vai retonrar um mapa que a key=string e value=dynamic(int, string, float etc)
@@ -22,7 +24,8 @@ class UsuarioModel {
       usuario: map['usuario'],
       nome: map['nome'],
       nivel_acesso: map['nivel_acesso'],
-      senha: map['senha']
+      senha: map['senha'],
+      foto_url: map['foto_url'],
     );
   }
 }

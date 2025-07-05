@@ -29,7 +29,7 @@ class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
         ],
       ),
       clipBehavior: Clip.hardEdge,
-      child: Image.asset(widget.img, fit: BoxFit.cover),
+      child: Image.network(widget.img, fit: BoxFit.cover),
     );
   }
 }
