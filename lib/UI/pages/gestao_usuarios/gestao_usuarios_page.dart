@@ -71,7 +71,6 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                   left: 20,
                   right: 20,
                 ),
-                child: Expanded(
                   child: Container(
                     margin: EdgeInsets.only(top: 20),
                     padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
@@ -89,7 +88,6 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                       ),
                     ),
                   ),
-                ),
               ),
             );
           } else {
@@ -101,7 +99,6 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                   left: 20,
                   right: 20,
                 ),
-                child: Expanded(
                   child: Container(
                     margin: EdgeInsets.only(top: 20),
                     padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
@@ -144,7 +141,6 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                     ),
                   ),
                 ),
-              ),
             );
           } //else
         },
