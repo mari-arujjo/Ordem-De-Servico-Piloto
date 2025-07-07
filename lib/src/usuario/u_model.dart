@@ -13,11 +13,12 @@ class UsuarioModel {
     required this.usuario,
     required this.nome,
     required this.nivel_acesso,
-    required this.senha,
-    required this.foto_url
+    this.senha,
+    this.foto_url
   });
 
   // vai retonrar um mapa que a key=string e value=dynamic(int, string, float etc)
+  // PARA RECEBER
   factory UsuarioModel.fromMap(Map<String, dynamic> map) {
     return UsuarioModel(
       id_usuario: map['id_usuario'],
@@ -27,5 +28,18 @@ class UsuarioModel {
       senha: map['senha'],
       foto_url: map['foto_url'],
     );
+  }
+
+
+  // PARA ENVIAR
+  Map<String, dynamic> toMap() {
+    return {
+      'id_usuario': id_usuario,
+      'usuario': usuario,
+      'nome': nome,
+      'nivel_acesso': nivel_acesso,
+      'senha': senha,
+      'foto_url': foto_url,
+    };
   }
 }

@@ -14,17 +14,23 @@ class CadastroUserPage extends StatefulWidget {
 }
 
 class _CadastroUserState extends State<CadastroUserPage> {
+  var colorsClass = ColorsClass();
+  var popUp = PopUp();
   bool isChecked = false;
   bool obscurePassword = true;
   bool isChecked2 = false;
   bool obscurePassword2 = true;
+  final TextEditingController nomeController = TextEditingController();
+  final TextEditingController usuarioController = TextEditingController();
+  final TextEditingController senhaController = TextEditingController();
+  final TextEditingController confirmSenhaController = TextEditingController();
+  int? nivelSelecionado;
   final List<String> listNivel = [
     "1 - Administrador",
     "2 - Moderador",
     "3 - Padrão",
   ];
-  var colorsClass = ColorsClass();
-  var popUp = PopUp();
+  
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +71,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          InputPadrao(),
+                          InputPadrao(controller: nomeController),
                           SizedBox(height: 20),
 
                           /// USUARIO
@@ -77,7 +83,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          InputPadrao(),
+                          InputPadrao(controller: usuarioController),
                           SizedBox(height: 20),
 
                           /// NIVEL
@@ -92,6 +98,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           DropdownWidget(
                             listNivel: listNivel,
                             txt: 'Selecione o nível de acesso ao sistema',
+                          
                           ),
                           SizedBox(height: 20),
 
@@ -104,7 +111,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          InputPadraoSenha(),
+                          InputPadraoSenha(controller: senhaController),
 
                           SizedBox(height: 20),
 
@@ -117,7 +124,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          InputPadraoSenha(),
+                          InputPadraoSenha(controller: confirmSenhaController),
                         ],
                       ),
                     ),

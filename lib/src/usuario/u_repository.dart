@@ -29,14 +29,17 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-   Future<List<UsuarioModel>> cadastrarUsuario() async {
+
+   Future<UsuarioModel> cadastrarUsuario(UsuarioModel user) async {
     final response = await client.post(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario'
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
+      headers: {'Content-Type': 'applicaton-json'},
+      body: jsonEncode(user.toMap())
     );
 
     if(response.statusCode == 200){
-      final body = jsonDecode(response.body) as List;
-      return body.map((item) => UsuarioModel.fromMap(item)).toList();
+      final body = jsonDecode(response.body);
+      return UsuarioModel.fromMap(body);
     }
     else if(response.statusCode==404){
       throw Exception('A URL não é válida');

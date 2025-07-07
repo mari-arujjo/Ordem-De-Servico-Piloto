@@ -29,7 +29,6 @@ flutter:
     - lib/assets/imgs/tudo_em_ordem.png
     - lib/assets/imgs/pencil.png
     - lib/assets/imgs/robo_quebrado.jpg
-    - lib/assets/imgs/luyz.jpg
 
 flutter_icons:
   android: true
