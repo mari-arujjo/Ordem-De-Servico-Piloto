@@ -25,44 +25,15 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
           padding: EdgeInsets.all(30),
           child: Column(
             children: [
-              FotoDePerfilWidget(img: 'lib/app/assets/imgs/eu.png'),
+              //FotoDePerfilWidget(img: 'lib/assets/imgs/eu.png'),
               SizedBox(height: 30),
 
-              ContainerPadrao(
-                child: Form(
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Nome:', style: TextStyle(fontSize: 16)),
-                      ),
-                      SizedBox(height: 5),
-                      InputPadrao(),
-
-                      SizedBox(height: 20),
-
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text('Usuário:', style: TextStyle(fontSize: 16)),
-                      ),
-                      SizedBox(height: 5),
-                      InputPadrao(),
-
-                      SizedBox(height: 20),
-
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          'Nível de acesso:',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
-                      SizedBox(height: 5),
-                      InputPadrao(),
-                    ],
-                  ),
-                ),
+              Align(
+                alignment: Alignment.center,
+                child: Text('Você ainda não está logado.', style: TextStyle(fontSize: 18)),
               ),
+
+              Image.asset("lib/assets/imgs/robo_quebrado.jpg"),
 
               SizedBox(height: 30),
               ButtonPadrao(

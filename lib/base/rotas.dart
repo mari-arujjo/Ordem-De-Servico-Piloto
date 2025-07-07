@@ -9,6 +9,7 @@ import 'package:ordem_de_servico/UI/pages/principais/login_page.dart';
 import 'package:ordem_de_servico/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/meu_perfil_page.dart';
 import 'package:ordem_de_servico/UI/pages/ordem_os/ordem_os_page.dart';
+import 'package:ordem_de_servico/UI/pages/principais/sem_perfil_page.dart';
 import 'package:ordem_de_servico/src/usuario/endpoins.dart';
 import 'package:ordem_de_servico/base/navigation.dart';
 
@@ -140,7 +141,7 @@ class AppNavigation{
                 path: '/perfil',
                 name: 'Perfil',
                 builder: (context, state) { 
-                  return MeuPerfilPage(
+                  return SemPerfilPage(
                     key: state.pageKey,
                   );
                 },

@@ -28,7 +28,7 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
           padding: EdgeInsets.all(30),
           child: Column(
             children: [
-              FotoDePerfilWidget(img: 'lib/assets/imgs/eu.png'),
+              //FotoDePerfilWidget(img: 'lib/assets/imgs/eu.png'),
               SizedBox(height: 10),
 
               Row(
