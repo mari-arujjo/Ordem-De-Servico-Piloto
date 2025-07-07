@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/foto_widget.dart';
 
 class SemPerfilPage extends StatefulWidget {
   const SemPerfilPage({super.key});

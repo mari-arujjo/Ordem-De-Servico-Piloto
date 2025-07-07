@@ -7,7 +7,6 @@ import 'package:ordem_de_servico/UI/pages/gestao_usuarios/usuario_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/home_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/login_page.dart';
 import 'package:ordem_de_servico/UI/pages/manutencao/manutencao_page.dart';
-import 'package:ordem_de_servico/UI/pages/principais/meu_perfil_page.dart';
 import 'package:ordem_de_servico/UI/pages/ordem_os/ordem_os_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/sem_perfil_page.dart';
 import 'package:ordem_de_servico/src/usuario/endpoins.dart';
