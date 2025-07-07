@@ -13,8 +13,8 @@ class UsuarioModel {
     required this.usuario,
     required this.nome,
     required this.nivel_acesso,
-    this.senha,
-    this.foto_url
+    required this.senha,
+    required this.foto_url
   });
 
   // vai retonrar um mapa que a key=string e value=dynamic(int, string, float etc)

@@ -42,7 +42,7 @@ class UsuarioRepository implements IUsuarioRepository {
       throw Exception('A URL não é válida');
     }
     else{
-      throw Exception('deu b.o D:');
+      throw Exception('pode sacrificar');
     }
   }
 }

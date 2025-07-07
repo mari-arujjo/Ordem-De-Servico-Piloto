@@ -26,6 +26,8 @@ class _UsuarioState extends State<UsuarioPage> {
   late TextEditingController nomeController;
   late TextEditingController usuarioController;
   late TextEditingController nivelController;
+  late TextEditingController senhaController;
+  late TextEditingController confirmSenhaController;
   final UsuarioStore store = UsuarioStore(
     repositorio: UsuarioRepository(client: HttpClient()),
   );
@@ -48,9 +50,7 @@ class _UsuarioState extends State<UsuarioPage> {
       user = encontrado;
       nomeController = TextEditingController(text: user.nome);
       usuarioController = TextEditingController(text: user.usuario);
-      nivelController = TextEditingController(
-        text: user.nivel_acesso.toString(),
-      );
+      nivelController = TextEditingController(text: user.nivel_acesso.toString(),);
       isLoading = false;
     });
   }

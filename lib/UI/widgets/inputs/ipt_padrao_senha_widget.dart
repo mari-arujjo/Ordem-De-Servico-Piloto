@@ -3,8 +3,9 @@ import 'package:ordem_de_servico/assets/color/colors.dart';
 
 class InputPadraoSenha extends StatefulWidget {
   
+  final TextEditingController? controller;
   const InputPadraoSenha({
-    super.key,
+    super.key, this.controller, 
   });
 
   @override
@@ -18,6 +19,7 @@ class _Input3State extends State<InputPadraoSenha> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
       obscureText: isObscured,
       cursorColor: colorsClass.terciaryColor,
 
