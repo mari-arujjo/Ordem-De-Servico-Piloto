@@ -8,12 +8,12 @@ import 'package:ordem_de_servico/assets/color/colors.dart';
 class PopUp {
   var colorsClass = ColorsClass();
   
-  void PopUpErro(BuildContext context, Object erro) {
+  void PopUpAlert(BuildContext context, Object erro) {
   showDialog(
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Erro'),
+        title: const Text('Atenção'),
         content: Text(erro.toString()),
         actions: [
           TextButton(

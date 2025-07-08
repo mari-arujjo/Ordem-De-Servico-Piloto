@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
@@ -144,10 +146,20 @@ class _CadastroUserState extends State<CadastroUserPage> {
                     ButtonPadrao(
                       txt: 'Salvar dados',
                       onPressed: () async {
-                        if (nivelSelecionado == null) {
-                          popUp.PopUpErro(context, 'Selecione o nível de acesso!');
+
+                        if (nomeController.text.isEmpty | usuarioController.text.isEmpty | senhaController.text.isEmpty | confirmSenhaController.text.isEmpty) {
+                          popUp.PopUpAlert(context, 'Preencha os campos obrigatórios.');
                           return;
                         }
+                        if (nivelSelecionado == null) {
+                          popUp.PopUpAlert(context, 'Selecione o nível de acesso!');
+                          return;
+                        }
+                        if (senhaController.text != confirmSenhaController.text) {
+                          popUp.PopUpAlert(context, 'Senhas divergentes!');
+                          return;
+                        }
+
                         final user = UsuarioModel(
                           id_usuario: 0, 
                           usuario: usuarioController.text, 
@@ -162,7 +174,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           popUp.PopUpSalvar(context);
                           Navigator.pop(context);
                         } catch (e) {
-                          popUp.PopUpErro(context, e);
+                          popUp.PopUpAlert(context, e);
                         }
                       },
                       tam: 150,
