@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/carregando_widget.dart';
@@ -50,7 +52,9 @@ class _UsuarioState extends State<UsuarioPage> {
       user = encontrado;
       nomeController = TextEditingController(text: user.nome);
       usuarioController = TextEditingController(text: user.usuario);
-      nivelController = TextEditingController(text: user.nivel_acesso.toString(),);
+      nivelController = TextEditingController(
+        text: user.nivel_acesso.toString(),
+      );
       isLoading = false;
     });
   }
@@ -197,8 +201,41 @@ class _UsuarioState extends State<UsuarioPage> {
 
                     ButtonPadrao(
                       txt: 'Excluir',
-                      onPressed: () {
-                        popUp.PopUpExcluir(context);
+                      onPressed: () async {
+                        try {
+                          final confirmou = await popUp.PopUpExcluir(context);
+
+                          if (confirmou == true) {
+                            final repo = UsuarioRepository(
+                              client: HttpClient(),
+                            );
+                            await repo.deletarUsuario(user.id_usuario);
+
+                            // Fecha a tela atual depois da exclusão
+                            Navigator.pop(context);
+
+                            // Mostra popup de sucesso
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content: const Text(
+                                    'Dados excluídos com sucesso.',
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed:
+                                          () => Navigator.of(context).pop(),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        } catch (e) {
+                          popUp.PopUpAlert(context, e);
+                        }
                       },
                       tam: 160,
                     ),

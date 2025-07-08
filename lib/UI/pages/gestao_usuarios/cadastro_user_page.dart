@@ -35,7 +35,6 @@ class _CadastroUserState extends State<CadastroUserPage> {
     "2 - Moderador",
     "3 - Padrão",
   ];
-  
 
   @override
   Widget build(BuildContext context) {
@@ -104,10 +103,11 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             listNivel: listNivel,
                             txt: 'Selecione o nível de acesso ao sistema',
                             onChanged: (value) {
-                              nivelSelecionado = int.tryParse(value?.split(' - ')[0] ?? '');
+                              nivelSelecionado = int.tryParse(
+                                value?.split(' - ')[0] ?? '',
+                              );
                               print('nivelSelecionado: $nivelSelecionado');
                             },
-                          
                           ),
                           SizedBox(height: 20),
 
@@ -146,29 +146,38 @@ class _CadastroUserState extends State<CadastroUserPage> {
                     ButtonPadrao(
                       txt: 'Salvar dados',
                       onPressed: () async {
-
-                        if (nomeController.text.isEmpty | usuarioController.text.isEmpty | senhaController.text.isEmpty | confirmSenhaController.text.isEmpty) {
-                          popUp.PopUpAlert(context, 'Preencha os campos obrigatórios.');
+                        if (nomeController.text.isEmpty |
+                            usuarioController.text.isEmpty |
+                            senhaController.text.isEmpty |
+                            confirmSenhaController.text.isEmpty) {
+                          popUp.PopUpAlert(
+                            context,
+                            'Preencha os campos obrigatórios.',
+                          );
                           return;
                         }
                         if (nivelSelecionado == null) {
-                          popUp.PopUpAlert(context, 'Selecione o nível de acesso!');
+                          popUp.PopUpAlert(
+                            context,
+                            'Selecione o nível de acesso!',
+                          );
                           return;
                         }
-                        if (senhaController.text != confirmSenhaController.text) {
+                        if (senhaController.text !=
+                            confirmSenhaController.text) {
                           popUp.PopUpAlert(context, 'Senhas divergentes!');
                           return;
                         }
 
                         final user = UsuarioModel(
-                          id_usuario: 0, 
-                          usuario: usuarioController.text, 
-                          nome: nomeController.text, 
+                          id_usuario: 0,
+                          usuario: usuarioController.text,
+                          nome: nomeController.text,
                           nivel_acesso: nivelSelecionado!,
                           senha: senhaController.text,
                         );
 
-                        try{
+                        try {
                           final repo = UsuarioRepository(client: HttpClient());
                           await repo.cadastrarUsuario(user);
                           popUp.PopUpSalvar(context);
