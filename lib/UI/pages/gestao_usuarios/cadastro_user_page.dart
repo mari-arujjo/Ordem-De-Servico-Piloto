@@ -158,7 +158,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
 
                         try{
                           final repo = UsuarioRepository(client: HttpClient());
-                          final usuarioCadastrado = await repo.cadastrarUsuario(user);
+                          await repo.cadastrarUsuario(user);
                           popUp.PopUpSalvar(context);
                           Navigator.pop(context);
                         } catch (e) {
