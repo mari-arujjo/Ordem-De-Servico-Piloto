@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -5,8 +7,29 @@ import 'package:ordem_de_servico/assets/color/colors.dart';
 
 class PopUp {
   var colorsClass = ColorsClass();
+  
+  void PopUpErro(BuildContext context, Object erro) {
+  showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: const Text('Erro'),
+        content: Text(erro.toString()),
+        actions: [
+          TextButton(
+            onPressed: () => context.pop(),
+            child: Text(
+              'vixe',
+              style: TextStyle(color: colorsClass.terciaryColor),
+            ),
+          )
+        ],
+      );
+    },
+  );
+}
 
-  // ignore: non_constant_identifier_names
+
   void PopUpCancel(BuildContext context){
     showDialog(
       context: context, 
@@ -40,7 +63,6 @@ class PopUp {
     );
   }
 
-  // ignore: non_constant_identifier_names
   void PopUpSair(BuildContext context){
     showDialog(
       context: context, 
@@ -73,7 +95,6 @@ class PopUp {
   }
 
 
-  // ignore: non_constant_identifier_names
   void PopUpSalvar(BuildContext context){
     showDialog(
       context: context, 
@@ -98,7 +119,6 @@ class PopUp {
     );
   }
 
-  // ignore: non_constant_identifier_names
   void PopUpExcluir(BuildContext context){
     showDialog(
       context: context, 
@@ -142,7 +162,6 @@ class PopUp {
     );
   }
 
-  // ignore: non_constant_identifier_names
   void PopUpAlterar(BuildContext context){
     showDialog(
       context: context, 

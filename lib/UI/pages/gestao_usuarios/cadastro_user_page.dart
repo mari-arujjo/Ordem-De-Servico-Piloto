@@ -3,8 +3,11 @@ import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
+import 'package:ordem_de_servico/src/API/http_client.dart' show HttpClient;
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:ordem_de_servico/src/usuario/u_model.dart';
+import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 
 class CadastroUserPage extends StatefulWidget {
   const CadastroUserPage({super.key});
@@ -98,6 +101,10 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           DropdownWidget(
                             listNivel: listNivel,
                             txt: 'Selecione o nível de acesso ao sistema',
+                            onChanged: (value) {
+                              nivelSelecionado = int.tryParse(value?.split(' - ')[0] ?? '');
+                              print('nivelSelecionado: $nivelSelecionado');
+                            },
                           
                           ),
                           SizedBox(height: 20),
@@ -136,8 +143,27 @@ class _CadastroUserState extends State<CadastroUserPage> {
                   children: [
                     ButtonPadrao(
                       txt: 'Salvar dados',
-                      onPressed: () {
-                        popUp.PopUpSalvar(context);
+                      onPressed: () async {
+                        if (nivelSelecionado == null) {
+                          popUp.PopUpErro(context, 'Selecione o nível de acesso!');
+                          return;
+                        }
+                        final user = UsuarioModel(
+                          id_usuario: 0, 
+                          usuario: usuarioController.text, 
+                          nome: nomeController.text, 
+                          nivel_acesso: nivelSelecionado!,
+                          senha: senhaController.text,
+                        );
+
+                        try{
+                          final repo = UsuarioRepository(client: HttpClient());
+                          final usuarioCadastrado = await repo.cadastrarUsuario(user);
+                          popUp.PopUpSalvar(context);
+                          Navigator.pop(context);
+                        } catch (e) {
+                          popUp.PopUpErro(context, e);
+                        }
                       },
                       tam: 150,
                     ),
