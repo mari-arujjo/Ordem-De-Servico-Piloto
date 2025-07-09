@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
+import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
 
 abstract class IUsuarioRepository {
@@ -15,46 +17,44 @@ class UsuarioRepository implements IUsuarioRepository {
     final response = await client.get(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
     );
-
-    if (response.statusCode == 200) {
+    try {
       final body = jsonDecode(response.body) as List;
       return body.map((item) => UsuarioModel.fromMap(item)).toList();
-    } else if (response.statusCode == 404) {
-      throw Exception('A URL não é válida');
-    } else {
-      throw Exception('pode sacrificar');
+    } catch (e) {
+      throw Exception(e);
     }
   }
 
-  Future<UsuarioModel> cadastrarUsuario(UsuarioModel user) async {
+  Future<UsuarioModel> cadastrarUsuario(BuildContext context, UsuarioModel user) async {
     final response = await client.post(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
-
     try {
-      //if(response.statusCode == 200){
       final body = jsonDecode(response.body);
+      if (body['errors'] != null){
+        final erro = body['errors'] as Map<String, dynamic>;
+        final key = erro.keys.first;
+        final value = (erro[key] as List).first;  
+        final msg = 'Campo - $key \nMensagem - $value'; 
+        PopUp().PopUpAlert(context, msg);
+      }
       print('Resposta do backend: $body');
       return UsuarioModel.fromMap(body);
-      //}
     } catch (e) {
       throw Exception(e);
     }
   }
 
   Future<void> deletarUsuario(int id) async {
-    final response = await client.delete(
+    await client.delete(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
     );
-
-    if (response.statusCode == 200 || response.statusCode == 204) {
+    try{
       return;
-    } else if (response.statusCode == 404) {
-      throw Exception('Usuário não encontrado para exclusão');
-    } else {
-      throw Exception('Falha ao deletar usuário');
+    }catch (e) {
+      throw Exception(e);
     }
   }
 }

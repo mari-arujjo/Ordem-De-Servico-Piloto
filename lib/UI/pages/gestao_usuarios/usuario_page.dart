@@ -70,7 +70,11 @@ class _UsuarioState extends State<UsuarioPage> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Scaffold(body: Center(child: CarregandoWidget()));
+      return const Scaffold(
+        body: Center(
+          child: CarregandoWidget()
+        )
+      );
     }
 
     return PopScope(
@@ -82,7 +86,7 @@ class _UsuarioState extends State<UsuarioPage> {
       },
 
       child: Scaffold(
-        appBar: AppBar(title: Text('Gestão de usuários')),
+        appBar: AppBar(title: Text('@${user.usuario}')),
 
         body: SingleChildScrollView(
           child: Padding(

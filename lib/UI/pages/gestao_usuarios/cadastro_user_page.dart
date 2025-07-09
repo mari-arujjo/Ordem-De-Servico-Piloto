@@ -177,14 +177,10 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           senha: senhaController.text,
                         );
 
-                        try {
-                          final repo = UsuarioRepository(client: HttpClient());
-                          await repo.cadastrarUsuario(user);
+                        final repo = UsuarioRepository(client: HttpClient());
+                          await repo.cadastrarUsuario(context, user);
                           popUp.PopUpSalvar(context);
                           Navigator.pop(context);
-                        } catch (e) {
-                          popUp.PopUpAlert(context, e);
-                        }
                       },
                       tam: 150,
                     ),
