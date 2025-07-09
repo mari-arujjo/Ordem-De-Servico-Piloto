@@ -37,10 +37,9 @@ class UsuarioRepository implements IUsuarioRepository {
         final erro = body['errors'] as Map<String, dynamic>;
         final key = erro.keys.first;
         final value = (erro[key] as List).first;  
-        final msg = 'Campo - $key \nMensagem - $value'; 
+        final msg = 'Campo: $key \n($value)';  
         PopUp().PopUpAlert(context, msg);
       }
-      print('Resposta do backend: $body');
       return UsuarioModel.fromMap(body);
     } catch (e) {
       throw Exception(e);
@@ -70,10 +69,9 @@ class UsuarioRepository implements IUsuarioRepository {
         final erro = body['errors'] as Map<String, dynamic>;
         final key = erro.keys.first;
         final value = (erro[key] as List).first;  
-        final msg = 'Campo - $key \nMensagem - $value'; 
+        final msg = 'Campo: $key \n($value)'; 
         PopUp().PopUpAlert(context, msg);
       }
-      print('Resposta do backend: $body');
       return UsuarioModel.fromMap(body);
     } catch (e) {
       throw Exception(e);

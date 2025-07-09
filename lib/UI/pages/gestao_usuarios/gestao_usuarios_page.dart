@@ -18,6 +18,7 @@ class GestaoUsuariosPage extends StatefulWidget {
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   var colorsClass = ColorsClass();
+  final ScrollController scrollController = ScrollController();
 
   final UsuarioStore store = UsuarioStore(
     repositorio: UsuarioRepository(client: HttpClient()),
@@ -27,6 +28,12 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
   void initState() {
     super.initState();
     store.getUsuarios();
+  }
+
+   @override
+  void dispose() {
+    super.dispose();
+    scrollController.dispose();
   }
 
   @override
@@ -108,10 +115,12 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                     ),
 
                     child: Scrollbar(
+                      controller: scrollController,
                       thumbVisibility: true,
                       radius: Radius.circular(10),
 
                       child: ListView.separated(
+                        controller: scrollController,
                         padding: EdgeInsets.only(
                           right: 15,
                           left: 15,

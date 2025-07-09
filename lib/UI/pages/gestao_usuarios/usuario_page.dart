@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/carregando_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
@@ -227,7 +228,25 @@ class _UsuarioState extends State<UsuarioPage> {
                               );
                               final repo = UsuarioRepository(client: HttpClient());
                               await repo.alterarUsuario(context, userAlt, userAlt.id_usuario);
-                              Navigator.pop(context);
+                              context.pop();
+                              context.pop();
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: const Text(
+                                      'Dados alterados com sucesso.',
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed:
+                                            () => Navigator.of(context).pop(),
+                                        child: const Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             }
                           }
                           
@@ -251,9 +270,7 @@ class _UsuarioState extends State<UsuarioPage> {
                               client: HttpClient(),
                             );
                             await repo.deletarUsuario(user.id_usuario);
-
-                            // Fecha a tela atual depois da exclusão
-                            Navigator.pop(context);
+                            context.pop();
 
                             // Mostra popup de sucesso
                             showDialog(
