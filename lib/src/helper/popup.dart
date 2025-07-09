@@ -13,7 +13,7 @@ class PopUp {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Atenção'),
+          title: const Text('Atenção!'),
           content: Text(erro.toString()),
           actions: [
             TextButton(
@@ -133,14 +133,14 @@ class PopUp {
           actions: [
             TextButton(
               onPressed:
-                  () => Navigator.of(context).pop(false), // Não confirmou
+                  () => context.pop(false), // Não confirmou
               child: Text(
                 'Não',
                 style: TextStyle(color: colorsClass.terciaryColor),
               ),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).pop(true), // Confirmou
+              onPressed: () => context.pop(true), // Confirmou
               child: Text(
                 'Sim',
                 style: TextStyle(color: colorsClass.terciaryColor),
@@ -163,7 +163,7 @@ class PopUp {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
+              onPressed: () => context.pop(false),
               child: Text(
                 'Não',
                 style: TextStyle(color: colorsClass.terciaryColor),
@@ -171,7 +171,7 @@ class PopUp {
             ),
 
             TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
+              onPressed: () => context.pop(true),
               child: Text(
                 'Sim',
                 style: TextStyle(color: colorsClass.terciaryColor),
