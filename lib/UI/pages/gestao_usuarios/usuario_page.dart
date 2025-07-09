@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/carregando_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
+import 'package:ordem_de_servico/src/usuario/u_model.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 import 'package:ordem_de_servico/src/usuario/u_store.dart';
 
@@ -27,9 +29,9 @@ class _UsuarioState extends State<UsuarioPage> {
   var popUp = PopUp();
   late TextEditingController nomeController;
   late TextEditingController usuarioController;
-  late TextEditingController nivelController;
   late TextEditingController senhaController;
   late TextEditingController confirmSenhaController;
+  int? nivelSelecionado;
   final UsuarioStore store = UsuarioStore(
     repositorio: UsuarioRepository(client: HttpClient()),
   );
@@ -52,10 +54,10 @@ class _UsuarioState extends State<UsuarioPage> {
       user = encontrado;
       nomeController = TextEditingController(text: user.nome);
       usuarioController = TextEditingController(text: user.usuario);
-      nivelController = TextEditingController(
-        text: user.nivel_acesso.toString(),
-      );
+      senhaController = TextEditingController();
+      confirmSenhaController = TextEditingController();
       isLoading = false;
+      nivelSelecionado = user.nivel_acesso;
     });
   }
 
@@ -63,7 +65,8 @@ class _UsuarioState extends State<UsuarioPage> {
   void dispose() {
     nomeController.dispose();
     usuarioController.dispose();
-    nivelController.dispose();
+    senhaController.dispose();
+    confirmSenhaController.dispose();
     super.dispose();
   }
 
@@ -142,7 +145,15 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        InputPadrao(controller: nivelController),
+                        ListaNiveisWidget(
+                          txt: user.nivel_acesso.toString(),
+                          onChanged: (value) {
+                            nivelSelecionado = int.tryParse(
+                              value?.split(' - ')[0] ?? '',
+                            );
+                            print('nivelSelecionado: $nivelSelecionado');
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -162,7 +173,7 @@ class _UsuarioState extends State<UsuarioPage> {
                   child: Form(
                     child: Column(
                       children: [
-                        /// NOME
+                        /// NOVA SENHA
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -171,10 +182,10 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        InputPadraoSenha(),
+                        InputPadraoSenha(controller: senhaController),
                         SizedBox(height: 20),
 
-                        /// USUARIO
+                        /// CONFIRMAR NOVA SENHA
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -183,7 +194,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        InputPadraoSenha(),
+                        InputPadraoSenha(controller: confirmSenhaController),
                       ],
                     ),
                   ),
@@ -195,10 +206,36 @@ class _UsuarioState extends State<UsuarioPage> {
                   children: [
                     ButtonPadrao(
                       txt: 'Salvar alterações',
-                      onPressed: () {
-                        popUp.PopUpAlterar(context);
+                      onPressed: () async {
+                        print('${user.usuario}, ${user.id_usuario}, ${user.nome}, ${user.nivel_acesso}, ${user.senha},');
+                        
+                        try{
+
+                          if(usuarioController.text == user.usuario && 
+                          nomeController.text == user.nome && 
+                          nivelSelecionado == user.nivel_acesso){
+                            popUp.PopUpAlert(context, 'Nenhum dado foi alterado.');
+                          }else{
+                            final confirmou = await popUp.PopUpAlterar(context);
+                            if(confirmou == true){
+                              final userAlt = UsuarioModel(
+                                id_usuario: user.id_usuario, 
+                                usuario: usuarioController.text, 
+                                nome: nomeController.text, 
+                                nivel_acesso: nivelSelecionado!, 
+                                senha: senhaController.text,
+                              );
+                              final repo = UsuarioRepository(client: HttpClient());
+                              await repo.alterarUsuario(context, userAlt, userAlt.id_usuario);
+                              Navigator.pop(context);
+                            }
+                          }
+                          
+                        } catch (e){
+                          throw Exception(e);
+                        }
                       },
-                      tam: 160,
+                      tam: 180,
                     ),
 
                     SizedBox(width: 20),
@@ -241,7 +278,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           popUp.PopUpAlert(context, e);
                         }
                       },
-                      tam: 160,
+                      tam: 180,
                     ),
                   ],
                 ),
@@ -253,7 +290,7 @@ class _UsuarioState extends State<UsuarioPage> {
                   onPressed: () {
                     popUp.PopUpCancel(context);
                   },
-                  tam: 160,
+                  tam: 180,
                 ),
               ],
             ),

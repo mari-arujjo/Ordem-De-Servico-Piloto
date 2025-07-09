@@ -152,8 +152,8 @@ class PopUp {
     );
   }
 
-  void PopUpAlterar(BuildContext context) {
-    showDialog(
+  Future<bool?> PopUpAlterar(BuildContext context) {
+    return showDialog<bool>(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -163,9 +163,7 @@ class PopUp {
           ),
           actions: [
             TextButton(
-              onPressed: () {
-                context.pop();
-              },
+              onPressed: () => Navigator.of(context).pop(false),
               child: Text(
                 'Não',
                 style: TextStyle(color: colorsClass.terciaryColor),
@@ -173,18 +171,7 @@ class PopUp {
             ),
 
             TextButton(
-              onPressed: () {
-                context.pop();
-                context.pop();
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      content: Text('Dados excluídos com sucesso.'),
-                    );
-                  },
-                );
-              },
+              onPressed: () => Navigator.of(context).pop(true),
               child: Text(
                 'Sim',
                 style: TextStyle(color: colorsClass.terciaryColor),

@@ -57,4 +57,26 @@ class UsuarioRepository implements IUsuarioRepository {
       throw Exception(e);
     }
   }
+
+  Future<UsuarioModel> alterarUsuario(BuildContext context, UsuarioModel user, int id) async {
+    final response = await client.update(
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(user.toMap()),
+    );
+    try {
+      final body = jsonDecode(response.body);
+      if (body['errors'] != null){
+        final erro = body['errors'] as Map<String, dynamic>;
+        final key = erro.keys.first;
+        final value = (erro[key] as List).first;  
+        final msg = 'Campo - $key \nMensagem - $value'; 
+        PopUp().PopUpAlert(context, msg);
+      }
+      print('Resposta do backend: $body');
+      return UsuarioModel.fromMap(body);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
 }

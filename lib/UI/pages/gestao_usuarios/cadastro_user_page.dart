@@ -30,11 +30,6 @@ class _CadastroUserState extends State<CadastroUserPage> {
   final TextEditingController senhaController = TextEditingController();
   final TextEditingController confirmSenhaController = TextEditingController();
   int? nivelSelecionado;
-  final List<String> listNivel = [
-    "1 - Administrador",
-    "2 - Moderador",
-    "3 - Padrão",
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -99,8 +94,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             ),
                           ),
                           SizedBox(height: 5),
-                          DropdownWidget(
-                            listNivel: listNivel,
+                          ListaNiveisWidget(
                             txt: 'Selecione o nível de acesso ao sistema',
                             onChanged: (value) {
                               nivelSelecionado = int.tryParse(
@@ -178,11 +172,11 @@ class _CadastroUserState extends State<CadastroUserPage> {
                         );
 
                         final repo = UsuarioRepository(client: HttpClient());
-                          await repo.cadastrarUsuario(context, user);
-                          popUp.PopUpSalvar(context);
-                          Navigator.pop(context);
+                        await repo.cadastrarUsuario(context, user);
+                        popUp.PopUpSalvar(context);
+                        Navigator.pop(context);
                       },
-                      tam: 150,
+                      tam: 180,
                     ),
 
                     SizedBox(width: 20),
@@ -192,7 +186,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                       onPressed: () {
                         popUp.PopUpCancel(context);
                       },
-                      tam: 150,
+                      tam: 180,
                     ),
                   ],
                 ),

@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 
-class DropdownWidget extends StatefulWidget {
-  final List <String> listNivel;
-  final String txt;
+class ListaNiveisWidget extends StatefulWidget {
   final ValueChanged <String?>? onChanged;
-  const DropdownWidget({
+  final dynamic txt;
+  const ListaNiveisWidget({
     super.key, 
-    required this.listNivel, 
-    required this.txt,
     this.onChanged,
+    required this.txt
   });
 
   @override
-  State<DropdownWidget> createState() => _DropdownState();
+  State<ListaNiveisWidget> createState() => _DropdownState();
 }
 
-class _DropdownState extends State<DropdownWidget> {
+class _DropdownState extends State<ListaNiveisWidget> {
   String? nivelSelecionado;
+  final List<String> listNivel = [
+    "1 - Administrador",
+    "2 - Moderador",
+    "3 - Padrão",
+  ];
+
   @override
   Widget build(BuildContext context) {
 
@@ -41,7 +45,7 @@ class _DropdownState extends State<DropdownWidget> {
             isExpanded: true,
             hint: Text(widget.txt),
 
-            items: widget.listNivel.map((String nivel){
+            items: listNivel.map((String nivel){
               return DropdownMenuItem(
                 value: nivel,
                 child: Text(nivel)

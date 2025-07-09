@@ -30,7 +30,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                 child: Text('Você ainda não está logado.', style: TextStyle(fontSize: 18)),
               ),
 
-              Image.asset("lib/assets/imgs/robo_quebrado.jpg"),
+              Image.asset("lib/assets/imgs/robo_quebrado.jpg", height: 350,),
 
               SizedBox(height: 30),
               ButtonPadrao(
