@@ -57,9 +57,51 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> alterarUsuario(BuildContext context, UsuarioModel user, int id) async {
+  Future<UsuarioModel> alterarDadosDoUsuario(BuildContext context, UsuarioModel user, int id) async {
     final response = await client.update(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(user.toMap()),
+    );
+    try {
+      final body = jsonDecode(response.body);
+      if (body['errors'] != null){
+        final erro = body['errors'] as Map<String, dynamic>;
+        final key = erro.keys.first;
+        final value = (erro[key] as List).first;  
+        final msg = 'Campo: $key \n($value)'; 
+        PopUp().PopUpAlert(context, msg);
+      }
+      return UsuarioModel.fromMap(body);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<UsuarioModel> alterarSenhaDoUsuario(BuildContext context, UsuarioModel user, int id) async {
+    final response = await client.update(
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/senha',
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(user.toMap()),
+    );
+    try {
+      final body = jsonDecode(response.body);
+      if (body['errors'] != null){
+        final erro = body['errors'] as Map<String, dynamic>;
+        final key = erro.keys.first;
+        final value = (erro[key] as List).first;  
+        final msg = 'Campo: $key \n($value)'; 
+        PopUp().PopUpAlert(context, msg);
+      }
+      return UsuarioModel.fromMap(body);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<UsuarioModel> alterarFotoDoUsuario(BuildContext context, UsuarioModel user, int id) async {
+    final response = await client.update(
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/foto',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );

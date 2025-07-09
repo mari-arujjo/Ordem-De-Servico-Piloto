@@ -227,7 +227,7 @@ class _UsuarioState extends State<UsuarioPage> {
                                 senha: senhaController.text,
                               );
                               final repo = UsuarioRepository(client: HttpClient());
-                              await repo.alterarUsuario(context, userAlt, userAlt.id_usuario);
+                              await repo.alterarDadosDoUsuario(context, userAlt, userAlt.id_usuario);
                               context.pop();
                               context.pop();
                               showDialog(

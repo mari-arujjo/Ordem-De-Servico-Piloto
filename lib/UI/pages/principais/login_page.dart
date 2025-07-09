@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_outline_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_outline_senha_widget.dart';
@@ -20,12 +19,15 @@ class _LoginState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(''),
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 70),
           child: Column(
             children: [
-              SizedBox(height: 150),
+              SizedBox(height: 100),
 
               Text(
                 'Login',
@@ -60,14 +62,6 @@ class _LoginState extends State<LoginPage> {
                         SizedBox(height: 20),
                         ButtonPadrao(txt: 'Entrar', onPressed: () {}, tam: 150),
 
-                        SizedBox(height: 20),
-                        ButtonPadrao(
-                          txt: 'Entrar sem logar',
-                          onPressed: () {
-                            context.goNamed('Home');
-                          },
-                          tam: 150,
-                        ),
                       ],
                     ),
                   ),

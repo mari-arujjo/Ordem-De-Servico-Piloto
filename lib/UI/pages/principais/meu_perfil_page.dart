@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
-//import 'package:ordem_de_servico/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
 
@@ -79,15 +77,6 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
               ),
 
               SizedBox(height: 30),
-              ButtonComIcon(
-                txt: 'Login',
-                onPressed: () {
-                  context.goNamed('Login');
-                },
-                tam: 140,
-                ico: Icon(Icons.login, color: Colors.white),
-              ),
-              SizedBox(height: 10),
               ButtonComIcon(
                 txt: 'Logout',
                 onPressed: () {
