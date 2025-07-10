@@ -9,12 +9,12 @@ class CarregandoWidget extends StatefulWidget {
 }
 
 class _CarregandoWidgetState extends State<CarregandoWidget> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
     return CircularProgressIndicator(
-      color: colorsClass.terciaryColor,
+      color: cor.terciaryColor,
     );
   }
 }

@@ -10,14 +10,14 @@ class ContainerPadrao extends StatefulWidget {
 }
 
 class _ContainerPadraoState extends State<ContainerPadrao> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: colorsClass.secondaryColor,
+        color: cor.secondaryColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: widget.child,

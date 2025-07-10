@@ -11,7 +11,7 @@ class FotoDePerfilWidget extends StatefulWidget {
 }
 
 class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
         borderRadius: BorderRadius.circular(100),
         boxShadow: [
           BoxShadow(
-            color: colorsClass.gray,
+            color: cor.gray,
             blurRadius: 10,
             offset: Offset(0, 5),
           ),

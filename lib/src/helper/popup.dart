@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
 
 class PopUp {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   void PopUpAlert(BuildContext context, Object erro) {
     showDialog(
@@ -18,10 +18,7 @@ class PopUp {
           actions: [
             TextButton(
               onPressed: () => context.pop(),
-              child: Text(
-                'Ok',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Ok', style: TextStyle(color: cor.terciaryColor)),
             ),
           ],
         );
@@ -43,10 +40,7 @@ class PopUp {
               onPressed: () {
                 context.pop();
               },
-              child: Text(
-                'Não',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Não', style: TextStyle(color: cor.terciaryColor)),
             ),
             TextButton(
               onPressed: () {
@@ -54,10 +48,7 @@ class PopUp {
                 context.pop();
                 context.pop();
               },
-              child: Text(
-                'Sim',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Sim', style: TextStyle(color: cor.terciaryColor)),
             ),
           ],
         );
@@ -77,19 +68,13 @@ class PopUp {
               onPressed: () {
                 context.pop();
               },
-              child: Text(
-                'Não',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Não', style: TextStyle(color: cor.terciaryColor)),
             ),
             TextButton(
               onPressed: () {
                 exit(0);
               },
-              child: Text(
-                'Sim',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Sim', style: TextStyle(color: cor.terciaryColor)),
             ),
           ],
         );
@@ -110,10 +95,7 @@ class PopUp {
                 context.pop();
                 context.pop();
               },
-              child: Text(
-                'Ok',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Ok', style: TextStyle(color: cor.terciaryColor)),
             ),
           ],
         );
@@ -132,19 +114,12 @@ class PopUp {
           ),
           actions: [
             TextButton(
-              onPressed:
-                  () => context.pop(false), // Não confirmou
-              child: Text(
-                'Não',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              onPressed: () => context.pop(false), // Não confirmou
+              child: Text('Não', style: TextStyle(color: cor.terciaryColor)),
             ),
             TextButton(
               onPressed: () => context.pop(true), // Confirmou
-              child: Text(
-                'Sim',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Sim', style: TextStyle(color: cor.terciaryColor)),
             ),
           ],
         );
@@ -164,18 +139,12 @@ class PopUp {
           actions: [
             TextButton(
               onPressed: () => context.pop(false),
-              child: Text(
-                'Não',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Não', style: TextStyle(color: cor.terciaryColor)),
             ),
 
             TextButton(
               onPressed: () => context.pop(true),
-              child: Text(
-                'Sim',
-                style: TextStyle(color: colorsClass.terciaryColor),
-              ),
+              child: Text('Sim', style: TextStyle(color: cor.terciaryColor)),
             ),
           ],
         );

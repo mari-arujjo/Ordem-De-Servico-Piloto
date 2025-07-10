@@ -1,5 +1,4 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
@@ -9,6 +8,7 @@ import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
+import 'package:ordem_de_servico/assets/color/colors.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
@@ -24,6 +24,7 @@ class UsuarioPage extends StatefulWidget {
 }
 
 class _UsuarioState extends State<UsuarioPage> {
+  var cor = ColorsClass();
   var user;
   bool isLoading = true;
   var popUp = PopUp();
@@ -73,21 +74,19 @@ class _UsuarioState extends State<UsuarioPage> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
-      return const Scaffold(
-        body: Center(
-          child: CarregandoWidget()
-        )
-      );
+      return const Scaffold(body: Center(child: CarregandoWidget()));
     }
 
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
         if (!didPop) {
-          if(usuarioController.text != user.usuario || nomeController.text != user.nome || nivelSelecionado != user.nivel_acesso || senhaController.text != ""){
+          if (usuarioController.text != user.usuario ||
+              nomeController.text != user.nome ||
+              nivelSelecionado != user.nivel_acesso ||
+              senhaController.text != "") {
             popUp.PopUpCancel(context);
-          }
-          else{
+          } else {
             context.pop();
           }
         }
@@ -98,16 +97,14 @@ class _UsuarioState extends State<UsuarioPage> {
           title: Text('@${user.usuario}'),
           actions: [
             IconButton(
-              onPressed: (){
+              onPressed: () {
                 context.goNamed(
                   'usuarioHistorico',
-                  pathParameters: {
-                    'id': user.id_usuario.toString()
-                  }
+                  pathParameters: {'id': user.id_usuario.toString()},
                 );
                 print(user.id_usuario);
               },
-              icon: Icon(Icons.history)
+              icon: Icon(Icons.history),
             ),
           ],
         ),
@@ -118,18 +115,23 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    FotoDePerfilWidget(img: user.foto_url),
-                    IconButton(
-                      onPressed: (){}, 
-                      icon: Icon(Icons.edit)
-                    ),
-                  ],
+                FotoDePerfilWidget(img: user.foto_url),
+
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.edit, color: Colors.white), // cor do ícone
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.resolveWith<Color>((
+                      states,
+                    ) {
+                      if (states.contains(WidgetState.pressed)) {
+                        return cor.terciaryColor;
+                      }
+                      return cor.primaryColor;
+                    }),
+                  ),
                 ),
-                
+
                 SizedBox(height: 10),
 
                 Row(
@@ -237,32 +239,48 @@ class _UsuarioState extends State<UsuarioPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonPadrao(
-                      txt: 'Salvar alterações',
+                      txt: 'Salvar',
                       onPressed: () async {
-                        print('USUARIO ${user.usuario},\nID ${user.id_usuario},\nNOME ${user.nome},\nNIVEL ${user.nivel_acesso},\nSENHA ${user.senha},\nFOTO ${user.foto_url}');
-                        
-                        try{
+                        print(
+                          'USUARIO ${user.usuario},\nID ${user.id_usuario},\nNOME ${user.nome},\nNIVEL ${user.nivel_acesso},\nSENHA ${user.senha},\nFOTO ${user.foto_url}',
+                        );
 
-                          if(usuarioController.text == user.usuario && nomeController.text == user.nome && nivelSelecionado == user.nivel_acesso && senhaController.text == ""){
-                            popUp.PopUpAlert(context, 'Nenhum dado foi alterado.');
-                          }
-                          else{
+                        try {
+                          if (usuarioController.text == user.usuario &&
+                              nomeController.text == user.nome &&
+                              nivelSelecionado == user.nivel_acesso &&
+                              senhaController.text == "") {
+                            popUp.PopUpAlert(
+                              context,
+                              'Nenhum dado foi alterado.',
+                            );
+                          } else {
                             final confirmou = await popUp.PopUpAlterar(context);
-                            if(confirmou == true){
+                            if (confirmou == true) {
                               final userAlt = UsuarioModel(
-                                id_usuario: user.id_usuario, 
-                                usuario: usuarioController.text, 
-                                nome: nomeController.text, 
-                                nivel_acesso: nivelSelecionado!, 
+                                id_usuario: user.id_usuario,
+                                usuario: usuarioController.text,
+                                nome: nomeController.text,
+                                nivel_acesso: nivelSelecionado!,
                                 senha: senhaController.text,
                               );
 
-                              final repo = UsuarioRepository(client: HttpClient());
-                              await repo.alterarDadosDoUsuario(context, userAlt, userAlt.id_usuario);
-                              await repo.alterarSenhaDoUsuario(context, userAlt, userAlt.id_usuario);
+                              final repo = UsuarioRepository(
+                                client: HttpClient(),
+                              );
+                              await repo.alterarDadosDoUsuario(
+                                context,
+                                userAlt,
+                                userAlt.id_usuario,
+                              );
+                              await repo.alterarSenhaDoUsuario(
+                                context,
+                                userAlt,
+                                userAlt.id_usuario,
+                              );
                               context.pop();
                               context.pop();
-                              
+
                               showDialog(
                                 context: context,
                                 builder: (context) {
@@ -282,12 +300,11 @@ class _UsuarioState extends State<UsuarioPage> {
                               );
                             }
                           }
-                          
-                        } catch (e){
+                        } catch (e) {
                           throw Exception(e);
                         }
                       },
-                      tam: 180,
+                      tam: 150,
                     ),
 
                     SizedBox(width: 20),
@@ -316,7 +333,7 @@ class _UsuarioState extends State<UsuarioPage> {
                                   actions: [
                                     TextButton(
                                       onPressed:
-                                        () => Navigator.of(context).pop(),
+                                          () => Navigator.of(context).pop(),
                                       child: const Text('Ok'),
                                     ),
                                   ],
@@ -328,7 +345,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           popUp.PopUpAlert(context, e);
                         }
                       },
-                      tam: 180,
+                      tam: 150,
                     ),
                   ],
                 ),
@@ -338,14 +355,16 @@ class _UsuarioState extends State<UsuarioPage> {
                 ButtonPadrao(
                   txt: 'Cancelar',
                   onPressed: () {
-                    if(usuarioController.text != user.usuario || nomeController.text != user.nome || nivelSelecionado != user.nivel_acesso || senhaController.text != ""){
+                    if (usuarioController.text != user.usuario ||
+                        nomeController.text != user.nome ||
+                        nivelSelecionado != user.nivel_acesso ||
+                        senhaController.text != "") {
                       popUp.PopUpCancel(context);
-                    }
-                    else{
+                    } else {
                       context.pop();
                     }
                   },
-                  tam: 180,
+                  tam: 150,
                 ),
               ],
             ),

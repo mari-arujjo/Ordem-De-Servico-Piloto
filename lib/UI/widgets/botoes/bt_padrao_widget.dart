@@ -19,7 +19,7 @@ class ButtonPadrao extends StatefulWidget {
 
 class _ButtonPadraoState extends State<ButtonPadrao> {
   bool pressionado = false;
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +34,12 @@ class _ButtonPadraoState extends State<ButtonPadrao> {
           shadowColor: const WidgetStatePropertyAll(Colors.black),
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (states.contains(WidgetState.pressed)) {
-              return colorsClass.terciaryColor;
+              return cor.terciaryColor;
             }
-            return colorsClass.primaryColor;
+            return cor.primaryColor;
           }),
           
-          overlayColor: WidgetStateProperty.all(colorsClass.quarternaryColor),
+          overlayColor: WidgetStateProperty.all(cor.quarternaryColor),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),

@@ -16,14 +16,14 @@ class InputOutline extends StatefulWidget {
 }
 
 class _Input2State extends State<InputOutline> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      cursorColor: colorsClass.terciaryColor,
+      cursorColor: cor.terciaryColor,
       decoration: InputDecoration(
         labelText: widget.txt,
-        labelStyle: TextStyle(color: colorsClass.terciaryColor),
+        labelStyle: TextStyle(color: cor.terciaryColor),
         prefixIcon: widget.ico,
         filled: true,
         fillColor: Colors.transparent,
@@ -33,7 +33,7 @@ class _Input2State extends State<InputOutline> {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: colorsClass.terciaryColor
+            color: cor.terciaryColor
           )
         ),
       ),

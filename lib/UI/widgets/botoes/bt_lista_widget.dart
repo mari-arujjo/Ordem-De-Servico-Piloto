@@ -13,7 +13,7 @@ class ButtonLista extends StatefulWidget {
 
 class _ButtonListaState extends State<ButtonLista> {
   bool pressionado = false;
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +27,11 @@ class _ButtonListaState extends State<ButtonLista> {
           shadowColor: const WidgetStatePropertyAll(Colors.black),
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (states.contains(WidgetState.pressed)) {
-              return colorsClass.terciaryColor;
+              return cor.terciaryColor;
             }
             return Colors.white;
           }),
-          overlayColor: WidgetStateProperty.all(colorsClass.quarternaryColor),
+          overlayColor: WidgetStateProperty.all(cor.quarternaryColor),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
@@ -43,11 +43,11 @@ class _ButtonListaState extends State<ButtonLista> {
               child: Text(
                 widget.txt,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 16, color: colorsClass.primaryColor),
+                style: TextStyle(fontSize: 16, color: cor.primaryColor),
               ),
             ),
 
-            Icon(Icons.edit, color: colorsClass.primaryColor),
+            Icon(Icons.edit, color: cor.primaryColor),
           ],
         ),
       ),

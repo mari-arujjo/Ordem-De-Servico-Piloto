@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_txt_widget.dart';
 
 class SemPerfilPage extends StatefulWidget {
   const SemPerfilPage({super.key});
@@ -27,13 +27,16 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
 
               Align(
                 alignment: Alignment.center,
-                child: Text('Você ainda não está logado.', style: TextStyle(fontSize: 18)),
+                child: Text(
+                  'Você ainda não está logado.',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
 
-              Image.asset("lib/assets/imgs/robo_quebrado.jpg", height: 350,),
+              Image.asset("lib/assets/imgs/robo_quebrado.jpg", height: 350),
 
               SizedBox(height: 30),
-              ButtonComIcon(
+              ButtonComIconTexto(
                 txt: 'Fazer login',
                 onPressed: () {
                   context.push(context.namedLocation("Login"));
@@ -42,7 +45,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                 ico: Icon(Icons.login, color: Colors.white),
               ),
             ],
-          ), 
+          ),
         ),
       ),
     );

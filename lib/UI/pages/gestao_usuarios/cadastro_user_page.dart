@@ -19,7 +19,7 @@ class CadastroUserPage extends StatefulWidget {
 }
 
 class _CadastroUserState extends State<CadastroUserPage> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
   var popUp = PopUp();
   bool isChecked = false;
   bool obscurePassword = true;
@@ -54,7 +54,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                   child: Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: colorsClass.secondaryColor,
+                      color: cor.secondaryColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
 
@@ -138,7 +138,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ButtonPadrao(
-                      txt: 'Salvar dados',
+                      txt: 'Salvar',
                       onPressed: () async {
                         if (nomeController.text.isEmpty |
                             usuarioController.text.isEmpty |
@@ -176,7 +176,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                         popUp.PopUpSalvar(context);
                         Navigator.pop(context);
                       },
-                      tam: 180,
+                      tam: 150,
                     ),
 
                     SizedBox(width: 20),
@@ -186,7 +186,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                       onPressed: () {
                         popUp.PopUpCancel(context);
                       },
-                      tam: 180,
+                      tam: 150,
                     ),
                   ],
                 ),

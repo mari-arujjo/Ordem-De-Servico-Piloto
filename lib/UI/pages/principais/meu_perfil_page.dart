@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_txt_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
@@ -77,12 +77,12 @@ class _MeuPerfilState extends State<MeuPerfilPage> {
               ),
 
               SizedBox(height: 30),
-              ButtonComIcon(
+              ButtonComIconTexto(
                 txt: 'Logout',
                 onPressed: () {
                   popUpSair.PopUpSair(context);
                 },
-                tam: 140, 
+                tam: 140,
                 ico: Icon(Icons.logout, color: Colors.white),
               ),
             ],

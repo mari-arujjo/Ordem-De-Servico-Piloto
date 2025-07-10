@@ -14,14 +14,12 @@ class LoginPage extends StatefulWidget {
 class _LoginState extends State<LoginPage> {
   bool isChecked = false;
   bool obscurePassword = true;
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
+      appBar: AppBar(title: const Text('')),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 70),
@@ -45,10 +43,7 @@ class _LoginState extends State<LoginPage> {
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: colorsClass.primaryColor,
-                      width: 0.7,
-                    ),
+                    border: Border.all(color: cor.primaryColor, width: 0.7),
                   ),
                   child: Form(
                     child: Column(
@@ -61,7 +56,6 @@ class _LoginState extends State<LoginPage> {
 
                         SizedBox(height: 20),
                         ButtonPadrao(txt: 'Entrar', onPressed: () {}, tam: 150),
-
                       ],
                     ),
                   ),

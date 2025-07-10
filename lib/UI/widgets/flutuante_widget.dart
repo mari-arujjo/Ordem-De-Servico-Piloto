@@ -10,16 +10,16 @@ class BotaoFlutuanteWidget extends StatefulWidget {
 }
 
 class _FlutuanteState extends State<BotaoFlutuanteWidget> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
   bool pressed = false;
 
   @override
   Widget build(BuildContext context) {
     Color corFundo;
     if (pressed == false) {
-      corFundo = colorsClass.primaryColor;
+      corFundo = cor.primaryColor;
     } else {
-      corFundo = colorsClass.terciaryColor;
+      corFundo = cor.terciaryColor;
     }
 
     return FloatingActionButton.extended(

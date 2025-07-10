@@ -12,13 +12,13 @@ class InputPadrao extends StatefulWidget {
 }
 
 class _Input1State extends State<InputPadrao> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      cursorColor: colorsClass.terciaryColor,
+      cursorColor: cor.terciaryColor,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
@@ -28,7 +28,7 @@ class _Input1State extends State<InputPadrao> {
         focusedBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: colorsClass.terciaryColor,
+            color: cor.terciaryColor,
           )
         )
       ),

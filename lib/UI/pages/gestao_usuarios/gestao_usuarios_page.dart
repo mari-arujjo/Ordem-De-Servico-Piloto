@@ -17,7 +17,7 @@ class GestaoUsuariosPage extends StatefulWidget {
 }
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
   final ScrollController scrollController = ScrollController();
 
   final UsuarioStore store = UsuarioStore(
@@ -30,7 +30,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
     store.getUsuarios();
   }
 
-   @override
+  @override
   void dispose() {
     super.dispose();
     scrollController.dispose();
@@ -78,23 +78,20 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                   left: 20,
                   right: 20,
                 ),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 20),
-                    padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
-                    decoration: BoxDecoration(
-                      color: colorsClass.secondaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Nenhum registro encontrado.',
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 18,
-                        ),
-                      ),
+                child: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
+                  decoration: BoxDecoration(
+                    color: cor.secondaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Nenhum registro encontrado.',
+                      style: const TextStyle(color: Colors.black, fontSize: 18),
                     ),
                   ),
+                ),
               ),
             );
           } else {
@@ -106,50 +103,50 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                   left: 20,
                   right: 20,
                 ),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 20),
-                    padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
-                    decoration: BoxDecoration(
-                      color: colorsClass.secondaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                child: Container(
+                  margin: EdgeInsets.only(top: 20),
+                  padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
+                  decoration: BoxDecoration(
+                    color: cor.secondaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
 
-                    child: Scrollbar(
+                  child: Scrollbar(
+                    controller: scrollController,
+                    thumbVisibility: true,
+                    radius: Radius.circular(10),
+
+                    child: ListView.separated(
                       controller: scrollController,
-                      thumbVisibility: true,
-                      radius: Radius.circular(10),
-
-                      child: ListView.separated(
-                        controller: scrollController,
-                        padding: EdgeInsets.only(
-                          right: 15,
-                          left: 15,
-                          top: 10,
-                          bottom: 12,
-                        ),
-
-                        itemCount: store.state.value.length,
-                        separatorBuilder: (_, __) => SizedBox(height: 12),
-                        itemBuilder: (_, index) {
-                          final user = store.state.value[index];
-
-                          return ButtonLista(
-                            txt:
-                                '${user.id_usuario} - @${user.usuario} - ${user.nome}',
-                            onPressed: () {
-                              context.goNamed(
-                                'usuarioDetalhe',
-                                pathParameters: {
-                                  'id': user.id_usuario.toString(),
-                                },
-                              );
-                            },
-                          );
-                        },
+                      padding: EdgeInsets.only(
+                        right: 15,
+                        left: 15,
+                        top: 10,
+                        bottom: 12,
                       ),
+
+                      itemCount: store.state.value.length,
+                      separatorBuilder: (_, __) => SizedBox(height: 12),
+                      itemBuilder: (_, index) {
+                        final user = store.state.value[index];
+
+                        return ButtonLista(
+                          txt:
+                              '${user.id_usuario} - @${user.usuario} - ${user.nome}',
+                          onPressed: () {
+                            context.goNamed(
+                              'usuarioDetalhe',
+                              pathParameters: {
+                                'id': user.id_usuario.toString(),
+                              },
+                            );
+                          },
+                        );
+                      },
                     ),
                   ),
                 ),
+              ),
             );
           } //else
         },

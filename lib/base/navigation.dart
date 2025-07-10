@@ -14,7 +14,7 @@ class NavigationBarWidget extends StatefulWidget {
 
 class _NavigationBarState extends State<NavigationBarWidget> {
   int _selectedIndex = 0;
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
   var popUpSair = PopUp();
 
   void _goToBranch(int index) {
@@ -32,8 +32,8 @@ class _NavigationBarState extends State<NavigationBarWidget> {
         children: [
           Container(height: 2, color: Colors.white),
           NavigationBar(
-            backgroundColor: colorsClass.secondaryColor,
-            indicatorColor: colorsClass.terciaryColor,
+            backgroundColor: cor.secondaryColor,
+            indicatorColor: cor.terciaryColor,
             selectedIndex: _selectedIndex,
             destinations: const <Widget>[
               NavigationDestination(icon: Icon(Icons.home), label: 'Home'),

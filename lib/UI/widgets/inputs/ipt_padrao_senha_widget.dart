@@ -13,7 +13,7 @@ class InputPadraoSenha extends StatefulWidget {
 }
 
 class _Input3State extends State<InputPadraoSenha> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
   bool isObscured = true;
 
   @override
@@ -21,10 +21,10 @@ class _Input3State extends State<InputPadraoSenha> {
     return TextFormField(
       controller: widget.controller,
       obscureText: isObscured,
-      cursorColor: colorsClass.terciaryColor,
+      cursorColor: cor.terciaryColor,
 
       decoration: InputDecoration(
-        labelStyle: TextStyle(color: colorsClass.terciaryColor),
+        labelStyle: TextStyle(color: cor.terciaryColor),
 
         suffixIcon: IconButton(
           icon: Icon(
@@ -45,7 +45,7 @@ class _Input3State extends State<InputPadraoSenha> {
         focusedBorder: UnderlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: colorsClass.terciaryColor,
+            color: cor.terciaryColor,
           )
         )
       ),

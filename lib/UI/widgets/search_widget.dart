@@ -14,7 +14,7 @@ class SearchBarWidget extends StatefulWidget {
 
 
 class _SearchBarState extends State<SearchBarWidget> {
-  var colorsClass = ColorsClass();
+  var cor = ColorsClass();
   final TextEditingController controller = TextEditingController();
   void _onTextChanged(String text){
     widget.onSearch(text);
@@ -32,7 +32,7 @@ class _SearchBarState extends State<SearchBarWidget> {
         minHeight: 48,  // Altura mínima
         maxHeight: 56,  // Altura máxima
       ),
-      backgroundColor: WidgetStatePropertyAll(colorsClass.secondaryColor),
+      backgroundColor: WidgetStatePropertyAll(cor.secondaryColor),
       leading: const Icon(Icons.search),
       hintText: 'Pesquisar',
       elevation: const WidgetStatePropertyAll(1),

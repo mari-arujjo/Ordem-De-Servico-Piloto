@@ -5,7 +5,7 @@ import 'package:ordem_de_servico/UI/pages/gestao_usuarios/cadastro_user_page.dar
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/gestao_usuarios_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/usuario_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/home_page.dart';
-import 'package:ordem_de_servico/UI/pages/principais/log_page.dart';
+import 'package:ordem_de_servico/UI/pages/principais/historico_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/login_page.dart';
 import 'package:ordem_de_servico/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/UI/pages/ordem_os/ordem_os_page.dart';
@@ -13,35 +13,35 @@ import 'package:ordem_de_servico/UI/pages/principais/sem_perfil_page.dart';
 import 'package:ordem_de_servico/src/usuario/endpoins.dart';
 import 'package:ordem_de_servico/base/navigation.dart';
 
-class AppNavigation{
+class AppNavigation {
   AppNavigation._();
   static String initR = '/home';
 
-/// KEYS DE NAVEGAÇÃO
+  /// KEYS DE NAVEGAÇÃO
   /// navegação global raiz do app, serve para navegar em telas fora da estrutura do shell, como:
   /// tela de login, splash screen e pags que nao fazem parte da navegação por abas
-  static final _rootNavigatorKey = GlobalKey<NavigatorState>(); 
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
   /// navegadores independentes, usados por cada StatefulShellBranch.
   /// mantém pilhas de navegação separadas
-  static final _rootNavigatorHome = GlobalKey<NavigatorState>(debugLabel: 'shellHome');
-  static final _rootNavigatorPerfil = GlobalKey<NavigatorState>(debugLabel: 'shellPerfil');
+  static final _rootNavigatorHome = GlobalKey<NavigatorState>(
+    debugLabel: 'shellHome',
+  );
+  static final _rootNavigatorPerfil = GlobalKey<NavigatorState>(
+    debugLabel: 'shellPerfil',
+  );
 
-
-  static final GoRouter rotas = 
-  GoRouter(
+  static final GoRouter rotas = GoRouter(
     debugLogDiagnostics: true,
     initialLocation: initR,
     navigatorKey: _rootNavigatorKey,
     routes: <RouteBase>[
-
-
       ///MainNavigation route
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {
-          return  NavigationBarWidget(navigationShell: navigationShell,);
+          return NavigationBarWidget(navigationShell: navigationShell);
         },
-        
+
         branches: <StatefulShellBranch>[
           /// Branch -> HOME
           StatefulShellBranch(
@@ -50,69 +50,56 @@ class AppNavigation{
               GoRoute(
                 path: '/home',
                 name: 'Home',
-                builder: (context, state) { 
-                  return HomePage(
-                    key: state.pageKey,
-                  );
+                builder: (context, state) {
+                  return HomePage(key: state.pageKey);
                 },
                 routes: [
                   GoRoute(
                     path: '/atendimento',
                     name: 'atendimento',
-                    builder: (context, state) { 
-                      return AtendimentoPage(
-                        key: state.pageKey,
-                      );
-                    }
+                    builder: (context, state) {
+                      return AtendimentoPage(key: state.pageKey);
+                    },
                   ),
 
                   GoRoute(
                     path: '/manutencao',
                     name: 'manutencao',
-                    builder: (context, state) { 
-                      return ManutencaoPage(
-                        key: state.pageKey,
-                      );
-                    }
+                    builder: (context, state) {
+                      return ManutencaoPage(key: state.pageKey);
+                    },
                   ),
 
                   GoRoute(
                     path: '/ordemOS',
                     name: 'ordemOS',
-                    builder: (context, state) { 
-                      return OrdemOsPage(
-                        key: state.pageKey,
-                      );
-                    }
+                    builder: (context, state) {
+                      return OrdemOsPage(key: state.pageKey);
+                    },
                   ),
 
                   GoRoute(
                     path: '/gestaoUsuarios',
                     name: 'gestaoUsuarios',
-                     builder: (context, state) { 
-                      return GestaoUsuariosPage(
-                        key: state.pageKey
-                      );
+                    builder: (context, state) {
+                      return GestaoUsuariosPage(key: state.pageKey);
                     },
                     routes: [
                       GoRoute(
                         path: '/usuario/:id',
                         name: 'usuarioDetalhe',
-                        builder: (context, state) { 
+                        builder: (context, state) {
                           final id = int.parse(state.pathParameters['id']!);
-                          return UsuarioPage(
-                            key: state.pageKey, 
-                            idUsuario: id,
-                          );
+                          return UsuarioPage(key: state.pageKey, idUsuario: id);
                         },
                         routes: [
                           GoRoute(
                             path: 'historico',
                             name: 'usuarioHistorico',
-                            builder: (context, state) { 
+                            builder: (context, state) {
                               final id = int.parse(state.pathParameters['id']!);
-                              return LogPage(
-                                key: state.pageKey, 
+                              return HistoricoPage(
+                                key: state.pageKey,
                                 idUsuario: id,
                               );
                             },
@@ -122,28 +109,23 @@ class AppNavigation{
                       GoRoute(
                         path: '/cadastroUsuario',
                         name: 'cadastroUsuario',
-                        builder: (context, state) { 
-                          return CadastroUserPage(
-                            key: state.pageKey,
-                          );
+                        builder: (context, state) {
+                          return CadastroUserPage(key: state.pageKey);
                         },
                       ),
-                    ]
+                    ],
                   ),
 
                   GoRoute(
                     path: '/endpoints',
                     name: 'EndPoints',
-                    builder: (context, state) { 
-                      return EndPointsPage(
-                        key: state.pageKey,
-                      );
-                    }
+                    builder: (context, state) {
+                      return EndPointsPage(key: state.pageKey);
+                    },
                   ),
-
                 ],
               ),
-            ]
+            ],
           ),
 
           /// Branch -> PERFIL
@@ -153,15 +135,12 @@ class AppNavigation{
               GoRoute(
                 path: '/perfil',
                 name: 'Perfil',
-                builder: (context, state) { 
-                  return SemPerfilPage(
-                    key: state.pageKey,
-                  );
+                builder: (context, state) {
+                  return SemPerfilPage(key: state.pageKey);
                 },
               ),
-            ]
+            ],
           ),
-
         ],
       ),
 
@@ -171,13 +150,9 @@ class AppNavigation{
         name: 'Login',
         parentNavigatorKey: _rootNavigatorKey,
         builder: (context, state) {
-          return LoginPage(
-            key: state.pageKey,
-          );
+          return LoginPage(key: state.pageKey);
         },
       ),
-
-      
     ],
   );
 }
