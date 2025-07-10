@@ -24,7 +24,6 @@ class UsuarioPage extends StatefulWidget {
 }
 
 class _UsuarioState extends State<UsuarioPage> {
-  // ignore: prefer_typing_uninitialized_variables
   var user;
   bool isLoading = true;
   var popUp = PopUp();
@@ -85,12 +84,33 @@ class _UsuarioState extends State<UsuarioPage> {
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
         if (!didPop) {
-          popUp.PopUpCancel(context);
+          if(usuarioController.text != user.usuario || nomeController.text != user.nome || nivelSelecionado != user.nivel_acesso || senhaController.text != ""){
+            popUp.PopUpCancel(context);
+          }
+          else{
+            context.pop();
+          }
         }
       },
 
       child: Scaffold(
-        appBar: AppBar(title: Text('@${user.usuario}')),
+        appBar: AppBar(
+          title: Text('@${user.usuario}'),
+          actions: [
+            IconButton(
+              onPressed: (){
+                context.goNamed(
+                  'usuarioHistorico',
+                  pathParameters: {
+                    'id': user.id_usuario.toString()
+                  }
+                );
+                print(user.id_usuario);
+              },
+              icon: Icon(Icons.history)
+            ),
+          ],
+        ),
 
         body: SingleChildScrollView(
           child: Padding(
@@ -98,7 +118,18 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                FotoDePerfilWidget(img: user.foto_url),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    FotoDePerfilWidget(img: user.foto_url),
+                    IconButton(
+                      onPressed: (){}, 
+                      icon: Icon(Icons.edit)
+                    ),
+                  ],
+                ),
+                
                 SizedBox(height: 10),
 
                 Row(
@@ -208,15 +239,14 @@ class _UsuarioState extends State<UsuarioPage> {
                     ButtonPadrao(
                       txt: 'Salvar alterações',
                       onPressed: () async {
-                        print('${user.usuario}, ${user.id_usuario}, ${user.nome}, ${user.nivel_acesso}, ${user.senha},');
+                        print('USUARIO ${user.usuario},\nID ${user.id_usuario},\nNOME ${user.nome},\nNIVEL ${user.nivel_acesso},\nSENHA ${user.senha},\nFOTO ${user.foto_url}');
                         
                         try{
 
-                          if(usuarioController.text == user.usuario && 
-                          nomeController.text == user.nome && 
-                          nivelSelecionado == user.nivel_acesso){
+                          if(usuarioController.text == user.usuario && nomeController.text == user.nome && nivelSelecionado == user.nivel_acesso && senhaController.text == ""){
                             popUp.PopUpAlert(context, 'Nenhum dado foi alterado.');
-                          }else{
+                          }
+                          else{
                             final confirmou = await popUp.PopUpAlterar(context);
                             if(confirmou == true){
                               final userAlt = UsuarioModel(
@@ -226,10 +256,13 @@ class _UsuarioState extends State<UsuarioPage> {
                                 nivel_acesso: nivelSelecionado!, 
                                 senha: senhaController.text,
                               );
+
                               final repo = UsuarioRepository(client: HttpClient());
                               await repo.alterarDadosDoUsuario(context, userAlt, userAlt.id_usuario);
+                              await repo.alterarSenhaDoUsuario(context, userAlt, userAlt.id_usuario);
                               context.pop();
                               context.pop();
+                              
                               showDialog(
                                 context: context,
                                 builder: (context) {
@@ -283,7 +316,7 @@ class _UsuarioState extends State<UsuarioPage> {
                                   actions: [
                                     TextButton(
                                       onPressed:
-                                          () => Navigator.of(context).pop(),
+                                        () => Navigator.of(context).pop(),
                                       child: const Text('Ok'),
                                     ),
                                   ],
@@ -305,7 +338,12 @@ class _UsuarioState extends State<UsuarioPage> {
                 ButtonPadrao(
                   txt: 'Cancelar',
                   onPressed: () {
-                    popUp.PopUpCancel(context);
+                    if(usuarioController.text != user.usuario || nomeController.text != user.nome || nivelSelecionado != user.nivel_acesso || senhaController.text != ""){
+                      popUp.PopUpCancel(context);
+                    }
+                    else{
+                      context.pop();
+                    }
                   },
                   tam: 180,
                 ),

@@ -5,6 +5,7 @@ import 'package:ordem_de_servico/UI/pages/gestao_usuarios/cadastro_user_page.dar
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/gestao_usuarios_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/usuario_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/home_page.dart';
+import 'package:ordem_de_servico/UI/pages/principais/log_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/login_page.dart';
 import 'package:ordem_de_servico/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/UI/pages/ordem_os/ordem_os_page.dart';
@@ -104,6 +105,19 @@ class AppNavigation{
                             idUsuario: id,
                           );
                         },
+                        routes: [
+                          GoRoute(
+                            path: 'historico',
+                            name: 'usuarioHistorico',
+                            builder: (context, state) { 
+                              final id = int.parse(state.pathParameters['id']!);
+                              return LogPage(
+                                key: state.pageKey, 
+                                idUsuario: id,
+                              );
+                            },
+                          ),
+                        ],
                       ),
                       GoRoute(
                         path: '/cadastroUsuario',
