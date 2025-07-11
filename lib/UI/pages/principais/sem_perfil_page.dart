@@ -18,8 +18,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
       appBar: AppBar(title: const Text('Meu Perfil')),
 
       body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(30),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               //FotoDePerfilWidget(img: 'lib/assets/imgs/eu.png'),
@@ -33,7 +32,11 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                 ),
               ),
 
-              Image.asset("lib/assets/imgs/robo_quebrado.jpg", height: 350),
+              Image.asset(
+                "lib/assets/imgs/robo_quebrado.jpg",
+                height: 350,
+                width: 350,
+              ),
 
               SizedBox(height: 30),
               ButtonComIconTexto(
@@ -44,6 +47,7 @@ class _SemPerfilPageState extends State<SemPerfilPage> {
                 tam: 190,
                 ico: Icon(Icons.login, color: Colors.white),
               ),
+              SizedBox(height: 30),
             ],
           ),
         ),

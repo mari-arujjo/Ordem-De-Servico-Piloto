@@ -16,8 +16,7 @@ class _HomeState extends State<HomePage> {
       appBar: AppBar(title: const Text('Bem vindo!')),
 
       body: Center(
-        child: Padding(
-          padding: EdgeInsets.only(top: 70),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               Image.asset(
@@ -61,7 +60,7 @@ class _HomeState extends State<HomePage> {
                 },
                 tam: 250,
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 30),
             ],
           ),
         ),

@@ -21,11 +21,7 @@ class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
         boxShadow: [
-          BoxShadow(
-            color: cor.gray,
-            blurRadius: 10,
-            offset: Offset(0, 5),
-          ),
+          BoxShadow(color: cor.gray, blurRadius: 10, offset: Offset(0, 5)),
         ],
       ),
       clipBehavior: Clip.hardEdge,

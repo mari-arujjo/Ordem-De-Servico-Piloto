@@ -115,21 +115,31 @@ class _UsuarioState extends State<UsuarioPage> {
 
             child: Column(
               children: [
-                FotoDePerfilWidget(img: user.foto_url),
+                Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    FotoDePerfilWidget(img: user.foto_url),
 
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(Icons.edit, color: Colors.white), // cor do ícone
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.resolveWith<Color>((
-                      states,
-                    ) {
-                      if (states.contains(WidgetState.pressed)) {
-                        return cor.terciaryColor;
-                      }
-                      return cor.primaryColor;
-                    }),
-                  ),
+                    IconButton(
+                      onPressed: () {
+                        popUp.PopUpAlert(context, 'a');
+                      },
+                      icon: Icon(
+                        Icons.edit,
+                        color: Colors.white,
+                      ), // cor do ícone
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                          (states) {
+                            if (states.contains(WidgetState.pressed)) {
+                              return cor.terciaryColor;
+                            }
+                            return cor.primaryColor;
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
 
                 SizedBox(height: 10),
