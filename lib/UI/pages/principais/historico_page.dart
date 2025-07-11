@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:ordem_de_servico/src/API/http_client.dart';
+import 'package:ordem_de_servico/src/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/usuario/u_store.dart';
 
 class HistoricoPage extends StatefulWidget {
   final int idUsuario;
@@ -13,156 +16,61 @@ class HistoricoPage extends StatefulWidget {
 class _HistoricoPageState extends State<HistoricoPage> {
   var cor = ColorsClass();
   final ScrollController scrollController = ScrollController();
+  final UsuarioStore store = UsuarioStore(
+    repositorio: UsuarioRepository(client: HttpClient()),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Histórico de ações')),
+      appBar: AppBar(title: Text('Histórico de alterações')),
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
         child: ContainerPadrao(
-          child: Scrollbar(
-            controller: scrollController,
-            thumbVisibility: false,
-            
-            child: SingleChildScrollView(
-              child: DataTable(
-                border: TableBorder.all(color: cor.primaryColor, width: 1),
-                //decoration: BoxDecoration(color: cor.secondaryColor),
-                columns: const [
-                  DataColumn(label: Text('ID')),
-                  DataColumn(label: Text('Usuário')),
-                  DataColumn(label: Text('Data')),
-                  DataColumn(label: Text('Ação')),
-                ],
-                rows: const [
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Data/Hora',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
+                  Expanded(
+                    child: Text(
+                      'Usuário',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
+                  Expanded(
+                    child: Text(
+                      'Campo',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                      DataCell(Text('')),
-                    ],
+                  Expanded(
+                    child: Text(
+                      'Alteração',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
                   ),
                 ],
               ),
-            ),
+              SizedBox(height: 20),
+            ],
           ),
         ),
       ),

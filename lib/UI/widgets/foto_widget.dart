@@ -1,10 +1,11 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
 
 class FotoDePerfilWidget extends StatefulWidget {
-  final String img;
+  final File? imgFile;
 
-  const FotoDePerfilWidget({super.key, required this.img});
+  const FotoDePerfilWidget({super.key, this.imgFile});
 
   @override
   State<FotoDePerfilWidget> createState() => _FotoDePerfilWidgetState();
@@ -15,17 +16,17 @@ class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 120,
-      height: 120,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        boxShadow: [
-          BoxShadow(color: cor.gray, blurRadius: 10, offset: Offset(0, 5)),
-        ],
-      ),
-      clipBehavior: Clip.hardEdge,
-      child: Image.network(widget.img, fit: BoxFit.cover),
+    return CircleAvatar(
+      radius: 65,
+      backgroundColor: cor.terciaryColor,
+      backgroundImage: widget.imgFile != null ? FileImage(widget.imgFile!) : null,
+      child: widget.imgFile == null
+          ? Icon(
+              Icons.person,
+              size: 60,
+              color: Colors.white,
+            )
+          : null,
     );
   }
 }

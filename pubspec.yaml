@@ -16,7 +16,8 @@ dependencies:
   http: ^1.4.0
   flutter_native_splash: ^2.4.6
   provider: ^6.1.5
-
+  image_picker: ^1.1.2
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

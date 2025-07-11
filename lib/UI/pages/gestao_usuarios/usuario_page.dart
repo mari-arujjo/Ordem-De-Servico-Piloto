@@ -1,6 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/carregando_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
@@ -71,6 +74,19 @@ class _UsuarioState extends State<UsuarioPage> {
     super.dispose();
   }
 
+  File? img;
+  bool mudouFoto = false;
+  final picker = ImagePicker();
+  pickImageGallery() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      setState(() {
+        img = File(pickedFile.path);
+        mudouFoto = true;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     if (isLoading) {
@@ -84,7 +100,8 @@ class _UsuarioState extends State<UsuarioPage> {
           if (usuarioController.text != user.usuario ||
               nomeController.text != user.nome ||
               nivelSelecionado != user.nivel_acesso ||
-              senhaController.text != "") {
+              senhaController.text != "" ||
+              mudouFoto == true) {
             popUp.PopUpCancel(context);
           } else {
             context.pop();
@@ -111,18 +128,18 @@ class _UsuarioState extends State<UsuarioPage> {
 
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(30),
+            padding: EdgeInsets.only(right: 30, left: 30, bottom: 30, top: 10),
 
             child: Column(
               children: [
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
-                    FotoDePerfilWidget(img: user.foto_url),
+                    FotoDePerfilWidget(imgFile: img),
 
                     IconButton(
                       onPressed: () {
-                        popUp.PopUpAlert(context, 'a');
+                        pickImageGallery();
                       },
                       icon: Icon(
                         Icons.edit,
@@ -259,7 +276,8 @@ class _UsuarioState extends State<UsuarioPage> {
                           if (usuarioController.text == user.usuario &&
                               nomeController.text == user.nome &&
                               nivelSelecionado == user.nivel_acesso &&
-                              senhaController.text == "") {
+                              senhaController.text == "" &&
+                              mudouFoto == false) {
                             popUp.PopUpAlert(
                               context,
                               'Nenhum dado foi alterado.',
@@ -368,7 +386,8 @@ class _UsuarioState extends State<UsuarioPage> {
                     if (usuarioController.text != user.usuario ||
                         nomeController.text != user.nome ||
                         nivelSelecionado != user.nivel_acesso ||
-                        senhaController.text != "") {
+                        senhaController.text != "" ||
+                        mudouFoto == true) {
                       popUp.PopUpCancel(context);
                     } else {
                       context.pop();

@@ -1,12 +1,14 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:typed_data';
+
 class UsuarioModel {
   final int id_usuario;
   final String usuario;
   final String nome;
   final int nivel_acesso;
   final String senha;
-  final String? foto_url;
+  final Uint8List? foto;
 
   UsuarioModel({
     required this.id_usuario,
@@ -14,7 +16,7 @@ class UsuarioModel {
     required this.nome,
     required this.nivel_acesso,
     required this.senha,
-    this.foto_url
+    this.foto
   });
 
   // vai retonrar um mapa que a key=string e value=dynamic(int, string, float etc)
@@ -26,7 +28,7 @@ class UsuarioModel {
       nome: map['nome'] ?? '',
       nivel_acesso: map['nivel_acesso'] ?? 3, // padrão mais seguro
       senha: map['senha'],
-      foto_url: map['foto_url'],
+      foto: map['foto'],
     );
   }
 
@@ -38,7 +40,7 @@ class UsuarioModel {
       'nome': nome,
       'nivel_acesso': nivel_acesso,
       'senha': senha,
-      'foto_url': foto_url,
+      'foto': foto,
     };
   }
 }
