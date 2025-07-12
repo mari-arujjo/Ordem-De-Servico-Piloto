@@ -13,7 +13,17 @@ class _HomeState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Bem vindo!')),
+      appBar: AppBar(
+        title: const Text('Bem vindo!'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.goNamed("configuracoes");
+            },
+            icon: Icon(Icons.settings),
+          ),
+        ],
+      ),
 
       body: Center(
         child: SingleChildScrollView(

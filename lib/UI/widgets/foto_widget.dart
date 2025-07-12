@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:provider/provider.dart';
 
 class FotoDePerfilWidget extends StatefulWidget {
   final File? imgFile;
@@ -12,21 +13,19 @@ class FotoDePerfilWidget extends StatefulWidget {
 }
 
 class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
-  var cor = ColorsClass();
-
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     return CircleAvatar(
       radius: 65,
-      backgroundColor: cor.terciaryColor,
-      backgroundImage: widget.imgFile != null ? FileImage(widget.imgFile!) : null,
-      child: widget.imgFile == null
-          ? Icon(
-              Icons.person,
-              size: 60,
-              color: Colors.white,
-            )
-          : null,
+      backgroundColor: cor.terciaria,
+      backgroundImage:
+          widget.imgFile != null ? FileImage(widget.imgFile!) : null,
+      child:
+          widget.imgFile == null
+              ? Icon(Icons.person, size: 60, color: Colors.white)
+              : null,
     );
   }
 }

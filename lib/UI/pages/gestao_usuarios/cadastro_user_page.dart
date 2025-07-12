@@ -10,6 +10,7 @@ import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
+import 'package:provider/provider.dart';
 
 class CadastroUserPage extends StatefulWidget {
   const CadastroUserPage({super.key});
@@ -19,7 +20,6 @@ class CadastroUserPage extends StatefulWidget {
 }
 
 class _CadastroUserState extends State<CadastroUserPage> {
-  var cor = ColorsClass();
   var popUp = PopUp();
   bool isChecked = false;
   bool obscurePassword = true;
@@ -33,6 +33,8 @@ class _CadastroUserState extends State<CadastroUserPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
@@ -54,7 +56,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                   child: Container(
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                      color: cor.secondaryColor,
+                      color: cor.secundaria,
                       borderRadius: BorderRadius.circular(10),
                     ),
 

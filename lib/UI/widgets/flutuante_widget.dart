@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:provider/provider.dart';
 
 class BotaoFlutuanteWidget extends StatefulWidget {
   const BotaoFlutuanteWidget({super.key});
@@ -10,16 +11,17 @@ class BotaoFlutuanteWidget extends StatefulWidget {
 }
 
 class _FlutuanteState extends State<BotaoFlutuanteWidget> {
-  var cor = ColorsClass();
   bool pressed = false;
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     Color corFundo;
     if (pressed == false) {
-      corFundo = cor.primaryColor;
+      corFundo = cor.primaria;
     } else {
-      corFundo = cor.terciaryColor;
+      corFundo = cor.terciaria;
     }
 
     return FloatingActionButton.extended(

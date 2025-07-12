@@ -3,7 +3,6 @@ import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_txt_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
 
 class MeuPerfilPage extends StatefulWidget {
   const MeuPerfilPage({super.key});
@@ -13,7 +12,6 @@ class MeuPerfilPage extends StatefulWidget {
 }
 
 class _MeuPerfilState extends State<MeuPerfilPage> {
-  var colorsClass = ColorsClass();
   var popUpSair = PopUp();
 
   @override

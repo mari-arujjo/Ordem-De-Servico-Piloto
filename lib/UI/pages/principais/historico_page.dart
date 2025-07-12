@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 import 'package:ordem_de_servico/src/usuario/u_store.dart';
@@ -14,7 +13,6 @@ class HistoricoPage extends StatefulWidget {
 }
 
 class _HistoricoPageState extends State<HistoricoPage> {
-  var cor = ColorsClass();
   final ScrollController scrollController = ScrollController();
   final UsuarioStore store = UsuarioStore(
     repositorio: UsuarioRepository(client: HttpClient()),

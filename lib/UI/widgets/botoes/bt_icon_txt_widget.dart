@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:provider/provider.dart';
 
 class ButtonComIconTexto extends StatefulWidget {
   final String txt;
@@ -21,10 +22,11 @@ class ButtonComIconTexto extends StatefulWidget {
 
 class _ButtonComIconTextoState extends State<ButtonComIconTexto> {
   bool pressionado = false;
-  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     return SizedBox(
       height: 50,
       width: widget.tam,
@@ -36,12 +38,12 @@ class _ButtonComIconTextoState extends State<ButtonComIconTexto> {
           shadowColor: const WidgetStatePropertyAll(Colors.black),
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (states.contains(WidgetState.pressed)) {
-              return cor.terciaryColor;
+              return cor.terciaria;
             }
-            return cor.primaryColor;
+            return cor.primaria;
           }),
 
-          overlayColor: WidgetStateProperty.all(cor.quarternaryColor),
+          overlayColor: WidgetStateProperty.all(cor.terciaria_clara),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),

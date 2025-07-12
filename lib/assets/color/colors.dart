@@ -1,17 +1,34 @@
 import 'package:flutter/material.dart';
 
-class ColorsClass {
-  late final Color primaryColor;
-  late final Color secondaryColor;
-  late final Color terciaryColor;
-  late final Color quarternaryColor;
-  late final Color gray;
+class CoresClass extends ChangeNotifier {
+  late Color primaria;
+  late Color secundaria;
+  late Color terciaria;
+  late Color terciaria_clara;
+  late Color terciaria_escuro;
+  late Color gray;
 
-  ColorsClass(){
-    primaryColor = const Color(0xFF2C2C2C);
-    secondaryColor = const Color(0xFFEDEDED);
-    terciaryColor = const Color(0xFFFF4081);
-    quarternaryColor = const Color.fromARGB(255, 240, 166, 191);
+  CoresClass() {
+    CoresPadrao();
+  }
+
+  void CoresPadrao() {
+    primaria = const Color(0xFF2C2C2C);
+    secundaria = const Color(0xFFEDEDED);
+    terciaria = const Color(0xFFFF4081);
+    terciaria_clara = const Color.fromARGB(255, 233, 130, 164);
+    terciaria_escuro = const Color.fromARGB(255, 143, 40, 74);
     gray = const Color(0xFF818181);
+  }
+
+  void AtualizaPaleta({
+    required Color terciary,
+    required Color terciary_clear,
+    required Color terciary_dark,
+  }) {
+    terciaria = terciary;
+    terciaria_clara = terciary_clear;
+    terciaria_escuro = terciary_dark;
+    notifyListeners();
   }
 }

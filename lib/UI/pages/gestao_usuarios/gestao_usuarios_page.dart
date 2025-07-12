@@ -8,6 +8,7 @@ import 'package:ordem_de_servico/UI/widgets/search_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 import 'package:ordem_de_servico/src/usuario/u_store.dart';
+import 'package:provider/provider.dart';
 
 class GestaoUsuariosPage extends StatefulWidget {
   const GestaoUsuariosPage({super.key});
@@ -17,7 +18,6 @@ class GestaoUsuariosPage extends StatefulWidget {
 }
 
 class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
-  var cor = ColorsClass();
   final ScrollController scrollController = ScrollController();
 
   final UsuarioStore store = UsuarioStore(
@@ -38,6 +38,8 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Gestão de usuários'),
@@ -82,7 +84,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                   margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
                   decoration: BoxDecoration(
-                    color: cor.secondaryColor,
+                    color: cor.secundaria,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Center(
@@ -107,7 +109,7 @@ class _GestaoUsuariosState extends State<GestaoUsuariosPage> {
                   margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
                   decoration: BoxDecoration(
-                    color: cor.secondaryColor,
+                    color: cor.secundaria,
                     borderRadius: BorderRadius.circular(10),
                   ),
 

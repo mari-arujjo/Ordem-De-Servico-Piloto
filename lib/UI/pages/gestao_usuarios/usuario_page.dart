@@ -17,6 +17,7 @@ import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 import 'package:ordem_de_servico/src/usuario/u_store.dart';
+import 'package:provider/provider.dart';
 
 class UsuarioPage extends StatefulWidget {
   final int idUsuario;
@@ -27,7 +28,6 @@ class UsuarioPage extends StatefulWidget {
 }
 
 class _UsuarioState extends State<UsuarioPage> {
-  var cor = ColorsClass();
   var user;
   bool isLoading = true;
   var popUp = PopUp();
@@ -89,6 +89,8 @@ class _UsuarioState extends State<UsuarioPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     if (isLoading) {
       return const Scaffold(body: Center(child: CarregandoWidget()));
     }
@@ -149,9 +151,9 @@ class _UsuarioState extends State<UsuarioPage> {
                         backgroundColor: WidgetStateProperty.resolveWith<Color>(
                           (states) {
                             if (states.contains(WidgetState.pressed)) {
-                              return cor.terciaryColor;
+                              return cor.terciaria;
                             }
-                            return cor.primaryColor;
+                            return cor.primaria;
                           },
                         ),
                       ),

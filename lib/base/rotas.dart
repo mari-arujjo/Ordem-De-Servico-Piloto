@@ -4,6 +4,7 @@ import 'package:ordem_de_servico/UI/pages/atendimento/atendimento_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/cadastro_user_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/gestao_usuarios_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/usuario_page.dart';
+import 'package:ordem_de_servico/UI/pages/principais/configuracoes_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/home_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/historico_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/login_page.dart';
@@ -54,6 +55,15 @@ class AppNavigation {
                   return HomePage(key: state.pageKey);
                 },
                 routes: [
+                  
+                  GoRoute(
+                    path: '/configuracoes',
+                    name: 'configuracoes',
+                    builder: (context, state) {
+                      return ConfiguracoesPage(key: state.pageKey);
+                    },
+                  ),
+
                   GoRoute(
                     path: '/atendimento',
                     name: 'atendimento',

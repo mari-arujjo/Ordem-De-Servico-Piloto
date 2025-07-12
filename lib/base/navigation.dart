@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:provider/provider.dart';
 
 class NavigationBarWidget extends StatefulWidget {
   const NavigationBarWidget({super.key, required this.navigationShell});
@@ -14,7 +15,6 @@ class NavigationBarWidget extends StatefulWidget {
 
 class _NavigationBarState extends State<NavigationBarWidget> {
   int _selectedIndex = 0;
-  var cor = ColorsClass();
   var popUpSair = PopUp();
 
   void _goToBranch(int index) {
@@ -26,14 +26,16 @@ class _NavigationBarState extends State<NavigationBarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     return Scaffold(
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(height: 2, color: Colors.white),
           NavigationBar(
-            backgroundColor: cor.secondaryColor,
-            indicatorColor: cor.terciaryColor,
+            backgroundColor: cor.secundaria,
+            indicatorColor: cor.terciaria,
             selectedIndex: _selectedIndex,
             destinations: const <Widget>[
               NavigationDestination(icon: Icon(Icons.home), label: 'Home'),

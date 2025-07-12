@@ -3,6 +3,7 @@ import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_outline_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_outline_senha_widget.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -14,10 +15,11 @@ class LoginPage extends StatefulWidget {
 class _LoginState extends State<LoginPage> {
   bool isChecked = false;
   bool obscurePassword = true;
-  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     return Scaffold(
       appBar: AppBar(title: const Text('')),
       body: SingleChildScrollView(
@@ -43,7 +45,7 @@ class _LoginState extends State<LoginPage> {
                   decoration: BoxDecoration(
                     color: Colors.transparent,
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: cor.primaryColor, width: 0.7),
+                    border: Border.all(color: cor.primaria, width: 0.7),
                   ),
                   child: Form(
                     child: Column(

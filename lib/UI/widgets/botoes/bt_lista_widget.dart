@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:provider/provider.dart';
 
 class ButtonLista extends StatefulWidget {
   final String txt;
@@ -13,10 +14,11 @@ class ButtonLista extends StatefulWidget {
 
 class _ButtonListaState extends State<ButtonLista> {
   bool pressionado = false;
-  var cor = ColorsClass();
 
   @override
   Widget build(BuildContext context) {
+    final cor = Provider.of<CoresClass>(context);
+
     return SizedBox(
       height: 50,
 
@@ -27,11 +29,11 @@ class _ButtonListaState extends State<ButtonLista> {
           shadowColor: const WidgetStatePropertyAll(Colors.black),
           backgroundColor: WidgetStateProperty.resolveWith<Color>((states) {
             if (states.contains(WidgetState.pressed)) {
-              return cor.terciaryColor;
+              return cor.terciaria;
             }
             return Colors.white;
           }),
-          overlayColor: WidgetStateProperty.all(cor.quarternaryColor),
+          overlayColor: WidgetStateProperty.all(cor.terciaria_clara),
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           ),
@@ -43,11 +45,11 @@ class _ButtonListaState extends State<ButtonLista> {
               child: Text(
                 widget.txt,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 16, color: cor.primaryColor),
+                style: TextStyle(fontSize: 16, color: cor.primaria),
               ),
             ),
 
-            Icon(Icons.edit, color: cor.primaryColor),
+            Icon(Icons.edit, color: cor.primaria),
           ],
         ),
       ),
