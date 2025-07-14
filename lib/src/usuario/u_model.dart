@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'dart:convert';
 import 'dart:typed_data';
 
 class UsuarioModel {
@@ -16,7 +17,7 @@ class UsuarioModel {
     required this.nome,
     required this.nivel_acesso,
     required this.senha,
-    this.foto
+    this.foto,
   });
 
   // vai retonrar um mapa que a key=string e value=dynamic(int, string, float etc)
@@ -27,8 +28,10 @@ class UsuarioModel {
       usuario: map['usuario'] ?? '',
       nome: map['nome'] ?? '',
       nivel_acesso: map['nivel_acesso'] ?? 3, // padrão mais seguro
-      senha: map['senha'],
-      foto: map['foto'],
+      senha: map['senha'] is String ? map['senha'] : '',
+      foto: map['foto'] != null && map['foto'] is String
+              ? base64Decode(map['foto'])
+              : null,
     );
   }
 
@@ -40,7 +43,8 @@ class UsuarioModel {
       'nome': nome,
       'nivel_acesso': nivel_acesso,
       'senha': senha,
-      'foto': foto,
+      'foto': foto != null ? base64Encode(foto!) : null,
+
     };
   }
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
 
 class ButtonCores extends StatefulWidget {
   final Color corPrincipal;
@@ -19,7 +18,6 @@ class ButtonCores extends StatefulWidget {
 }
 
 class _ButtonCoresState extends State<ButtonCores> {
-  var cor = CoresClass();
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +35,10 @@ class _ButtonCoresState extends State<ButtonCores> {
           shape: WidgetStatePropertyAll(
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           ),
+          padding: WidgetStatePropertyAll(EdgeInsets.zero),
         ),
-        child: null,
+        child:
+            widget.selecionado ? Icon(Icons.check, color: Colors.white, size: 30,) : null,
       ),
     );
   }

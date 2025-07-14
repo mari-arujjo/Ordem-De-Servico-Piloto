@@ -7,9 +7,15 @@ class CoresClass extends ChangeNotifier {
   late Color terciaria_clara;
   late Color terciaria_escuro;
   late Color gray;
+  int? corSelecionada = 0; //padrão: ROSA
 
   CoresClass() {
     CoresPadrao();
+  }
+
+  void setCorSelecionada(int? index){
+    corSelecionada = index;
+    notifyListeners();
   }
 
   void CoresPadrao() {

@@ -12,12 +12,11 @@ class ConfiguracoesPage extends StatefulWidget {
 }
 
 class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
-  int corSelecionada = 0;
-  // 0-rosa, 1-azul, 2-verde, 3-vermelho, 4-roxo
-
   @override
   Widget build(BuildContext context) {
     final cor = Provider.of<CoresClass>(context);
+    int? corSelecionada = cor.corSelecionada;
+  // 0-rosa, 1-azul, 2-verde, 3-vermelho, 4-roxo
 
     return Scaffold(
       appBar: AppBar(title: Text("Configurações")),
@@ -46,7 +45,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                             corClick: Color.fromARGB(255, 163, 17, 71),
                             onPressed: () {
                               setState(() {
-                                corSelecionada = 0;
+                                cor.setCorSelecionada(0);
                               });
                               cor.AtualizaPaleta(
                                 terciary: Color(0xFFFF4081),
@@ -69,7 +68,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                             corClick: Color.fromARGB(255, 11, 46, 143),
                             onPressed: () {
                               setState(() {
-                                corSelecionada = 1;
+                                cor.setCorSelecionada(1);
                               });
                               cor.AtualizaPaleta(
                                 terciary: Color(0xFF448AFF),
@@ -92,7 +91,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                             corClick: Color.fromARGB(255, 6, 112, 31),
                             onPressed: () {
                               setState(() {
-                                corSelecionada = 2;
+                                cor.setCorSelecionada(2);
                               });
                               cor.AtualizaPaleta(
                                 terciary: Color.fromARGB(255, 6, 165, 72),
@@ -115,7 +114,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                             corClick: Color.fromARGB(255, 165, 7, 7),
                             onPressed: () {
                               setState(() {
-                                corSelecionada = 3;
+                                cor.setCorSelecionada(3);
                               });
                               cor.AtualizaPaleta(
                                 terciary: Color.fromARGB(255, 216, 17, 17),
@@ -138,7 +137,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                             corClick: Color.fromARGB(255, 84, 3, 199),
                             onPressed: () {
                               setState(() {
-                                corSelecionada = 4;
+                                cor.setCorSelecionada(4);
                               });
                               cor.AtualizaPaleta(
                                 terciary: Color(0xFF7C4DFF),

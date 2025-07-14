@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 import 'dart:io';
-
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
@@ -76,12 +76,15 @@ class _UsuarioState extends State<UsuarioPage> {
 
   File? img;
   bool mudouFoto = false;
+  Uint8List? imgBytes;
   final picker = ImagePicker();
   pickImageGallery() async {
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
+      final bytes = await pickedFile.readAsBytes();
       setState(() {
         img = File(pickedFile.path);
+        imgBytes = bytes;
         mudouFoto = true;
       });
     }
@@ -137,7 +140,7 @@ class _UsuarioState extends State<UsuarioPage> {
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
-                    FotoDePerfilWidget(imgFile: img),
+                    FotoDePerfilWidget(imgFile: img, imgBytes: imgBytes != null ? null : user.foto),
 
                     IconButton(
                       onPressed: () {
@@ -271,7 +274,7 @@ class _UsuarioState extends State<UsuarioPage> {
                       txt: 'Salvar',
                       onPressed: () async {
                         print(
-                          'USUARIO ${user.usuario},\nID ${user.id_usuario},\nNOME ${user.nome},\nNIVEL ${user.nivel_acesso},\nSENHA ${user.senha},\nFOTO ${user.foto_url}',
+                          'USUARIO ${user.usuario},\nID ${user.id_usuario},\nNOME ${user.nome},\nNIVEL ${user.nivel_acesso},\nSENHA ${user.senha},\nFOTO ${user.foto}',
                         );
 
                         try {
@@ -293,6 +296,7 @@ class _UsuarioState extends State<UsuarioPage> {
                                 nome: nomeController.text,
                                 nivel_acesso: nivelSelecionado!,
                                 senha: senhaController.text,
+                                foto: imgBytes
                               );
 
                               final repo = UsuarioRepository(
@@ -303,6 +307,13 @@ class _UsuarioState extends State<UsuarioPage> {
                                 userAlt,
                                 userAlt.id_usuario,
                               );
+                              
+                              await repo.alterarFotoDoUsuario(
+                                context, 
+                                userAlt, 
+                                userAlt.id_usuario
+                              );
+                              
                               await repo.alterarSenhaDoUsuario(
                                 context,
                                 userAlt,
@@ -320,9 +331,11 @@ class _UsuarioState extends State<UsuarioPage> {
                                     ),
                                     actions: [
                                       TextButton(
-                                        onPressed:
-                                            () => Navigator.of(context).pop(),
-                                        child: const Text('Ok'),
+                                        onPressed:() {
+                                        context.pop();
+                                        context.pop();
+                                      },
+                                        child: Text('Ok', style: TextStyle(color: cor.terciaria)),
                                       ),
                                     ],
                                   );
@@ -362,9 +375,11 @@ class _UsuarioState extends State<UsuarioPage> {
                                   ),
                                   actions: [
                                     TextButton(
-                                      onPressed:
-                                          () => Navigator.of(context).pop(),
-                                      child: const Text('Ok'),
+                                      onPressed: () {
+                                        context.pop();
+                                        context.pop();
+                                      },
+                                      child: Text('Ok', style: TextStyle(color: cor.terciaria)),
                                     ),
                                   ],
                                 );
