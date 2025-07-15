@@ -16,7 +16,7 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
   Widget build(BuildContext context) {
     final cor = Provider.of<CoresClass>(context);
     int? corSelecionada = cor.corSelecionada;
-  // 0-rosa, 1-azul, 2-verde, 3-vermelho, 4-roxo
+    // 0-rosa, 1-azul, 2-verde, 3-vermelho, 4-roxo
 
     return Scaffold(
       appBar: AppBar(title: Text("Configurações")),
