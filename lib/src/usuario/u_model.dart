@@ -29,7 +29,7 @@ class UsuarioModel {
       nome: map['nome'] ?? '',
       nivel_acesso: map['nivel_acesso'] ?? 3, // padrão mais seguro
       senha: map['senha'] is String ? map['senha'] : '',
-      foto: map['foto'] != null && map['foto'] is String
+      foto: (map['foto'] != null && map['foto'] is String && (map['foto'] as String).isNotEmpty)
               ? base64Decode(map['foto'])
               : null,
     );

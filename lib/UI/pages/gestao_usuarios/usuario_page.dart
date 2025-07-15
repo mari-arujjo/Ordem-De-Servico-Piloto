@@ -296,7 +296,7 @@ class _UsuarioState extends State<UsuarioPage> {
                                 nome: nomeController.text,
                                 nivel_acesso: nivelSelecionado!,
                                 senha: senhaController.text,
-                                foto: imgBytes
+                                foto: imgBytes ?? user.foto,
                               );
 
                               final repo = UsuarioRepository(
@@ -332,7 +332,6 @@ class _UsuarioState extends State<UsuarioPage> {
                                     actions: [
                                       TextButton(
                                         onPressed:() {
-                                        context.pop();
                                         context.pop();
                                       },
                                         child: Text('Ok', style: TextStyle(color: cor.terciaria)),

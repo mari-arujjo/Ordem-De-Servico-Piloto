@@ -1,7 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
@@ -178,7 +176,6 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           final repo = UsuarioRepository(client: HttpClient());
                           await repo.cadastrarUsuario(context, user);
                           popUp.PopUpSalvar(context);
-                          context.pop();
                         } catch (e) {
                           popUp.PopUpAlert(context, e);
                           throw Exception(e);

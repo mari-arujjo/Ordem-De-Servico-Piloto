@@ -94,6 +94,7 @@ class PopUp {
               onPressed: () {
                 context.pop();
                 context.pop();
+                context.pop();
               },
               child: Text('Ok', style: TextStyle(color: cor.primaria)),
             ),
