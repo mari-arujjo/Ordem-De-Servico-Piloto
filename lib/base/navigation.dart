@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:provider/provider.dart';
 
 class NavigationBarWidget extends StatefulWidget {

@@ -6,7 +6,7 @@ import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart' show HttpClient;
 import 'package:ordem_de_servico/src/helper/popup.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
 import 'package:ordem_de_servico/src/usuario/u_repository.dart';
 import 'package:provider/provider.dart';

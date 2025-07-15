@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:provider/provider.dart';
 
 class FotoDePerfilWidget extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_core_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:provider/provider.dart';
 
 class ConfiguracoesPage extends StatefulWidget {

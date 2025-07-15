@@ -11,7 +11,7 @@ import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
-import 'package:ordem_de_servico/assets/color/colors.dart';
+import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/src/usuario/u_model.dart';
