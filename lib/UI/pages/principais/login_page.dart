@@ -15,6 +15,15 @@ class LoginPage extends StatefulWidget {
 class _LoginState extends State<LoginPage> {
   bool isChecked = false;
   bool obscurePassword = true;
+  late TextEditingController usuarioController;
+  late TextEditingController senhaController;
+
+  @override
+  void dispose(){
+    super.dispose();
+    usuarioController = TextEditingController();
+    senhaController = TextEditingController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +59,11 @@ class _LoginState extends State<LoginPage> {
                   child: Form(
                     child: Column(
                       children: [
-                        InputOutline(txt: "Usuário", ico: Icon(Icons.people)),
+                        InputOutline(txt: "Usuário", ico: Icon(Icons.people),controller: usuarioController,),
 
                         SizedBox(height: 20),
 
-                        InputOutlineSenha(txt: "Senha"),
+                        InputOutlineSenha(txt: "Senha",controller: senhaController,),
 
                         SizedBox(height: 20),
                         ButtonPadrao(txt: 'Entrar', onPressed: () {}, tam: 150),

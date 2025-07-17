@@ -3,9 +3,10 @@ import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:provider/provider.dart';
 
 class InputOutlineSenha extends StatefulWidget {
+  final TextEditingController? controller;
   final String txt;
 
-  const InputOutlineSenha({super.key, required this.txt});
+  const InputOutlineSenha({super.key, required this.txt, this.controller});
 
   @override
   State<InputOutlineSenha> createState() => _Input4State();
@@ -19,6 +20,7 @@ class _Input4State extends State<InputOutlineSenha> {
     final cor = Provider.of<CoresClass>(context);
 
     return TextFormField(
+      controller: widget.controller,
       obscureText: isObscured,
       cursorColor: cor.terciaria,
 

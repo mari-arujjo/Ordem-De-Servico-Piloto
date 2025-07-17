@@ -3,10 +3,11 @@ import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:provider/provider.dart';
 
 class InputOutline extends StatefulWidget {
+  final TextEditingController? controller;
   final String txt;
   final Icon ico;
 
-  const InputOutline({super.key, required this.txt, required this.ico});
+  const InputOutline({super.key, required this.txt, required this.ico, this.controller});
 
   @override
   State<InputOutline> createState() => _Input2State();
@@ -18,6 +19,7 @@ class _Input2State extends State<InputOutline> {
     final cor = Provider.of<CoresClass>(context);
 
     return TextFormField(
+      controller: widget.controller,
       cursorColor: cor.terciaria,
       decoration: InputDecoration(
         labelText: widget.txt,
