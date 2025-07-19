@@ -7,8 +7,8 @@ import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart' show HttpClient;
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
-import 'package:ordem_de_servico/src/usuario/u_model.dart';
-import 'package:ordem_de_servico/src/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_repository.dart';
 import 'package:provider/provider.dart';
 
 class CadastroUserPage extends StatefulWidget {
@@ -170,7 +170,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           nome: nomeController.text,
                           nivel_acesso: nivelSelecionado!,
                           senha: senhaController.text,
-                          foto: null
+                          foto: null,
                         );
                         try {
                           final repo = UsuarioRepository(client: HttpClient());

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
-import 'package:ordem_de_servico/src/usuario/u_model.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
 
 abstract class IUsuarioRepository {
   Future<List<UsuarioModel>> obterUsuarios();
@@ -25,7 +25,10 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> cadastrarUsuario(BuildContext context, UsuarioModel user) async {
+  Future<UsuarioModel> cadastrarUsuario(
+    BuildContext context,
+    UsuarioModel user,
+  ) async {
     final response = await client.post(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
       headers: {'Content-Type': 'application/json'},
@@ -33,11 +36,11 @@ class UsuarioRepository implements IUsuarioRepository {
     );
     try {
       final body = jsonDecode(response.body);
-      if (body['errors'] != null){
+      if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
         final key = erro.keys.first;
-        final value = (erro[key] as List).first;  
-        final msg = 'Campo: $key \n($value)';  
+        final value = (erro[key] as List).first;
+        final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
       }
       return UsuarioModel.fromMap(body);
@@ -50,14 +53,18 @@ class UsuarioRepository implements IUsuarioRepository {
     await client.delete(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
     );
-    try{
+    try {
       return;
-    }catch (e) {
+    } catch (e) {
       throw Exception(e);
     }
   }
 
-  Future<UsuarioModel> alterarDadosDoUsuario(BuildContext context, UsuarioModel user, int id) async {
+  Future<UsuarioModel> alterarDadosDoUsuario(
+    BuildContext context,
+    UsuarioModel user,
+    int id,
+  ) async {
     final response = await client.update(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
       headers: {'Content-Type': 'application/json'},
@@ -65,11 +72,11 @@ class UsuarioRepository implements IUsuarioRepository {
     );
     try {
       final body = jsonDecode(response.body);
-      if (body['errors'] != null){
+      if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
         final key = erro.keys.first;
-        final value = (erro[key] as List).first;  
-        final msg = 'Campo: $key \n($value)'; 
+        final value = (erro[key] as List).first;
+        final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
       }
       return UsuarioModel.fromMap(body);
@@ -78,19 +85,24 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> alterarSenhaDoUsuario(BuildContext context, UsuarioModel user, int id) async {
+  Future<UsuarioModel> alterarSenhaDoUsuario(
+    BuildContext context,
+    UsuarioModel user,
+    int id,
+  ) async {
     final response = await client.update(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/senha',
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/senha',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
     try {
       final body = jsonDecode(response.body);
-      if (body['errors'] != null){
+      if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
         final key = erro.keys.first;
-        final value = (erro[key] as List).first;  
-        final msg = 'Campo: $key \n($value)'; 
+        final value = (erro[key] as List).first;
+        final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
       }
       return UsuarioModel.fromMap(body);
@@ -99,19 +111,24 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> alterarFotoDoUsuario(BuildContext context, UsuarioModel user, int id) async {
+  Future<UsuarioModel> alterarFotoDoUsuario(
+    BuildContext context,
+    UsuarioModel user,
+    int id,
+  ) async {
     final response = await client.update(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/foto',
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/foto',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
     try {
       final body = jsonDecode(response.body);
-      if (body['errors'] != null){
+      if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
         final key = erro.keys.first;
-        final value = (erro[key] as List).first;  
-        final msg = 'Campo: $key \n($value)'; 
+        final value = (erro[key] as List).first;
+        final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
       }
       return UsuarioModel.fromMap(body);

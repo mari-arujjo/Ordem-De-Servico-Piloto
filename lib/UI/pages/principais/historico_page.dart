@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
-import 'package:ordem_de_servico/src/usuario/u_repository.dart';
-import 'package:ordem_de_servico/src/usuario/u_store.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_store.dart';
 
 class HistoricoPage extends StatefulWidget {
   final int idUsuario;

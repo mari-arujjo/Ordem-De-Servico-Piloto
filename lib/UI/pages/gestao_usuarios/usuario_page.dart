@@ -14,9 +14,9 @@ import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart'
 import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
-import 'package:ordem_de_servico/src/usuario/u_model.dart';
-import 'package:ordem_de_servico/src/usuario/u_repository.dart';
-import 'package:ordem_de_servico/src/usuario/u_store.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_store.dart';
 import 'package:provider/provider.dart';
 
 class UsuarioPage extends StatefulWidget {
@@ -140,7 +140,10 @@ class _UsuarioState extends State<UsuarioPage> {
                 Stack(
                   alignment: Alignment.bottomRight,
                   children: [
-                    FotoDePerfilWidget(imgFile: img, imgBytes: imgBytes != null ? null : user.foto),
+                    FotoDePerfilWidget(
+                      imgFile: img,
+                      imgBytes: imgBytes != null ? null : user.foto,
+                    ),
 
                     IconButton(
                       onPressed: () {
@@ -307,13 +310,13 @@ class _UsuarioState extends State<UsuarioPage> {
                                 userAlt,
                                 userAlt.id_usuario,
                               );
-                              
+
                               await repo.alterarFotoDoUsuario(
-                                context, 
-                                userAlt, 
-                                userAlt.id_usuario
+                                context,
+                                userAlt,
+                                userAlt.id_usuario,
                               );
-                              
+
                               await repo.alterarSenhaDoUsuario(
                                 context,
                                 userAlt,
@@ -331,10 +334,15 @@ class _UsuarioState extends State<UsuarioPage> {
                                     ),
                                     actions: [
                                       TextButton(
-                                        onPressed:() {
-                                        context.pop();
-                                      },
-                                        child: Text('Ok', style: TextStyle(color: cor.terciaria)),
+                                        onPressed: () {
+                                          context.pop();
+                                        },
+                                        child: Text(
+                                          'Ok',
+                                          style: TextStyle(
+                                            color: cor.terciaria,
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   );
@@ -378,7 +386,10 @@ class _UsuarioState extends State<UsuarioPage> {
                                         context.pop();
                                         context.pop();
                                       },
-                                      child: Text('Ok', style: TextStyle(color: cor.terciaria)),
+                                      child: Text(
+                                        'Ok',
+                                        style: TextStyle(color: cor.terciaria),
+                                      ),
                                     ),
                                   ],
                                 );

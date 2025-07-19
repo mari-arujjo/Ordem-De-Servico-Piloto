@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/pages/atendimento/atendimento_page.dart';
+import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/fornecedor_page.dart';
+import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/gestao_fornecedores_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/cadastro_user_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/gestao_usuarios_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/usuario_page.dart';
@@ -11,7 +13,6 @@ import 'package:ordem_de_servico/UI/pages/principais/login_page.dart';
 import 'package:ordem_de_servico/UI/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/UI/pages/ordem_os/ordem_os_page.dart';
 import 'package:ordem_de_servico/UI/pages/principais/sem_perfil_page.dart';
-import 'package:ordem_de_servico/src/usuario/endpoins.dart';
 import 'package:ordem_de_servico/base/navigation.dart';
 
 class AppNavigation {
@@ -55,7 +56,6 @@ class AppNavigation {
                   return HomePage(key: state.pageKey);
                 },
                 routes: [
-                  
                   GoRoute(
                     path: '/configuracoes',
                     name: 'configuracoes',
@@ -70,6 +70,24 @@ class AppNavigation {
                     builder: (context, state) {
                       return AtendimentoPage(key: state.pageKey);
                     },
+                    routes: [
+                      GoRoute(
+                        path: '/gestaoFornecedores',
+                        name: 'gestaoFornecedores',
+                        builder: (context, state) {
+                          return GestaoFornecedoresPage(key: state.pageKey);
+                        },
+                        routes: [
+                          GoRoute(
+                            path: '/fornecedor',
+                            name: 'fornecedorDetalhe',
+                            builder: (context, state) {
+                              return FornecedorPage(key: state.pageKey);
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
 
                   GoRoute(
@@ -104,7 +122,7 @@ class AppNavigation {
                         },
                         routes: [
                           GoRoute(
-                            path: 'historico',
+                            path: '/historico',
                             name: 'usuarioHistorico',
                             builder: (context, state) {
                               final id = int.parse(state.pathParameters['id']!);
@@ -124,14 +142,6 @@ class AppNavigation {
                         },
                       ),
                     ],
-                  ),
-
-                  GoRoute(
-                    path: '/endpoints',
-                    name: 'EndPoints',
-                    builder: (context, state) {
-                      return EndPointsPage(key: state.pageKey);
-                    },
                   ),
                 ],
               ),
