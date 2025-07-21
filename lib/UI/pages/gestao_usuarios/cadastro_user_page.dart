@@ -38,9 +38,10 @@ class _CadastroUserState extends State<CadastroUserPage> {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
-        if (!didPop) {if (usuarioController.text.isNotEmpty ||
-              nomeController.text.isNotEmpty  ||
-              usuarioController.text.isNotEmpty  ||
+        if (!didPop) {
+          if (usuarioController.text.isNotEmpty ||
+              nomeController.text.isNotEmpty ||
+              usuarioController.text.isNotEmpty ||
               nivelSelecionado != null ||
               senhaController.text.isNotEmpty ||
               confirmSenhaController.text.isNotEmpty) {
@@ -70,38 +71,24 @@ class _CadastroUserState extends State<CadastroUserPage> {
 
                     child: Form(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           /// NOME
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Nome:',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
+                          Text('Nome:', style: TextStyle(fontSize: 16)),
                           SizedBox(height: 5),
                           InputPadrao(controller: nomeController),
                           SizedBox(height: 20),
 
                           /// USUARIO
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Usuário:',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
+                          Text('Usuário:', style: TextStyle(fontSize: 16)),
                           SizedBox(height: 5),
                           InputPadrao(controller: usuarioController),
                           SizedBox(height: 20),
 
                           /// NIVEL
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Nível de acesso:',
-                              style: TextStyle(fontSize: 16),
-                            ),
+                          Text(
+                            'Nível de acesso:',
+                            style: TextStyle(fontSize: 16),
                           ),
                           SizedBox(height: 5),
                           ListaNiveisWidget(
@@ -116,25 +103,16 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           SizedBox(height: 20),
 
                           /// SENHA
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Senha:',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          ),
+                          Text('Senha:', style: TextStyle(fontSize: 16)),
                           SizedBox(height: 5),
                           InputPadraoSenha(controller: senhaController),
 
                           SizedBox(height: 20),
 
                           /// CONFIMAR SENHA
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Confirmar senha:',
-                              style: TextStyle(fontSize: 16),
-                            ),
+                          Text(
+                            'Confirmar senha:',
+                            style: TextStyle(fontSize: 16),
                           ),
                           SizedBox(height: 5),
                           InputPadraoSenha(controller: confirmSenhaController),
@@ -199,12 +177,12 @@ class _CadastroUserState extends State<CadastroUserPage> {
                       txt: 'Cancelar',
                       onPressed: () {
                         if (usuarioController.text.isNotEmpty ||
-                          nomeController.text.isNotEmpty  ||
-                          usuarioController.text.isNotEmpty  ||
-                          nivelSelecionado != null ||
-                          senhaController.text.isNotEmpty ||
-                          confirmSenhaController.text.isNotEmpty) {
-                        popUp.PopUpCancel(context);
+                            nomeController.text.isNotEmpty ||
+                            usuarioController.text.isNotEmpty ||
+                            nivelSelecionado != null ||
+                            senhaController.text.isNotEmpty ||
+                            confirmSenhaController.text.isNotEmpty) {
+                          popUp.PopUpCancel(context);
                         } else {
                           context.pop();
                         }
