@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/pages/atendimento/atendimento_page.dart';
+import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/cadastro_fornecedor_page.dart';
 import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/fornecedor_page.dart';
 import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/gestao_fornecedores_page.dart';
 import 'package:ordem_de_servico/UI/pages/gestao_usuarios/cadastro_user_page.dart';
@@ -83,6 +84,13 @@ class AppNavigation {
                             name: 'fornecedorDetalhe',
                             builder: (context, state) {
                               return FornecedorPage(key: state.pageKey);
+                            },
+                          ),
+                          GoRoute(
+                            path: '/cadastroFornecedor',
+                            name: 'cadastroFornecedor',
+                            builder: (context, state) {
+                              return CadastroFornecedorPage(key: state.pageKey);
                             },
                           ),
                         ],

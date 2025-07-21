@@ -12,7 +12,7 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => CoresClass()),
+        ChangeNotifierProvider(create:(_) => CoresClass()),
         ChangeNotifierProvider(create:(_) => UsuarioStore(repositorio: UsuarioRepositorio(client: HttpClient()))),
         ChangeNotifierProvider(create:(_) => FornecedorStore(repositorio: FornecedorRepositorio(client: HttpClient()))),
       ],
