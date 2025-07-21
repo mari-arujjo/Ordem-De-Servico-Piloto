@@ -157,6 +157,8 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                   ],
                 ),
               ),
+              SizedBox(height: 30),
+              ContainerPadrao(child: Column(children: [Text("Sobre o app")])),
             ],
           ),
         ),

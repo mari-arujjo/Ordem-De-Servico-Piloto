@@ -2,15 +2,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/lista_niveis_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart' show HttpClient;
 import 'package:ordem_de_servico/src/helper/popup.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_repositorio.dart';
-import 'package:provider/provider.dart';
 
 class CadastroUserPage extends StatefulWidget {
   const CadastroUserPage({super.key});
@@ -33,8 +32,6 @@ class _CadastroUserState extends State<CadastroUserPage> {
 
   @override
   Widget build(BuildContext context) {
-    final cor = Provider.of<CoresClass>(context);
-
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
@@ -57,70 +54,63 @@ class _CadastroUserState extends State<CadastroUserPage> {
 
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.only(left: 30, right: 30, bottom: 30, top: 20),
             child: Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 10, right: 10, bottom: 20),
-                  child: Container(
-                    padding: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: cor.secundaria,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
+                ContainerPadrao(
+                  child: Form(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        /// NOME
+                        Text('Nome:', style: TextStyle(fontSize: 16)),
+                        SizedBox(height: 5),
+                        InputPadrao(controller: nomeController),
+                        SizedBox(height: 20),
 
-                    child: Form(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          /// NOME
-                          Text('Nome:', style: TextStyle(fontSize: 16)),
-                          SizedBox(height: 5),
-                          InputPadrao(controller: nomeController),
-                          SizedBox(height: 20),
+                        /// USUARIO
+                        Text('Usuário:', style: TextStyle(fontSize: 16)),
+                        SizedBox(height: 5),
+                        InputPadrao(controller: usuarioController),
+                        SizedBox(height: 20),
 
-                          /// USUARIO
-                          Text('Usuário:', style: TextStyle(fontSize: 16)),
-                          SizedBox(height: 5),
-                          InputPadrao(controller: usuarioController),
-                          SizedBox(height: 20),
+                        /// NIVEL
+                        Text(
+                          'Nível de acesso:',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        SizedBox(height: 5),
+                        ListaNiveisWidget(
+                          txt: 'Selecione o nível de acesso ao sistema',
+                          onChanged: (value) {
+                            nivelSelecionado = int.tryParse(
+                              value?.split(' - ')[0] ?? '',
+                            );
+                            print('nivelSelecionado: $nivelSelecionado');
+                          },
+                        ),
+                        SizedBox(height: 20),
 
-                          /// NIVEL
-                          Text(
-                            'Nível de acesso:',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          SizedBox(height: 5),
-                          ListaNiveisWidget(
-                            txt: 'Selecione o nível de acesso ao sistema',
-                            onChanged: (value) {
-                              nivelSelecionado = int.tryParse(
-                                value?.split(' - ')[0] ?? '',
-                              );
-                              print('nivelSelecionado: $nivelSelecionado');
-                            },
-                          ),
-                          SizedBox(height: 20),
+                        /// SENHA
+                        Text('Senha:', style: TextStyle(fontSize: 16)),
+                        SizedBox(height: 5),
+                        InputPadraoSenha(controller: senhaController),
 
-                          /// SENHA
-                          Text('Senha:', style: TextStyle(fontSize: 16)),
-                          SizedBox(height: 5),
-                          InputPadraoSenha(controller: senhaController),
+                        SizedBox(height: 20),
 
-                          SizedBox(height: 20),
-
-                          /// CONFIMAR SENHA
-                          Text(
-                            'Confirmar senha:',
-                            style: TextStyle(fontSize: 16),
-                          ),
-                          SizedBox(height: 5),
-                          InputPadraoSenha(controller: confirmSenhaController),
-                        ],
-                      ),
+                        /// CONFIMAR SENHA
+                        Text(
+                          'Confirmar senha:',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        SizedBox(height: 5),
+                        InputPadraoSenha(controller: confirmSenhaController),
+                      ],
                     ),
                   ),
                 ),
+
+                SizedBox(height: 30),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
