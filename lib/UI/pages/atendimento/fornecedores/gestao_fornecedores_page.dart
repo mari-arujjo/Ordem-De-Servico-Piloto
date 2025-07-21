@@ -109,7 +109,14 @@ class _GestaoFornecedoresPageState extends State<GestaoFornecedoresPage> {
                         final forn = store.fornecedor[index];
                         return ButtonLista(
                           txt: '${forn.cnpj_fornecedor} - ${forn.razao_social}', 
-                          onPressed: (){}
+                          onPressed: (){
+                            context.goNamed(
+                              'fornecedorDetalhe',
+                              pathParameters: {
+                                'id': forn.id_fornecedor.toString()
+                              },
+                            );
+                          }
                         );
                       },
                     ),

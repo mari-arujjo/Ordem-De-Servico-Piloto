@@ -80,10 +80,11 @@ class AppNavigation {
                         },
                         routes: [
                           GoRoute(
-                            path: '/fornecedor',
+                            path: '/fornecedor/:id',
                             name: 'fornecedorDetalhe',
                             builder: (context, state) {
-                              return FornecedorPage(key: state.pageKey);
+                              final id = int.parse(state.pathParameters['id']!);
+                              return FornecedorPage(key: state.pageKey, idUsuario: id);
                             },
                           ),
                           GoRoute(

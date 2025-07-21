@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FornecedorPage extends StatefulWidget {
-  const FornecedorPage({super.key});
+  final int idUsuario;
+  const FornecedorPage({super.key, required this.idUsuario});
 
   @override
   State<FornecedorPage> createState() => _FornecedorPageState();

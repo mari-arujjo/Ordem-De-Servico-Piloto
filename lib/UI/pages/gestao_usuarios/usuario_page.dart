@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/carregando_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/lista_niveis_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/foto_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
