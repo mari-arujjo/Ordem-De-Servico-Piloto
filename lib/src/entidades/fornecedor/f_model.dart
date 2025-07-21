@@ -1,7 +1,7 @@
 class FornecedorModel {
-  final int idFornecedor;
-  final String cnpjFornecedor;
-  final String razaoSocial;
+  final int id_fornecedor;
+  final String cnpj_fornecedor;
+  final String razao_social;
   final String email;
   final String telefone;
   final String categoria;
@@ -14,9 +14,9 @@ class FornecedorModel {
   final String uf;
 
   FornecedorModel({
-    required this.idFornecedor,
-    required this.cnpjFornecedor,
-    required this.razaoSocial,
+    required this.id_fornecedor,
+    required this.cnpj_fornecedor,
+    required this.razao_social,
     required this.email,
     required this.telefone,
     required this.categoria,
@@ -33,15 +33,16 @@ class FornecedorModel {
   // PARA RECEBER
   factory FornecedorModel.fromMap(Map<String, dynamic> map) {
     return FornecedorModel(
-      idFornecedor: map['idFornecedor'] ?? 0,
-      cnpjFornecedor: map['cnpjFornecedor'] ?? '',
-      razaoSocial: map['razaoSocial'] ?? '',
+      id_fornecedor: map['id_fornecedor'] ?? 0,
+      cnpj_fornecedor: map['cnpj_fornecedor'] ?? '',
+      razao_social: map['razao_social'] ?? '',
       email: map['email'] ?? '',
       telefone: map['telefone'] ?? '',
       categoria: map['categoria'] ?? '',
       cep: map['cep'] ?? '',
       rua: map['rua'] ?? '',
       numero: map['numero'] ?? 0,
+      complemento: map['complemento'] ?? '',
       bairro: map['bairro'] ?? '',
       cidade: map['cidade'] ?? '',
       uf: map['uf'] ?? '',
@@ -51,9 +52,9 @@ class FornecedorModel {
   //PARA ENVIAR
   Map<String, dynamic> toMap() {
     return {
-      'idFornecedor': idFornecedor,
-      'cnpjFornecedor': cnpjFornecedor,
-      'razaoSocial': razaoSocial,
+      'id_fornecedor': id_fornecedor,
+      'cnpj_fornecedor': cnpj_fornecedor,
+      'razao_social': razao_social,
       'email': email,
       'telefone': telefone,
       'categoria': categoria,

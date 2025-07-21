@@ -1,44 +1,46 @@
 import 'package:flutter/cupertino.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
-import 'package:ordem_de_servico/src/entidades/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_repositorio.dart';
 
-class UsuarioStore {
-  final IUsuarioRepository repositorio;
+class UsuarioStore extends ChangeNotifier{
+  final UsuarioRepositorio repositorio;
   UsuarioStore({required this.repositorio});
 
-  final ValueNotifier<bool> isLoading = ValueNotifier<bool>(false);
-  final ValueNotifier<List<UsuarioModel>> state =
-      ValueNotifier<List<UsuarioModel>>([]);
-  final ValueNotifier<List<UsuarioModel>> allUsers =
-      ValueNotifier<List<UsuarioModel>>([]);
-  final ValueNotifier<String> erro = ValueNotifier<String>('');
+
+  bool _isLoading = false;
+  List<UsuarioModel> _usuario = [];
+  List<UsuarioModel> _allUsuarios = [];
+  String _erro = '';
+  bool get isLoading => _isLoading;
+  List<UsuarioModel> get usuario => _usuario;
+  String get erro => _erro;
+  
 
   Future getUsuarios() async {
-    isLoading.value = true;
+    _isLoading = true;
+    notifyListeners();
 
     try {
       final result = await repositorio.obterUsuarios();
-      allUsers.value = result;
-      state.value = result;
+      _allUsuarios = result;
+      _usuario = result;
     } catch (e) {
-      erro.value = e.toString();
+      _erro = e.toString();
     }
 
-    isLoading.value = false;
+    _isLoading = false;
+    notifyListeners();
   }
 
   void filtrarUsuarios(String termo) {
     if (termo.isEmpty) {
-      state.value = allUsers.value;
+      _usuario= _allUsuarios;
     } else {
-      state.value =
-          allUsers.value
-              .where(
-                (user) =>
-                    user.nome.toLowerCase().contains(termo.toLowerCase()) ||
-                    user.usuario.toLowerCase().contains(termo.toLowerCase()),
-              )
-              .toList();
+      _usuario = _allUsuarios.where((user) {
+        return user.nome.toLowerCase().contains(termo.toLowerCase()) ||
+        user.usuario.toLowerCase().contains(termo.toLowerCase());
+      }).toList();
     }
+    notifyListeners();
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
-import 'package:ordem_de_servico/src/entidades/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_repositorio.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_store.dart';
 
 class HistoricoPage extends StatefulWidget {
@@ -15,7 +15,7 @@ class HistoricoPage extends StatefulWidget {
 class _HistoricoPageState extends State<HistoricoPage> {
   final ScrollController scrollController = ScrollController();
   final UsuarioStore store = UsuarioStore(
-    repositorio: UsuarioRepository(client: HttpClient()),
+    repositorio: UsuarioRepositorio(client: HttpClient()),
   );
 
   @override

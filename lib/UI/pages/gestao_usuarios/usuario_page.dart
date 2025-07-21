@@ -15,7 +15,7 @@ import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
-import 'package:ordem_de_servico/src/entidades/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_repositorio.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_store.dart';
 import 'package:provider/provider.dart';
 
@@ -36,9 +36,6 @@ class _UsuarioState extends State<UsuarioPage> {
   late TextEditingController senhaController;
   late TextEditingController confirmSenhaController;
   int? nivelSelecionado;
-  final UsuarioStore store = UsuarioStore(
-    repositorio: UsuarioRepository(client: HttpClient()),
-  );
 
   @override
   void initState() {
@@ -47,9 +44,10 @@ class _UsuarioState extends State<UsuarioPage> {
   }
 
   Future<void> carregarUser() async {
+    final store = context.read<UsuarioStore>();
     await store.getUsuarios();
 
-    final encontrado = store.state.value.firstWhere(
+    final encontrado = store.usuario.firstWhere(
       (u) => u.id_usuario == widget.idUsuario,
       orElse: () => throw Exception('Usuário não encontrado.'),
     );
@@ -302,7 +300,7 @@ class _UsuarioState extends State<UsuarioPage> {
                                 foto: imgBytes ?? user.foto,
                               );
 
-                              final repo = UsuarioRepository(
+                              final repo = UsuarioRepositorio(
                                 client: HttpClient(),
                               );
                               await repo.alterarDadosDoUsuario(
@@ -366,7 +364,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           final confirmou = await popUp.PopUpExcluir(context);
 
                           if (confirmou == true) {
-                            final repo = UsuarioRepository(
+                            final repo = UsuarioRepositorio(
                               client: HttpClient(),
                             );
                             await repo.deletarUsuario(user.id_usuario);

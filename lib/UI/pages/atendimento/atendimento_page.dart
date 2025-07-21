@@ -41,7 +41,7 @@ class _AtendimentoState extends State<AtendimentoPage> {
                     height: 160,
                     icon: Icons.business,
                   ),
-                  SizedBox(width: 20),
+                  SizedBox(width: 15),
                   ButtonQuadrado(
                     txt: 'Produtos',
                     onPressed: () {},
@@ -51,7 +51,7 @@ class _AtendimentoState extends State<AtendimentoPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -62,7 +62,7 @@ class _AtendimentoState extends State<AtendimentoPage> {
                     height: 160,
                     icon: Icons.group,
                   ),
-                  SizedBox(width: 20),
+                  SizedBox(width: 15),
                   ButtonQuadrado(
                     txt: 'Equipamentos',
                     onPressed: () {},
@@ -72,7 +72,7 @@ class _AtendimentoState extends State<AtendimentoPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

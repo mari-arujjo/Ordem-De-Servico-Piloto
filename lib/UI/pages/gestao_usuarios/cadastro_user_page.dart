@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/dropdown_widget.dart';
@@ -8,7 +9,7 @@ import 'package:ordem_de_servico/src/API/http_client.dart' show HttpClient;
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
-import 'package:ordem_de_servico/src/entidades/usuario/u_repository.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/u_repositorio.dart';
 import 'package:provider/provider.dart';
 
 class CadastroUserPage extends StatefulWidget {
@@ -37,8 +38,16 @@ class _CadastroUserState extends State<CadastroUserPage> {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
-        if (!didPop) {
-          popUp.PopUpCancel(context);
+        if (!didPop) {if (usuarioController.text.isNotEmpty ||
+              nomeController.text.isNotEmpty  ||
+              usuarioController.text.isNotEmpty  ||
+              nivelSelecionado != null ||
+              senhaController.text.isNotEmpty ||
+              confirmSenhaController.text.isNotEmpty) {
+            popUp.PopUpCancel(context);
+          } else {
+            context.pop();
+          }
         }
       },
 
@@ -173,7 +182,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           foto: null,
                         );
                         try {
-                          final repo = UsuarioRepository(client: HttpClient());
+                          final repo = UsuarioRepositorio(client: HttpClient());
                           await repo.cadastrarUsuario(context, user);
                           popUp.PopUpSalvar(context);
                         } catch (e) {
@@ -189,7 +198,16 @@ class _CadastroUserState extends State<CadastroUserPage> {
                     ButtonPadrao(
                       txt: 'Cancelar',
                       onPressed: () {
+                        if (usuarioController.text.isNotEmpty ||
+                          nomeController.text.isNotEmpty  ||
+                          usuarioController.text.isNotEmpty  ||
+                          nivelSelecionado != null ||
+                          senhaController.text.isNotEmpty ||
+                          confirmSenhaController.text.isNotEmpty) {
                         popUp.PopUpCancel(context);
+                        } else {
+                          context.pop();
+                        }
                       },
                       tam: 150,
                     ),

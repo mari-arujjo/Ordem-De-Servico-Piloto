@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_de_servico/src/entidades/usuario/endpoins.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -67,6 +68,18 @@ class _HomeState extends State<HomePage> {
                 txt: 'Gestão de usuários',
                 onPressed: () {
                   context.goNamed("gestaoUsuarios");
+                },
+                tam: 250,
+              ),
+
+              SizedBox(height: 20),
+              ButtonPadrao(
+                txt: 'Endpoints',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EndPointsPage()),
+                  );
                 },
                 tam: 250,
               ),

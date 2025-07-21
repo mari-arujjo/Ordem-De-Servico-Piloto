@@ -4,15 +4,10 @@ import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_model.dart';
 
-abstract class IUsuarioRepository {
-  Future<List<UsuarioModel>> obterUsuarios();
-}
-
-class UsuarioRepository implements IUsuarioRepository {
+class UsuarioRepositorio {
   final IHttpClient client;
-  UsuarioRepository({required this.client});
+  UsuarioRepositorio({required this.client});
 
-  @override
   Future<List<UsuarioModel>> obterUsuarios() async {
     final response = await client.get(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
@@ -25,10 +20,7 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> cadastrarUsuario(
-    BuildContext context,
-    UsuarioModel user,
-  ) async {
+  Future<UsuarioModel> cadastrarUsuario(BuildContext context, UsuarioModel user) async {
     final response = await client.post(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
       headers: {'Content-Type': 'application/json'},
@@ -60,11 +52,7 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> alterarDadosDoUsuario(
-    BuildContext context,
-    UsuarioModel user,
-    int id,
-  ) async {
+  Future<UsuarioModel> alterarDadosDoUsuario(BuildContext context,UsuarioModel user,int id) async {
     final response = await client.update(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
       headers: {'Content-Type': 'application/json'},
@@ -85,11 +73,7 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> alterarSenhaDoUsuario(
-    BuildContext context,
-    UsuarioModel user,
-    int id,
-  ) async {
+  Future<UsuarioModel> alterarSenhaDoUsuario(BuildContext context,UsuarioModel user,int id) async {
     final response = await client.update(
       url:
           'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/senha',
@@ -111,11 +95,7 @@ class UsuarioRepository implements IUsuarioRepository {
     }
   }
 
-  Future<UsuarioModel> alterarFotoDoUsuario(
-    BuildContext context,
-    UsuarioModel user,
-    int id,
-  ) async {
+  Future<UsuarioModel> alterarFotoDoUsuario(BuildContext context,UsuarioModel user,int id) async {
     final response = await client.update(
       url:
           'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/foto',
