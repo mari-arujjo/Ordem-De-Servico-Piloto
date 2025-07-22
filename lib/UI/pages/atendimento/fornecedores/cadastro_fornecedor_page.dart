@@ -17,7 +17,6 @@ class CadastroFornecedorPage extends StatefulWidget {
   State<CadastroFornecedorPage> createState() => _CadastroFornecedorPageState();
 }
 
-
 class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
   final TextEditingController cnpjController = TextEditingController();
   final TextEditingController razaoController = TextEditingController();
@@ -38,22 +37,22 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
-        if(!didPop){
-        if (cnpjController.text.isNotEmpty ||
-            razaoController.text.isNotEmpty ||
-            emailController.text.isNotEmpty ||
-            telefoneController.text.isNotEmpty ||
-            categoriaSelecionada != null ||
-            cepController.text.isNotEmpty ||
-            logradouroController.text.isNotEmpty ||
-            numeroController.text.isNotEmpty ||
-            bairroController.text.isNotEmpty ||
-            cidadeController.text.isNotEmpty ||
-            ufSelecionada != null) {
-          popUp.PopUpCancel(context);
-        } else {
-          context.pop();
-        }
+        if (!didPop) {
+          if (cnpjController.text.isNotEmpty ||
+              razaoController.text.isNotEmpty ||
+              emailController.text.isNotEmpty ||
+              telefoneController.text.isNotEmpty ||
+              categoriaSelecionada != null ||
+              cepController.text.isNotEmpty ||
+              logradouroController.text.isNotEmpty ||
+              numeroController.text.isNotEmpty ||
+              bairroController.text.isNotEmpty ||
+              cidadeController.text.isNotEmpty ||
+              ufSelecionada != null) {
+            popUp.PopUpCancel(context);
+          } else {
+            context.pop();
+          }
         }
       },
       child: Scaffold(
@@ -72,7 +71,10 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                         /// CNPJ
                         Text('CNPJ:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: cnpjController, hintText: 'XX.XXX.XXX/XXXX-XX'),
+                        InputPadrao(
+                          controller: cnpjController,
+                          hintText: 'XX.XXX.XXX/XXXX-XX',
+                        ),
                         SizedBox(height: 20),
 
                         /// RAZÃO SOCIAL
@@ -90,7 +92,10 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                         /// TELEFONE
                         Text('Telefone:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: telefoneController, hintText: 'XX 9XXXX-XXXX'),
+                        InputPadrao(
+                          controller: telefoneController,
+                          hintText: 'XX 9XXXX-XXXX',
+                        ),
                         SizedBox(height: 20),
 
                         ///CATEGORIA
@@ -133,7 +138,10 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                                 children: [
                                   Text('CEP:', style: TextStyle(fontSize: 16)),
                                   SizedBox(height: 5),
-                                  InputPadrao(controller: cepController, hintText: 'XXXXX-XXX'),
+                                  InputPadrao(
+                                    controller: cepController,
+                                    hintText: 'XXXXX-XXX',
+                                  ),
                                   SizedBox(height: 20),
                                 ],
                               ),
@@ -206,12 +214,12 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                                   ),
                                   SizedBox(height: 5),
                                   ListaUfWidget(
-                                    txt: '', 
+                                    txt: '',
                                     onChanged: (value) {
                                       setState(() {
                                         ufSelecionada = value;
                                       });
-                                    }
+                                    },
                                   ),
                                 ],
                               ),
@@ -248,26 +256,28 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                         }
 
                         final fornecedor = FornecedorModel(
-                          id_fornecedor: 0, 
-                          cnpj_fornecedor: cnpjController.text, 
-                          razao_social: razaoController.text, 
-                          email: emailController.text, 
-                          telefone: telefoneController.text, 
-                          categoria: categoriaSelecionada!, 
-                          cep: cepController.text, 
-                          rua: logradouroController.text, 
-                          numero: int.parse(numeroController.text), 
-                          bairro: bairroController.text, 
-                          cidade: cidadeController.text, 
-                          uf: ufSelecionada!
+                          id_fornecedor: 0,
+                          cnpj_fornecedor: cnpjController.text,
+                          razao_social: razaoController.text,
+                          email: emailController.text,
+                          telefone: telefoneController.text,
+                          categoria: categoriaSelecionada!,
+                          cep: cepController.text,
+                          logradouro: logradouroController.text,
+                          numero: int.parse(numeroController.text),
+                          bairro: bairroController.text,
+                          cidade: cidadeController.text,
+                          uf: ufSelecionada!,
                         );
-                        try{
-                          final repo = FornecedorRepositorio(client: HttpClient());
+                        try {
+                          final repo = FornecedorRepositorio(
+                            client: HttpClient(),
+                          );
                           await repo.cadastrarFornecedor(context, fornecedor);
                           popUp.PopUpSalvar(context);
-                        }catch(e){
+                        } catch (e) {
                           popUp.PopUpAlert(context, e);
-                          throw Exception(e);
+                          //throw Exception(e);
                         }
                       },
                       tam: 150,

@@ -6,7 +6,7 @@ class FornecedorModel {
   final String telefone;
   final String categoria;
   final String cep;
-  final String rua;
+  final String logradouro;
   final int numero;
   final String? complemento;
   final String bairro;
@@ -21,7 +21,7 @@ class FornecedorModel {
     required this.telefone,
     required this.categoria,
     required this.cep,
-    required this.rua,
+    required this.logradouro,
     required this.numero,
     this.complemento,
     required this.bairro,
@@ -40,7 +40,7 @@ class FornecedorModel {
       telefone: map['telefone'] ?? '',
       categoria: map['categoria'] ?? '',
       cep: map['cep'] ?? '',
-      rua: map['rua'] ?? '',
+      logradouro: map['logradouro'] ?? '',
       numero: map['numero'] ?? 0,
       complemento: map['complemento'] ?? '',
       bairro: map['bairro'] ?? '',
@@ -59,12 +59,12 @@ class FornecedorModel {
       'telefone': telefone,
       'categoria': categoria,
       'cep': cep,
-      'rua': rua,
+      'logradouro': logradouro,
       'numero': numero,
       'complemento': complemento,
       'bairro': bairro,
       'cidade': cidade,
-      'uf': uf
+      'uf': uf,
     };
   }
 }

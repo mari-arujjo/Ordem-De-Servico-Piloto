@@ -20,7 +20,10 @@ class FornecedorRepositorio {
     }
   }
 
-  Future<FornecedorModel> cadastrarFornecedor(BuildContext context,FornecedorModel forn) async {
+  Future<FornecedorModel> cadastrarFornecedor(
+    BuildContext context,
+    FornecedorModel forn,
+  ) async {
     final response = await client.post(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/fornecedor',
       headers: {'Content-type': 'application/json'},
@@ -54,8 +57,7 @@ class FornecedorRepositorio {
       headers: {'Content-type': 'application/json'},
       body: jsonEncode(forn.toMap()),
     );
-
-    try {
+    if (response.statusCode != 200 && response.statusCode != 201) {
       final body = jsonDecode(response.body);
       if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
@@ -64,6 +66,9 @@ class FornecedorRepositorio {
         final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
       }
+    }
+    try {
+      final body = jsonDecode(response.body);
       return FornecedorModel.fromMap(body);
     } catch (e) {
       throw Exception(e);

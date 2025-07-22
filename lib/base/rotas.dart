@@ -95,7 +95,7 @@ class AppNavigation {
                               final id = int.parse(state.pathParameters['id']!);
                               return FornecedorPage(
                                 key: state.pageKey,
-                                idUsuario: id,
+                                idFornecedor: id,
                               );
                             },
                           ),
@@ -112,7 +112,7 @@ class AppNavigation {
                       return ManutencaoPage(key: state.pageKey);
                     },
                   ),
-                  
+
                   /// ORDEM OS
                   GoRoute(
                     path: '/ordemOS',

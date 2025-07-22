@@ -20,7 +20,10 @@ class UsuarioRepositorio {
     }
   }
 
-  Future<UsuarioModel> cadastrarUsuario(BuildContext context,UsuarioModel user) async {
+  Future<UsuarioModel> cadastrarUsuario(
+    BuildContext context,
+    UsuarioModel user,
+  ) async {
     final response = await client.post(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
       headers: {'Content-Type': 'application/json'},
@@ -44,17 +47,6 @@ class UsuarioRepositorio {
     }
   }
 
-  Future<void> deletarUsuario(int id) async {
-    await client.delete(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
-    );
-    try {
-      return;
-    } catch (e) {
-      throw Exception(e);
-    }
-  }
-
   Future<UsuarioModel> alterarDadosDoUsuario(
     BuildContext context,
     UsuarioModel user,
@@ -65,7 +57,7 @@ class UsuarioRepositorio {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
-    try {
+    if (response.statusCode != 200 && response.statusCode != 201) {
       final body = jsonDecode(response.body);
       if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
@@ -74,6 +66,9 @@ class UsuarioRepositorio {
         final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
       }
+    }
+    try {
+      final body = jsonDecode(response.body);
       return UsuarioModel.fromMap(body);
     } catch (e) {
       throw Exception(e);
@@ -91,15 +86,17 @@ class UsuarioRepositorio {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
+
+    final body = jsonDecode(response.body);
+    if (body['errors'] != null) {
+      final erro = body['errors'] as Map<String, dynamic>;
+      final key = erro.keys.first;
+      final value = (erro[key] as List).first;
+      final msg = 'Campo: $key \n($value)';
+      PopUp().PopUpAlert(context, msg);
+    }
     try {
       final body = jsonDecode(response.body);
-      if (body['errors'] != null) {
-        final erro = body['errors'] as Map<String, dynamic>;
-        final key = erro.keys.first;
-        final value = (erro[key] as List).first;
-        final msg = 'Campo: $key \n($value)';
-        PopUp().PopUpAlert(context, msg);
-      }
       return UsuarioModel.fromMap(body);
     } catch (e) {
       throw Exception(e);
@@ -117,7 +114,7 @@ class UsuarioRepositorio {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
-    try {
+    if (response.statusCode != 200 && response.statusCode != 201) {
       final body = jsonDecode(response.body);
       if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
@@ -126,7 +123,21 @@ class UsuarioRepositorio {
         final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
       }
+    }
+    try {
+      final body = jsonDecode(response.body);
       return UsuarioModel.fromMap(body);
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<void> deletarUsuario(int id) async {
+    await client.delete(
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
+    );
+    try {
+      return;
     } catch (e) {
       throw Exception(e);
     }
