@@ -244,6 +244,7 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                             context,
                             'Preencha os campos obrigatórios.',
                           );
+                          return;
                         }
 
                         final fornecedor = FornecedorModel(

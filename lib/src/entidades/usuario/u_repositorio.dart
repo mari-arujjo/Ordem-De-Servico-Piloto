@@ -20,21 +20,24 @@ class UsuarioRepositorio {
     }
   }
 
-  Future<UsuarioModel> cadastrarUsuario(BuildContext context, UsuarioModel user) async {
+  Future<UsuarioModel> cadastrarUsuario(BuildContext context,UsuarioModel user) async {
     final response = await client.post(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
-    try {
+    if (response.statusCode != 200 && response.statusCode != 201) {
       final body = jsonDecode(response.body);
       if (body['errors'] != null) {
         final erro = body['errors'] as Map<String, dynamic>;
         final key = erro.keys.first;
         final value = (erro[key] as List).first;
         final msg = 'Campo: $key \n($value)';
-        PopUp().PopUpAlert(context, msg);
+        throw Exception(msg);
       }
+    }
+    try {
+      final body = jsonDecode(response.body);
       return UsuarioModel.fromMap(body);
     } catch (e) {
       throw Exception(e);
@@ -52,7 +55,11 @@ class UsuarioRepositorio {
     }
   }
 
-  Future<UsuarioModel> alterarDadosDoUsuario(BuildContext context,UsuarioModel user,int id) async {
+  Future<UsuarioModel> alterarDadosDoUsuario(
+    BuildContext context,
+    UsuarioModel user,
+    int id,
+  ) async {
     final response = await client.update(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
       headers: {'Content-Type': 'application/json'},
@@ -73,7 +80,11 @@ class UsuarioRepositorio {
     }
   }
 
-  Future<UsuarioModel> alterarSenhaDoUsuario(BuildContext context,UsuarioModel user,int id) async {
+  Future<UsuarioModel> alterarSenhaDoUsuario(
+    BuildContext context,
+    UsuarioModel user,
+    int id,
+  ) async {
     final response = await client.update(
       url:
           'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/senha',
@@ -95,7 +106,11 @@ class UsuarioRepositorio {
     }
   }
 
-  Future<UsuarioModel> alterarFotoDoUsuario(BuildContext context,UsuarioModel user,int id) async {
+  Future<UsuarioModel> alterarFotoDoUsuario(
+    BuildContext context,
+    UsuarioModel user,
+    int id,
+  ) async {
     final response = await client.update(
       url:
           'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/foto',

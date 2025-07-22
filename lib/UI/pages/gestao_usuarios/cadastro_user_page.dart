@@ -135,7 +135,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           );
                           return;
                         }
-                        if (senhaController.text !=
+                        if (senhaController.text !=  
                             confirmSenhaController.text) {
                           popUp.PopUpAlert(context, 'Senhas divergentes!');
                           return;
