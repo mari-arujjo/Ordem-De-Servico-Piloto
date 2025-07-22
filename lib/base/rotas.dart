@@ -57,6 +57,7 @@ class AppNavigation {
                   return HomePage(key: state.pageKey);
                 },
                 routes: [
+                  /// CONFIGURAÇÕES
                   GoRoute(
                     path: '/configuracoes',
                     name: 'configuracoes',
@@ -65,6 +66,7 @@ class AppNavigation {
                     },
                   ),
 
+                  /// ATENIDMENTO
                   GoRoute(
                     path: '/atendimento',
                     name: 'atendimento',
@@ -80,18 +82,21 @@ class AppNavigation {
                         },
                         routes: [
                           GoRoute(
-                            path: '/fornecedor/:id',
-                            name: 'fornecedorDetalhe',
-                            builder: (context, state) {
-                              final id = int.parse(state.pathParameters['id']!);
-                              return FornecedorPage(key: state.pageKey, idUsuario: id);
-                            },
-                          ),
-                          GoRoute(
                             path: '/cadastroFornecedor',
                             name: 'cadastroFornecedor',
                             builder: (context, state) {
                               return CadastroFornecedorPage(key: state.pageKey);
+                            },
+                          ),
+                          GoRoute(
+                            path: '/fornecedor/:id',
+                            name: 'fornecedorDetalhe',
+                            builder: (context, state) {
+                              final id = int.parse(state.pathParameters['id']!);
+                              return FornecedorPage(
+                                key: state.pageKey,
+                                idUsuario: id,
+                              );
                             },
                           ),
                         ],
@@ -99,6 +104,7 @@ class AppNavigation {
                     ],
                   ),
 
+                  /// MANUTENÇÃO
                   GoRoute(
                     path: '/manutencao',
                     name: 'manutencao',
@@ -106,7 +112,8 @@ class AppNavigation {
                       return ManutencaoPage(key: state.pageKey);
                     },
                   ),
-
+                  
+                  /// ORDEM OS
                   GoRoute(
                     path: '/ordemOS',
                     name: 'ordemOS',
@@ -115,6 +122,7 @@ class AppNavigation {
                     },
                   ),
 
+                  /// GESTAO DE USUARIOS
                   GoRoute(
                     path: '/gestaoUsuarios',
                     name: 'gestaoUsuarios',
@@ -122,6 +130,13 @@ class AppNavigation {
                       return GestaoUsuariosPage(key: state.pageKey);
                     },
                     routes: [
+                      GoRoute(
+                        path: '/cadastroUsuario',
+                        name: 'cadastroUsuario',
+                        builder: (context, state) {
+                          return CadastroUserPage(key: state.pageKey);
+                        },
+                      ),
                       GoRoute(
                         path: '/usuario/:id',
                         name: 'usuarioDetalhe',
@@ -132,7 +147,7 @@ class AppNavigation {
                         routes: [
                           GoRoute(
                             path: '/historico',
-                            name: 'usuarioHistorico',
+                            name: 'historico',
                             builder: (context, state) {
                               final id = int.parse(state.pathParameters['id']!);
                               return HistoricoPage(
@@ -142,13 +157,6 @@ class AppNavigation {
                             },
                           ),
                         ],
-                      ),
-                      GoRoute(
-                        path: '/cadastroUsuario',
-                        name: 'cadastroUsuario',
-                        builder: (context, state) {
-                          return CadastroUserPage(key: state.pageKey);
-                        },
                       ),
                     ],
                   ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_lista_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/carregando_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/flutuante_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/search_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/carregando_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/botoes/flutuante_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/inputs/search_widget.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/entidades/fornecedor/f_store.dart';
 import 'package:provider/provider.dart';

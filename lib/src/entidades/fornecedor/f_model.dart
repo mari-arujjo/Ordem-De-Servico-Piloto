@@ -60,7 +60,11 @@ class FornecedorModel {
       'categoria': categoria,
       'cep': cep,
       'rua': rua,
+      'numero': numero,
+      'complemento': complemento,
       'bairro': bairro,
+      'cidade': cidade,
+      'uf': uf
     };
   }
 }

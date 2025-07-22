@@ -1,48 +1,22 @@
 import 'package:flutter/material.dart';
 
-class ListaUfWidget extends StatefulWidget {
+class ListaCategoriasWidget extends StatefulWidget {
   final ValueChanged <String?>? onChanged;
   final dynamic txt;
-  const ListaUfWidget({
+  const ListaCategoriasWidget({
     super.key, 
     this.onChanged,
     required this.txt
   });
 
   @override
-  State<ListaUfWidget> createState() => _DropdownState();
+  State<ListaCategoriasWidget> createState() => _DropdownState();
 }
 
-class _DropdownState extends State<ListaUfWidget> {
-  String? nivelSelecionado;
-  final List<String> listUF = [
-    "AC", // Acre
-    "AL", // Alagoas
-    "AP", // Amapá
-    "AM", // Amazonas
-    "BA", // Bahia
-    "CE", // Ceará
-    "DF", // Distrito Federal
-    "ES", // Espírito Santo
-    "GO", // Goiás
-    "MA", // Maranhão
-    "MT", // Mato Grosso
-    "MS", // Mato Grosso do Sul
-    "MG", // Minas Gerais
-    "PA", // Pará
-    "PB", // Paraíba
-    "PR", // Paraná
-    "PE", // Pernambuco
-    "PI", // Piauí
-    "RJ", // Rio de Janeiro
-    "RN", // Rio Grande do Norte
-    "RS", // Rio Grande do Sul
-    "RO", // Rondônia
-    "RR", // Roraima
-    "SC", // Santa Catarina
-    "SP", // São Paulo
-    "SE", // Sergipe
-    "TO", // Tocantins
+class _DropdownState extends State<ListaCategoriasWidget> {
+  String? categoriaSelecionada;
+  final List<String> listCategorias = [
+    "Ferramentas", "Eletrônicos", "Equipamentos", "Limpeza", "Geral"
   ];
 
 
@@ -65,12 +39,12 @@ class _DropdownState extends State<ListaUfWidget> {
         margin: EdgeInsets.only(left: 10, right: 10),
         child: DropdownButtonHideUnderline(
           child: DropdownButton(
-            value: nivelSelecionado,
+            value: categoriaSelecionada,
             dropdownColor: Colors.white,
             isExpanded: true,
             hint: Text(widget.txt),
 
-            items: listUF.map((String nivel){
+            items: listCategorias.map((String nivel){
               return DropdownMenuItem(
                 value: nivel,
                 child: Text(nivel)
@@ -79,10 +53,10 @@ class _DropdownState extends State<ListaUfWidget> {
 
             onChanged:(value) {
               setState(() {
-                nivelSelecionado = value;
+                categoriaSelecionada = value;
               });
               if(widget.onChanged != null){
-                print('UF selecionada: $value');
+                print('Categoria selecionada: $value');
                 widget.onChanged!(value);
               }
             },

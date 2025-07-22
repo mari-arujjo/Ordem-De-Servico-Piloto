@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/container_padrao_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/container_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/lista_uf_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/listas/lista_categorias_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/listas/lista_uf_widget.dart';
 
 class FornecedorPage extends StatefulWidget {
   final int idUsuario;
@@ -51,6 +52,11 @@ class _FornecedorPageState extends State<FornecedorPage> {
                       SizedBox(height: 5),
                       InputPadrao(),
                       SizedBox(height: 20),
+
+                      ///CATEGORIA
+                      Text('Categoria:', style: TextStyle(fontSize: 16)),
+                      SizedBox(height: 5),
+                      ListaCategoriasWidget(txt: 'Selecione a categoria', onChanged: (value) {}),
                     ],
                   ),
                 ),
@@ -131,7 +137,6 @@ class _FornecedorPageState extends State<FornecedorPage> {
                                 Text('Cidade:', style: TextStyle(fontSize: 16)),
                                 SizedBox(height: 5),
                                 InputPadrao(),
-                                SizedBox(height: 20),
                               ],
                             ),
                           ),
@@ -145,7 +150,6 @@ class _FornecedorPageState extends State<FornecedorPage> {
                                 Text('Estado:', style: TextStyle(fontSize: 16)),
                                 SizedBox(height: 5),
                                 ListaUfWidget(txt: 'UF', onChanged: (value) {}),
-                                SizedBox(height: 20),
                               ],
                             ),
                           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_lista_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/carregando_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/carregando_widget.dart';
 import 'package:ordem_de_servico/src/entidades/usuario/u_store.dart';
 import 'package:provider/provider.dart';
 
