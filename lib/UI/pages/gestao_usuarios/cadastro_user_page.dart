@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/container_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/inputs/ipt_senha_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/listas/lista_niveis_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart' show HttpClient;

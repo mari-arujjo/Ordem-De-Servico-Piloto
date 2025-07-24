@@ -65,6 +65,7 @@ class FornecedorRepositorio {
         final value = (erro[key] as List).first;
         final msg = 'Campo: $key \n($value)';
         PopUp().PopUpAlert(context, msg);
+        throw Exception(msg);
       }
     }
     try {

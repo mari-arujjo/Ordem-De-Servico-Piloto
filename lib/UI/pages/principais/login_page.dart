@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_outline_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/inputs/ipt_outline_senha_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/inputs/ipt_senha_outline_widget.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:provider/provider.dart';
 

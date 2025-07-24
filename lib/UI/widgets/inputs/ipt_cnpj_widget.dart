@@ -1,39 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:provider/provider.dart';
 
-class InputPadraoSenha extends StatefulWidget {
+class InputCNPJ extends StatefulWidget {
   final TextEditingController? controller;
-  const InputPadraoSenha({super.key, this.controller});
+  const InputCNPJ({super.key, this.controller});
 
   @override
-  State<InputPadraoSenha> createState() => _Input3State();
+  State<InputCNPJ> createState() => InputCNPJState();
 }
 
-class _Input3State extends State<InputPadraoSenha> {
-  bool isObscured = true;
-
+class InputCNPJState extends State<InputCNPJ> {
   @override
   Widget build(BuildContext context) {
     final cor = Provider.of<CoresClass>(context);
 
     return TextFormField(
       controller: widget.controller,
-      obscureText: isObscured,
       cursorColor: cor.terciaria,
-
+      keyboardType: TextInputType.number,
+      maxLength: 18,
+      inputFormatters: [MaskedInputFormatter('##.###.###/####-##')],
       decoration: InputDecoration(
-        labelStyle: TextStyle(color: cor.terciaria),
-
-        suffixIcon: IconButton(
-          icon: Icon(isObscured ? Icons.visibility_off : Icons.visibility),
-          onPressed: () {
-            setState(() {
-              isObscured = !isObscured;
-            });
-          },
-        ),
-
+        hintText: '00.000.000/0000-00',
+        hintStyle: TextStyle(color: cor.terciaria),
         filled: true,
         fillColor: Colors.white,
         border: UnderlineInputBorder(borderRadius: BorderRadius.circular(10)),

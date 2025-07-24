@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:provider/provider.dart';
 
-class InputPadrao extends StatefulWidget {
+class InputCEP extends StatefulWidget {
   final TextEditingController? controller;
-  final String? hintText;
-  final int? maxLength;
-  const InputPadrao({super.key, this.controller, this.hintText, this.maxLength});
+  const InputCEP({super.key, this.controller});
 
   @override
-  State<InputPadrao> createState() => _Input1State();
+  State<InputCEP> createState() => InputCEPState();
 }
 
-class _Input1State extends State<InputPadrao> {
+class InputCEPState extends State<InputCEP> {
   @override
   Widget build(BuildContext context) {
     final cor = Provider.of<CoresClass>(context);
@@ -20,9 +19,11 @@ class _Input1State extends State<InputPadrao> {
     return TextFormField(
       controller: widget.controller,
       cursorColor: cor.terciaria,
-      maxLength: widget.maxLength,
+      keyboardType: TextInputType.number,
+      maxLength: 9,
+      inputFormatters: [MaskedInputFormatter('#####-###')],
       decoration: InputDecoration(
-        hintText: widget.hintText,
+        hintText: '00000-000',
         hintStyle: TextStyle(color: cor.terciaria),
         filled: true,
         fillColor: Colors.white,

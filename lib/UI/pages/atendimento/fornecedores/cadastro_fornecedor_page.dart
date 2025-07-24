@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/UI/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/inputs/ipt_cep_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/inputs/ipt_cnpj_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/inputs/ipt_telefone_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/container_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/listas/lista_categorias_widget.dart';
@@ -60,7 +63,7 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
 
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.only(left: 30, right: 30, bottom: 50, top: 20),
+            padding: EdgeInsets.only(left: 30, right: 30, bottom: 30, top: 20),
             child: Column(
               children: [
                 ContainerPadrao(
@@ -71,32 +74,25 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                         /// CNPJ
                         Text('CNPJ:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(
-                          controller: cnpjController,
-                          hintText: 'XX.XXX.XXX/XXXX-XX',
-                        ),
-                        SizedBox(height: 20),
+                        InputCNPJ(controller: cnpjController),
 
                         /// RAZÃO SOCIAL
                         Text('Razão social:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: razaoController),
-                        SizedBox(height: 20),
+                        InputPadrao(controller: razaoController, maxLength: 50),
 
                         /// EMAIL
                         Text('Email:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: emailController),
-                        SizedBox(height: 20),
+                        InputPadrao(
+                          controller: emailController,
+                          maxLength: 100,
+                        ),
 
                         /// TELEFONE
                         Text('Telefone:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(
-                          controller: telefoneController,
-                          hintText: 'XX 9XXXX-XXXX',
-                        ),
-                        SizedBox(height: 20),
+                        InputTelefone(controller: telefoneController),
 
                         ///CATEGORIA
                         Text('Categoria:', style: TextStyle(fontSize: 16)),
@@ -138,11 +134,7 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                                 children: [
                                   Text('CEP:', style: TextStyle(fontSize: 16)),
                                   SizedBox(height: 5),
-                                  InputPadrao(
-                                    controller: cepController,
-                                    hintText: 'XXXXX-XXX',
-                                  ),
-                                  SizedBox(height: 20),
+                                  InputCEP(controller: cepController),
                                 ],
                               ),
                             ),
@@ -158,8 +150,10 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                                     style: TextStyle(fontSize: 16),
                                   ),
                                   SizedBox(height: 5),
-                                  InputPadrao(controller: numeroController),
-                                  SizedBox(height: 20),
+                                  InputPadrao(
+                                    controller: numeroController,
+                                    maxLength: 5,
+                                  ),
                                 ],
                               ),
                             ),
@@ -169,62 +163,46 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                         /// LOGRADOURO
                         Text('Logradouro:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: logradouroController),
-                        SizedBox(height: 20),
+                        InputPadrao(
+                          controller: logradouroController,
+                          maxLength: 50,
+                        ),
 
                         /// BAIRRO
                         Text('Bairro:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: bairroController),
-                        SizedBox(height: 20),
+                        InputPadrao(
+                          controller: bairroController,
+                          maxLength: 50,
+                        ),
 
                         /// COMPLEMENTO
                         Text('Complemento:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: complementoController),
-                        SizedBox(height: 15),
+                        InputPadrao(
+                          controller: complementoController,
+                          maxLength: 50,
+                        ),
 
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  /// CIDADE
-                                  Text(
-                                    'Cidade:',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  SizedBox(height: 5),
-                                  InputPadrao(controller: cidadeController),
-                                ],
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            Expanded(
-                              flex: 1,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  /// UF
-                                  Text(
-                                    'Estado:',
-                                    style: TextStyle(fontSize: 16),
-                                  ),
-                                  SizedBox(height: 5),
-                                  ListaUfWidget(
-                                    txt: '',
-                                    onChanged: (value) {
-                                      setState(() {
-                                        ufSelecionada = value;
-                                      });
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                        Text('Cidade:', style: TextStyle(fontSize: 16)),
+                        SizedBox(height: 5),
+                        InputPadrao(
+                          controller: cidadeController,
+                          maxLength: 50,
+                        ),
+
+                        SizedBox(width: 10),
+
+                        /// UF
+                        Text('Estado:', style: TextStyle(fontSize: 16)),
+                        SizedBox(height: 5),
+                        ListaUfWidget(
+                          txt: 'Selecione a UF',
+                          onChanged: (value) {
+                            setState(() {
+                              ufSelecionada = value;
+                            });
+                          },
                         ),
                       ],
                     ),
@@ -237,6 +215,7 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                     ButtonPadrao(
                       txt: 'Salvar',
                       onPressed: () async {
+
                         if (cnpjController.text.isEmpty ||
                             razaoController.text.isEmpty ||
                             emailController.text.isEmpty ||
@@ -244,13 +223,21 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                             categoriaSelecionada == null ||
                             cepController.text.isEmpty ||
                             logradouroController.text.isEmpty ||
-                            int.tryParse(numeroController.text) == null ||
+                            numeroController.text.isEmpty ||
                             bairroController.text.isEmpty ||
                             cidadeController.text.isEmpty ||
                             ufSelecionada == null) {
                           popUp.PopUpAlert(
                             context,
                             'Preencha os campos obrigatórios.',
+                          );
+                          return;
+                        }
+                        
+                        if (int.tryParse(numeroController.text) == null) {
+                          popUp.PopUpAlert(
+                            context,
+                            'Digite um número inteiro válido.',
                           );
                           return;
                         }

@@ -10,7 +10,7 @@ import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/container_pad
 import 'package:ordem_de_servico/UI/widgets/listas/lista_niveis_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/foto_widget.dart';
 import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_senha_widget.dart';
+import 'package:ordem_de_servico/UI/widgets/inputs/ipt_senha_padrao_widget.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/helper/popup.dart';
@@ -274,80 +274,71 @@ class _UsuarioState extends State<UsuarioPage> {
                     ButtonPadrao(
                       txt: 'Salvar',
                       onPressed: () async {
-                        print(
-                          'USUARIO ${user.usuario},\nID ${user.id_usuario},\nNOME ${user.nome},\nNIVEL ${user.nivel_acesso},\nSENHA ${user.senha},\nFOTO ${user.foto}',
+                        if (usuarioController.text == user.usuario &&
+                            nomeController.text == user.nome &&
+                            nivelSelecionado == user.nivel_acesso &&
+                            senhaController.text == "" &&
+                            mudouFoto == false) {
+                          popUp.PopUpAlert(
+                            context,
+                            'Nenhum dado foi alterado.',
+                          );
+                        }
+
+                        final confirmou = await popUp.PopUpAlterar(context);
+                        if (confirmou != true) return;
+
+                        final userAlt = UsuarioModel(
+                          id_usuario: user.id_usuario,
+                          usuario: usuarioController.text,
+                          nome: nomeController.text,
+                          nivel_acesso: nivelSelecionado!,
+                          senha: senhaController.text,
+                          foto: imgBytes ?? user.foto,
                         );
 
+                        final repo = UsuarioRepositorio(client: HttpClient());
                         try {
-                          if (usuarioController.text == user.usuario &&
-                              nomeController.text == user.nome &&
-                              nivelSelecionado == user.nivel_acesso &&
-                              senhaController.text == "" &&
-                              mudouFoto == false) {
-                            popUp.PopUpAlert(
-                              context,
-                              'Nenhum dado foi alterado.',
-                            );
-                          } else {
-                            final confirmou = await popUp.PopUpAlterar(context);
-                            if (confirmou == true) {
-                              final userAlt = UsuarioModel(
-                                id_usuario: user.id_usuario,
-                                usuario: usuarioController.text,
-                                nome: nomeController.text,
-                                nivel_acesso: nivelSelecionado!,
-                                senha: senhaController.text,
-                                foto: imgBytes ?? user.foto,
-                              );
+                          await repo.alterarDadosDoUsuario(
+                            context,
+                            userAlt,
+                            userAlt.id_usuario,
+                          );
 
-                              final repo = UsuarioRepositorio(
-                                client: HttpClient(),
-                              );
-                              await repo.alterarDadosDoUsuario(
-                                context,
-                                userAlt,
-                                userAlt.id_usuario,
-                              );
+                          await repo.alterarFotoDoUsuario(
+                            context,
+                            userAlt,
+                            userAlt.id_usuario,
+                          );
 
-                              await repo.alterarFotoDoUsuario(
-                                context,
-                                userAlt,
-                                userAlt.id_usuario,
-                              );
-
-                              await repo.alterarSenhaDoUsuario(
-                                context,
-                                userAlt,
-                                userAlt.id_usuario,
-                              );
-                              context.pop();
-                              context.pop();
-
-                              showDialog(
-                                context: context,
-                                builder: (context) {
-                                  return AlertDialog(
-                                    content: const Text(
-                                      'Dados alterados com sucesso.',
+                          await repo.alterarSenhaDoUsuario(
+                            context,
+                            userAlt,
+                            userAlt.id_usuario,
+                          );
+                          //context.pop();
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: const Text(
+                                  'Dados alterados com sucesso.',
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      context.pop();
+                                      context.pop();
+                                    },
+                                    child: Text(
+                                      'Ok',
+                                      style: TextStyle(color: cor.terciaria),
                                     ),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          context.pop();
-                                        },
-                                        child: Text(
-                                          'Ok',
-                                          style: TextStyle(
-                                            color: cor.terciaria,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                },
+                                  ),
+                                ],
                               );
-                            }
-                          }
+                            },
+                          );
                         } catch (e) {
                           throw Exception(e);
                         }
@@ -362,38 +353,32 @@ class _UsuarioState extends State<UsuarioPage> {
                       onPressed: () async {
                         try {
                           final confirmou = await popUp.PopUpExcluir(context);
-
-                          if (confirmou == true) {
-                            final repo = UsuarioRepositorio(
-                              client: HttpClient(),
-                            );
-                            await repo.deletarUsuario(user.id_usuario);
-                            context.pop();
-
-                            // Mostra popup de sucesso
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  content: const Text(
-                                    'Dados excluídos com sucesso.',
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        context.pop();
-                                        context.pop();
-                                      },
-                                      child: Text(
-                                        'Ok',
-                                        style: TextStyle(color: cor.terciaria),
-                                      ),
+                          if (confirmou != true) return;
+                          final repo = UsuarioRepositorio(client: HttpClient());
+                          await repo.deletarUsuario(user.id_usuario);
+                          context.pop();
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                content: const Text(
+                                  'Dados excluídos com sucesso.',
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      context.pop();
+                                      context.pop();
+                                    },
+                                    child: Text(
+                                      'Ok',
+                                      style: TextStyle(color: cor.terciaria),
                                     ),
-                                  ],
-                                );
-                              },
-                            );
-                          }
+                                  ),
+                                ],
+                              );
+                            },
+                          );
                         } catch (e) {
                           popUp.PopUpAlert(context, e);
                         }
