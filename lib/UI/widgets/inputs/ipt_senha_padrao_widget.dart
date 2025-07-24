@@ -4,7 +4,8 @@ import 'package:provider/provider.dart';
 
 class InputPadraoSenha extends StatefulWidget {
   final TextEditingController? controller;
-  const InputPadraoSenha({super.key, this.controller});
+  final int? maxLength;
+  const InputPadraoSenha({super.key, this.controller, this.maxLength});
 
   @override
   State<InputPadraoSenha> createState() => _InputPadraoSenhaState();
@@ -21,7 +22,7 @@ class _InputPadraoSenhaState extends State<InputPadraoSenha> {
       controller: widget.controller,
       obscureText: isObscured,
       cursorColor: cor.terciaria,
-
+      maxLength: widget.maxLength,
       decoration: InputDecoration(
         labelStyle: TextStyle(color: cor.terciaria),
 

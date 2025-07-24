@@ -188,8 +188,7 @@ class _UsuarioState extends State<UsuarioPage> {
                           child: Text('Nome:', style: TextStyle(fontSize: 16)),
                         ),
                         SizedBox(height: 5),
-                        InputPadrao(controller: nomeController),
-                        SizedBox(height: 20),
+                        InputPadrao(controller: nomeController, maxLength: 50),
 
                         /// USUARIO
                         Align(
@@ -200,8 +199,10 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        InputPadrao(controller: usuarioController),
-                        SizedBox(height: 20),
+                        InputPadrao(
+                          controller: usuarioController,
+                          maxLength: 15,
+                        ),
 
                         /// NIVEL
                         Align(
@@ -249,7 +250,10 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        InputPadraoSenha(controller: senhaController),
+                        InputPadraoSenha(
+                          controller: senhaController,
+                          maxLength: 20,
+                        ),
                         SizedBox(height: 20),
 
                         /// CONFIRMAR NOVA SENHA
@@ -261,7 +265,10 @@ class _UsuarioState extends State<UsuarioPage> {
                           ),
                         ),
                         SizedBox(height: 5),
-                        InputPadraoSenha(controller: confirmSenhaController),
+                        InputPadraoSenha(
+                          controller: confirmSenhaController,
+                          maxLength: 20,
+                        ),
                       ],
                     ),
                   ),

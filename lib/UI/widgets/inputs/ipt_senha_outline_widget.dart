@@ -23,7 +23,6 @@ class _Input4State extends State<InputOutlineSenha> {
       controller: widget.controller,
       obscureText: isObscured,
       cursorColor: cor.terciaria,
-
       decoration: InputDecoration(
         labelText: widget.txt,
         labelStyle: TextStyle(color: cor.terciaria),

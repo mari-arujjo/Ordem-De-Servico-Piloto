@@ -65,14 +65,15 @@ class _CadastroUserState extends State<CadastroUserPage> {
                         /// NOME
                         Text('Nome:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: nomeController),
-                        SizedBox(height: 20),
+                        InputPadrao(controller: nomeController, maxLength: 50),
 
                         /// USUARIO
                         Text('Usuário:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadrao(controller: usuarioController),
-                        SizedBox(height: 20),
+                        InputPadrao(
+                          controller: usuarioController,
+                          maxLength: 15,
+                        ),
 
                         /// NIVEL
                         Text(
@@ -89,14 +90,16 @@ class _CadastroUserState extends State<CadastroUserPage> {
                             print('nivelSelecionado: $nivelSelecionado');
                           },
                         ),
+
                         SizedBox(height: 20),
 
                         /// SENHA
                         Text('Senha:', style: TextStyle(fontSize: 16)),
                         SizedBox(height: 5),
-                        InputPadraoSenha(controller: senhaController),
-
-                        SizedBox(height: 20),
+                        InputPadraoSenha(
+                          controller: senhaController,
+                          maxLength: 20,
+                        ),
 
                         /// CONFIMAR SENHA
                         Text(
@@ -104,7 +107,10 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           style: TextStyle(fontSize: 16),
                         ),
                         SizedBox(height: 5),
-                        InputPadraoSenha(controller: confirmSenhaController),
+                        InputPadraoSenha(
+                          controller: confirmSenhaController,
+                          maxLength: 20,
+                        ),
                       ],
                     ),
                   ),
@@ -135,7 +141,7 @@ class _CadastroUserState extends State<CadastroUserPage> {
                           );
                           return;
                         }
-                        if (senhaController.text !=  
+                        if (senhaController.text !=
                             confirmSenhaController.text) {
                           popUp.PopUpAlert(context, 'Senhas divergentes!');
                           return;
