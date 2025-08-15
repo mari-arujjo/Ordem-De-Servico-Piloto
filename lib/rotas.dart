@@ -4,12 +4,14 @@ import 'package:ordem_de_servico/pages/atendimento/atendimento_page.dart';
 import 'package:ordem_de_servico/pages/fornecedores/cadastro_fornecedor_page.dart';
 import 'package:ordem_de_servico/pages/fornecedores/fornecedor_page.dart';
 import 'package:ordem_de_servico/pages/fornecedores/gestao_fornecedores_page.dart';
-import 'package:ordem_de_servico/pages/principais/configuracoes_page.dart';
-import 'package:ordem_de_servico/pages/principais/home_page.dart';
-import 'package:ordem_de_servico/pages/principais/login_page.dart';
+import 'package:ordem_de_servico/pages/configuracoes_page.dart';
+import 'package:ordem_de_servico/pages/gestao%20usuarios/cadastro_user_page.dart';
+import 'package:ordem_de_servico/pages/gestao%20usuarios/gestao_user_page.dart';
+import 'package:ordem_de_servico/pages/home_page.dart';
+import 'package:ordem_de_servico/pages/login_page.dart';
 import 'package:ordem_de_servico/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/pages/ordem_os/ordem_os_page.dart';
-import 'package:ordem_de_servico/pages/principais/meu_perfil_page.dart';
+import 'package:ordem_de_servico/pages/perfil/meu_perfil_page.dart';
 import 'package:ordem_de_servico/navigation.dart';
 
 class AppNavigation {
@@ -118,7 +120,23 @@ class AppNavigation {
                     },
                   ),
 
-                  
+                  /// GESTAO USUARIOS
+                  GoRoute(
+                    path: '/gestaoUsuarios',
+                    name: 'gestaoUsuarios',
+                    builder: (context, state) {
+                      return GestaoUsuariosPage(key: state.pageKey);
+                    },
+                    routes: [
+                      GoRoute(
+                        path: '/cadastroUsuarios',
+                        name: 'cadastroUsuarios',
+                        builder: (context, state) {
+                          return CadastroUserPage(key: state.pageKey);
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],

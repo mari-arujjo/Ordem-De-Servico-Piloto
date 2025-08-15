@@ -63,6 +63,14 @@ class _HomeState extends State<HomePage> {
                 tam: 250,
               ),
               SizedBox(height: 20),
+
+              ButtonPadrao(
+                txt: 'Gestão de usuários',
+                onPressed: () {
+                  context.goNamed("gestaoUsuarios");
+                },
+                tam: 250,
+              ),
             ],
           ),
         ),
