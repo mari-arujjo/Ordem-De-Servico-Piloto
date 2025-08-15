@@ -10,7 +10,7 @@ class UsuarioRepositorio {
 
   Future<List<UsuarioModel>> obterUsuarios() async {
     final response = await client.get(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/usuario',
     );
     try {
       final body = jsonDecode(response.body) as List;
@@ -25,7 +25,7 @@ class UsuarioRepositorio {
     UsuarioModel user,
   ) async {
     final response = await client.post(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario',
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/usuario',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
@@ -53,7 +53,7 @@ class UsuarioRepositorio {
     int id,
   ) async {
     final response = await client.update(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/usuario/$id',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
@@ -83,7 +83,7 @@ class UsuarioRepositorio {
   ) async {
     final response = await client.update(
       url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/senha',
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/usuario/$id/senha',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
@@ -111,7 +111,7 @@ class UsuarioRepositorio {
   ) async {
     final response = await client.update(
       url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id/foto',
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/usuario/$id/foto',
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(user.toMap()),
     );
@@ -135,7 +135,7 @@ class UsuarioRepositorio {
 
   Future<void> deletarUsuario(int id) async {
     await client.delete(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/api/usuario/$id',
+      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/usuario/$id',
     );
     try {
       return;
