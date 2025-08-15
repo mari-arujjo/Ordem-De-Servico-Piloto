@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/UI/widgets/botoes/bt_icon_txt_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/visualiza%C3%A7%C3%A3o/container_padrao_widget.dart';
-import 'package:ordem_de_servico/UI/widgets/inputs/ipt_padrao_widget.dart';
-import 'package:ordem_de_servico/src/helper/popup.dart';
+import 'package:ordem_de_servico/widgets/botoes/bt_icon_txt_widget.dart';
+import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/container_padrao_widget.dart';
+import 'package:ordem_de_servico/widgets/inputs/ipt_padrao_widget.dart';
+import 'package:ordem_de_servico/popup.dart';
 
 class MeuPerfilPage extends StatefulWidget {
   const MeuPerfilPage({super.key});

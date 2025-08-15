@@ -1,20 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/UI/pages/atendimento/atendimento_page.dart';
-import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/cadastro_fornecedor_page.dart';
-import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/fornecedor_page.dart';
-import 'package:ordem_de_servico/UI/pages/atendimento/fornecedores/gestao_fornecedores_page.dart';
-import 'package:ordem_de_servico/UI/pages/gestao_usuarios/cadastro_user_page.dart';
-import 'package:ordem_de_servico/UI/pages/gestao_usuarios/gestao_usuarios_page.dart';
-import 'package:ordem_de_servico/UI/pages/gestao_usuarios/usuario_page.dart';
-import 'package:ordem_de_servico/UI/pages/principais/configuracoes_page.dart';
-import 'package:ordem_de_servico/UI/pages/principais/home_page.dart';
-import 'package:ordem_de_servico/UI/pages/principais/historico_page.dart';
-import 'package:ordem_de_servico/UI/pages/principais/login_page.dart';
-import 'package:ordem_de_servico/UI/pages/manutencao/manutencao_page.dart';
-import 'package:ordem_de_servico/UI/pages/ordem_os/ordem_os_page.dart';
-import 'package:ordem_de_servico/UI/pages/principais/sem_perfil_page.dart';
-import 'package:ordem_de_servico/base/navigation.dart';
+import 'package:ordem_de_servico/pages/atendimento/atendimento_page.dart';
+import 'package:ordem_de_servico/pages/fornecedores/cadastro_fornecedor_page.dart';
+import 'package:ordem_de_servico/pages/fornecedores/fornecedor_page.dart';
+import 'package:ordem_de_servico/pages/fornecedores/gestao_fornecedores_page.dart';
+import 'package:ordem_de_servico/pages/principais/configuracoes_page.dart';
+import 'package:ordem_de_servico/pages/principais/home_page.dart';
+import 'package:ordem_de_servico/pages/principais/login_page.dart';
+import 'package:ordem_de_servico/pages/manutencao/manutencao_page.dart';
+import 'package:ordem_de_servico/pages/ordem_os/ordem_os_page.dart';
+import 'package:ordem_de_servico/pages/principais/meu_perfil_page.dart';
+import 'package:ordem_de_servico/navigation.dart';
 
 class AppNavigation {
   AppNavigation._();
@@ -122,44 +118,7 @@ class AppNavigation {
                     },
                   ),
 
-                  /// GESTAO DE USUARIOS
-                  GoRoute(
-                    path: '/gestaoUsuarios',
-                    name: 'gestaoUsuarios',
-                    builder: (context, state) {
-                      return GestaoUsuariosPage(key: state.pageKey);
-                    },
-                    routes: [
-                      GoRoute(
-                        path: '/cadastroUsuario',
-                        name: 'cadastroUsuario',
-                        builder: (context, state) {
-                          return CadastroUserPage(key: state.pageKey);
-                        },
-                      ),
-                      GoRoute(
-                        path: '/usuario/:id',
-                        name: 'usuarioDetalhe',
-                        builder: (context, state) {
-                          final id = int.parse(state.pathParameters['id']!);
-                          return UsuarioPage(key: state.pageKey, idUsuario: id);
-                        },
-                        routes: [
-                          GoRoute(
-                            path: '/historico',
-                            name: 'historico',
-                            builder: (context, state) {
-                              final id = int.parse(state.pathParameters['id']!);
-                              return HistoricoPage(
-                                key: state.pageKey,
-                                idUsuario: id,
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  
                 ],
               ),
             ],
@@ -173,7 +132,7 @@ class AppNavigation {
                 path: '/perfil',
                 name: 'Perfil',
                 builder: (context, state) {
-                  return SemPerfilPage(key: state.pageKey);
+                  return MeuPerfilPage(key: state.pageKey);
                 },
               ),
             ],

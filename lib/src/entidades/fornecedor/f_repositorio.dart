@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/src/API/http_client.dart';
 import 'package:ordem_de_servico/src/entidades/fornecedor/f_model.dart';
-import 'package:ordem_de_servico/src/helper/popup.dart';
+import 'package:ordem_de_servico/popup.dart';
 
 class FornecedorRepositorio {
   final IHttpClient client;

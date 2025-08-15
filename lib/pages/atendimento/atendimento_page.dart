@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/UI/widgets/botoes/bt_quadrado_widget.dart';
+import 'package:ordem_de_servico/widgets/botoes/bt_quadrado_widget.dart';
 
 class AtendimentoPage extends StatefulWidget {
   const AtendimentoPage({super.key});
