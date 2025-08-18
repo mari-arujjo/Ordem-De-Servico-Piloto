@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
-import 'package:ordem_de_servico/src/entidades/appuser/appuser_store.dart';
+import 'package:ordem_de_servico/entidades/appuser/appuser_store.dart';
 import 'package:ordem_de_servico/widgets/botoes/bt_lista_widget.dart';
 import 'package:ordem_de_servico/widgets/botoes/flutuante_widget.dart';
 import 'package:ordem_de_servico/widgets/inputs/search_widget.dart';

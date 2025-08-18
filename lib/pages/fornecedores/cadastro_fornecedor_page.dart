@@ -8,9 +8,9 @@ import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/container_padrao
 import 'package:ordem_de_servico/widgets/inputs/ipt_padrao_widget.dart';
 import 'package:ordem_de_servico/widgets/listas/lista_categorias_widget.dart';
 import 'package:ordem_de_servico/widgets/listas/lista_uf_widget.dart';
-import 'package:ordem_de_servico/src/API/http_client.dart';
-import 'package:ordem_de_servico/src/entidades/fornecedor/f_model.dart';
-import 'package:ordem_de_servico/src/entidades/fornecedor/f_repositorio.dart';
+import 'package:ordem_de_servico/API/http_client.dart';
+import 'package:ordem_de_servico/entidades/fornecedor/f_model.dart';
+import 'package:ordem_de_servico/entidades/fornecedor/f_repositorio.dart';
 import 'package:ordem_de_servico/popup.dart';
 
 class CadastroFornecedorPage extends StatefulWidget {

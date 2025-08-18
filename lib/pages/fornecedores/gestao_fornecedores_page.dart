@@ -5,7 +5,7 @@ import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/carregando_widge
 import 'package:ordem_de_servico/widgets/botoes/flutuante_widget.dart';
 import 'package:ordem_de_servico/widgets/inputs/search_widget.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
-import 'package:ordem_de_servico/src/entidades/fornecedor/f_store.dart';
+import 'package:ordem_de_servico/entidades/fornecedor/f_store.dart';
 import 'package:provider/provider.dart';
 
 class GestaoFornecedoresPage extends StatefulWidget {

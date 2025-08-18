@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/src/entidades/appuser/appuser_model.dart';
-import 'package:ordem_de_servico/src/entidades/appuser/appuser_repositorio.dart';
+import 'package:ordem_de_servico/entidades/appuser/appuser_model.dart';
+import 'package:ordem_de_servico/entidades/appuser/appuser_repositorio.dart';
 
 class AppUserStore extends ChangeNotifier{
   final AppUserRepositorio repositorio;

@@ -1,7 +1,6 @@
 import 'dart:convert';
-
-import 'package:ordem_de_servico/src/API/http_client.dart';
-import 'package:ordem_de_servico/src/entidades/appuser/appuser_model.dart';
+import 'package:ordem_de_servico/API/http_client.dart';
+import 'package:ordem_de_servico/entidades/appuser/appuser_model.dart';
 
 class AppUserRepositorio {
   final IHttpClient client;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/src/entidades/fornecedor/f_model.dart';
-import 'package:ordem_de_servico/src/entidades/fornecedor/f_repositorio.dart';
+import 'package:ordem_de_servico/entidades/fornecedor/f_model.dart';
+import 'package:ordem_de_servico/entidades/fornecedor/f_repositorio.dart';
 
 class FornecedorStore extends ChangeNotifier{
   final FornecedorRepositorio repositorio;

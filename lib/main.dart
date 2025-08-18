@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/app_widget.dart';
-import 'package:ordem_de_servico/src/API/http_client.dart';
-import 'package:ordem_de_servico/src/entidades/appuser/appuser_repositorio.dart';
-import 'package:ordem_de_servico/src/entidades/appuser/appuser_store.dart';
-import 'package:ordem_de_servico/src/entidades/fornecedor/f_repositorio.dart';
-import 'package:ordem_de_servico/src/entidades/fornecedor/f_store.dart';
+import 'package:ordem_de_servico/API/http_client.dart';
+import 'package:ordem_de_servico/entidades/appuser/appuser_repositorio.dart';
+import 'package:ordem_de_servico/entidades/appuser/appuser_store.dart';
+import 'package:ordem_de_servico/entidades/fornecedor/f_repositorio.dart';
+import 'package:ordem_de_servico/entidades/fornecedor/f_store.dart';
 import 'package:provider/provider.dart';
 
 void main() {
