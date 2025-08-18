@@ -8,7 +8,7 @@ class FotoDePerfilWidget extends StatefulWidget {
   final File? imgFile;
   final Uint8List? imgBytes;
 
-  const FotoDePerfilWidget({super.key, this.imgFile, this.imgBytes});
+  const FotoDePerfilWidget({super.key, this.imgFile, this.imgBytes, required String img});
 
   @override
   State<FotoDePerfilWidget> createState() => _FotoDePerfilWidgetState();

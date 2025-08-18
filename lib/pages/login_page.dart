@@ -26,7 +26,7 @@ class _LoginState extends State<LoginPage> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
     usuarioController = TextEditingController();
     senhaController = TextEditingController();
@@ -66,14 +66,26 @@ class _LoginState extends State<LoginPage> {
                   child: Form(
                     child: Column(
                       children: [
-                        InputOutline(txt: "Usuário", ico: Icon(Icons.people),controller: usuarioController,),
+                        InputOutline(
+                          txt: "Usuário",
+                          ico: Icon(Icons.people),
+                          controller: usuarioController,
+                        ),
 
                         SizedBox(height: 20),
 
-                        InputOutlineSenha(txt: "Senha",controller: senhaController,),
+                        InputOutlineSenha(
+                          txt: "Senha",
+                          controller: senhaController,
+                        ),
 
                         SizedBox(height: 20),
-                        ButtonPadrao(txt: 'Entrar', onPressed: () {}, tam: 150),
+                        ButtonPadrao(
+                          txt: 'Entrar',
+                          onPressed: () async {
+                          },
+                          tam: 150,
+                        ),
                       ],
                     ),
                   ),

@@ -11,8 +11,8 @@ import 'package:ordem_de_servico/pages/home_page.dart';
 import 'package:ordem_de_servico/pages/login_page.dart';
 import 'package:ordem_de_servico/pages/manutencao/manutencao_page.dart';
 import 'package:ordem_de_servico/pages/ordem_os/ordem_os_page.dart';
-import 'package:ordem_de_servico/pages/perfil/meu_perfil_page.dart';
 import 'package:ordem_de_servico/navigation.dart';
+import 'package:ordem_de_servico/pages/meu_perfil_page.dart';
 
 class AppNavigation {
   AppNavigation._();
@@ -147,14 +147,15 @@ class AppNavigation {
             navigatorKey: _rootNavigatorPerfil,
             routes: [
               GoRoute(
-                path: '/perfil',
-                name: 'Perfil',
+                path: '/meuPerfil',
+                name: 'meuPerfil',
                 builder: (context, state) {
                   return MeuPerfilPage(key: state.pageKey);
                 },
               ),
             ],
           ),
+
         ],
       ),
 

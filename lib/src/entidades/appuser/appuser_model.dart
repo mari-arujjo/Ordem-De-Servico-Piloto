@@ -3,14 +3,16 @@ class AppUserModel{
   final String nome;
   final String username;
   final String email;
-  final String senha;
+  final String? senha;
+  final String token;
 
   AppUserModel({
     required this.id,
     required this.nome,
     required this.username,
     required this.email,
-    required this.senha
+    this.senha,
+    required this.token
   });
 
   factory AppUserModel.fromMap(Map<String, dynamic> map){
@@ -19,7 +21,7 @@ class AppUserModel{
       nome: map['nome']??'',
       username: map['username']??'',
       email: map['email']??'',
-      senha: map['senha']??'',
+      token: map['token']??''
     );
   }
 
@@ -29,7 +31,8 @@ class AppUserModel{
       'nome': nome,
       'username': username,
       'email': email,
-      'senha': senha
+      'senha': senha,
+      'token': token
     };
   }
 }

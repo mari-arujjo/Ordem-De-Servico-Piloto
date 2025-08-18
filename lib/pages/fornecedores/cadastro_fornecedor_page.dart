@@ -35,27 +35,31 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
   String? categoriaSelecionada;
   String? ufSelecionada;
 
+  void condicoesVoltar() {
+    if (cnpjController.text.isNotEmpty ||
+        razaoController.text.isNotEmpty ||
+        emailController.text.isNotEmpty ||
+        telefoneController.text.isNotEmpty ||
+        categoriaSelecionada != null ||
+        cepController.text.isNotEmpty ||
+        logradouroController.text.isNotEmpty ||
+        numeroController.text.isNotEmpty ||
+        bairroController.text.isNotEmpty ||
+        cidadeController.text.isNotEmpty ||
+        ufSelecionada != null) {
+      popUp.PopUpCancel(context);
+    } else {
+      context.pop();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) async {
         if (!didPop) {
-          if (cnpjController.text.isNotEmpty ||
-              razaoController.text.isNotEmpty ||
-              emailController.text.isNotEmpty ||
-              telefoneController.text.isNotEmpty ||
-              categoriaSelecionada != null ||
-              cepController.text.isNotEmpty ||
-              logradouroController.text.isNotEmpty ||
-              numeroController.text.isNotEmpty ||
-              bairroController.text.isNotEmpty ||
-              cidadeController.text.isNotEmpty ||
-              ufSelecionada != null) {
-            popUp.PopUpCancel(context);
-          } else {
-            context.pop();
-          }
+          condicoesVoltar();
         }
       },
       child: Scaffold(
@@ -215,7 +219,6 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                     ButtonPadrao(
                       txt: 'Salvar',
                       onPressed: () async {
-
                         if (cnpjController.text.isEmpty ||
                             razaoController.text.isEmpty ||
                             emailController.text.isEmpty ||
@@ -233,7 +236,7 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                           );
                           return;
                         }
-                        
+
                         if (int.tryParse(numeroController.text) == null) {
                           popUp.PopUpAlert(
                             context,
@@ -275,21 +278,7 @@ class _CadastroFornecedorPageState extends State<CadastroFornecedorPage> {
                     ButtonPadrao(
                       txt: 'Cancelar',
                       onPressed: () {
-                        if (cnpjController.text.isNotEmpty ||
-                            razaoController.text.isNotEmpty ||
-                            emailController.text.isNotEmpty ||
-                            telefoneController.text.isNotEmpty ||
-                            categoriaSelecionada != null ||
-                            cepController.text.isNotEmpty ||
-                            logradouroController.text.isNotEmpty ||
-                            numeroController.text.isNotEmpty ||
-                            bairroController.text.isNotEmpty ||
-                            cidadeController.text.isNotEmpty ||
-                            ufSelecionada != null) {
-                          popUp.PopUpCancel(context);
-                        } else {
-                          context.pop();
-                        }
+                        condicoesVoltar();
                       },
                       tam: 150,
                     ),
