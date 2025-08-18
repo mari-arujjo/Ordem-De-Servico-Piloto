@@ -17,21 +17,5 @@ class AppUserRepositorio {
       throw Exception(e);
     }
   }
-
-  Future<AppUserModel> login(String username, String senha) async {
-    final response = await client.post(
-      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/login',
-      body: {
-        "username": username,
-        "senha": senha
-      }
-    );
-    try{
-      final body = jsonDecode(response.body);
-      return AppUserModel.fromMap(body);
-    } catch(e){
-      throw Exception(e);
-    }
-
-  }
+  
 }
