@@ -8,14 +8,24 @@ class AppUserRepositorio {
 
   Future<List<AppUserModel>> obterUsuarios() async {
     final response = await client.get(
-      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/obterTodos',
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/obterTodos',
     );
-    try{
+    try {
       final body = jsonDecode(response.body) as List;
-      return body.map((item)=> AppUserModel.fromMap(item)).toList();
-    } catch (e){
+      return body.map((item) => AppUserModel.fromMap(item)).toList();
+    } catch (e) {
       throw Exception(e);
     }
   }
-  
+
+  Future<String> login(String username, String senha) async {
+    final response = await client.post(
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/login',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8'
+      }
+    );
+  }
 }
