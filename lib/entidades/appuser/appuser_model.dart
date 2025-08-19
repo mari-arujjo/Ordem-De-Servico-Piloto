@@ -15,16 +15,22 @@ class AppUserModel{
     required this.token
   });
 
+
+  // vai retonrar um mapa que a key=string e value=dynamic(int, string, float etc)
+  // PARA RECEBER
   factory AppUserModel.fromMap(Map<String, dynamic> map){
     return AppUserModel(
       id: map['id']??'',
       nome: map['nome']??'',
       username: map['username']??'',
+      senha: map['senha']??'',
       email: map['email']??'',
       token: map['token']??''
     );
   }
 
+  
+  //PARA ENVIAR
   Map<String,dynamic> toMap(){
     return{
       'id': id,
@@ -35,4 +41,5 @@ class AppUserModel{
       'token': token
     };
   }
+
 }

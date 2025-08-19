@@ -20,10 +20,7 @@ class FornecedorRepositorio {
     }
   }
 
-  Future<FornecedorModel> cadastrarFornecedor(
-    BuildContext context,
-    FornecedorModel forn,
-  ) async {
+  Future<FornecedorModel> cadastrarFornecedor(BuildContext context,FornecedorModel forn) async {
     final response = await client.post(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor',
       headers: {'Content-type': 'application/json'},
@@ -47,11 +44,7 @@ class FornecedorRepositorio {
     }
   }
 
-  Future<FornecedorModel> alterarDadosDoFornecedor(
-    BuildContext context,
-    FornecedorModel forn,
-    int id,
-  ) async {
+  Future<FornecedorModel> alterarDadosDoFornecedor(BuildContext context, FornecedorModel forn,int id) async {
     final response = await client.update(
       url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/$id',
       headers: {'Content-type': 'application/json'},
