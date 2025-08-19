@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/API/token_service.dart';
 import 'package:ordem_de_servico/assets/color/cores.dart';
 import 'package:ordem_de_servico/app_widget.dart';
 import 'package:ordem_de_servico/API/http_client.dart';
@@ -10,7 +9,7 @@ import 'package:ordem_de_servico/entidades/fornecedor/f_store.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  final _appUserRepositorio = AppUserRepositorio(client: HttpClient());
+  /*final _appUserRepositorio = AppUserRepositorio(client: HttpClient());
   final _tokenService = TokenService();
   String username = 'username';
   String senha = 'senha';
@@ -24,7 +23,7 @@ void main() async {
     }
   } catch (e){
     rethrow;
-  }
+  }*/
 
   runApp(
     MultiProvider(

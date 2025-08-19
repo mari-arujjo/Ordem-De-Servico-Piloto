@@ -12,7 +12,7 @@ class AppWidget extends StatelessWidget {
 
       return MaterialApp.router(
       title: 'OS Demo',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
 
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,

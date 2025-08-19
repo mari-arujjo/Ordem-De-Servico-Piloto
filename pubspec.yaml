@@ -12,10 +12,11 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.8
   google_fonts: ^6.2.1
-  go_router: ^15.1.3
+  go_router: ^16.2.0
   http: ^1.4.0
   flutter_native_splash: ^2.4.6
   provider: ^6.1.5
+  riverpod: ^2.6.1
   image_picker: ^1.1.2
   shared_preferences: ^2.2.2
   flutter_multi_formatter: ^2.7.0
@@ -25,7 +26,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
 
 flutter:

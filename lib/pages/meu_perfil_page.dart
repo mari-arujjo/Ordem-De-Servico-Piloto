@@ -57,38 +57,6 @@ class _MeuPerfilPageState extends State<MeuPerfilPage> {
           if (store.appUser.isEmpty) {
             return Center(
               child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(height: 30),
-
-                    Text(
-                      'Você ainda não está logado.',
-                      style: TextStyle(fontSize: 18),
-                    ),
-
-                    Image.asset(
-                      "lib/assets/imgs/robo_quebrado.jpg",
-                      height: 350,
-                      width: 350,
-                    ),
-
-                    SizedBox(height: 30),
-                    ButtonComIconTexto(
-                      txt: 'Fazer login',
-                      onPressed: () {
-                        context.push(context.namedLocation("Login"));
-                      },
-                      tam: 190,
-                      ico: Icon(Icons.login, color: Colors.white),
-                    ),
-                    SizedBox(height: 30),
-                  ],
-                ),
-              ),
-            );
-          } else {
-            return Center(
-              child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.all(30),
                   child: Column(
@@ -171,6 +139,39 @@ class _MeuPerfilPageState extends State<MeuPerfilPage> {
                       ),
                     ],
                   ),
+                ),
+              ),
+            );
+            
+          } else {
+            return Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 30),
+
+                    Text(
+                      'Você ainda não está logado.',
+                      style: TextStyle(fontSize: 18),
+                    ),
+
+                    Image.asset(
+                      "lib/assets/imgs/robo_quebrado.jpg",
+                      height: 350,
+                      width: 350,
+                    ),
+
+                    SizedBox(height: 30),
+                    ButtonComIconTexto(
+                      txt: 'Fazer login',
+                      onPressed: () {
+                        context.push(context.namedLocation("Login"));
+                      },
+                      tam: 190,
+                      ico: Icon(Icons.login, color: Colors.white),
+                    ),
+                    SizedBox(height: 30),
+                  ],
                 ),
               ),
             );

@@ -23,8 +23,7 @@ class AppNavigation {
   /// tela de login, splash screen e pags que nao fazem parte da navegação por abas
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
-  /// navegadores independentes, usados por cada StatefulShellBranch.
-  /// mantém pilhas de navegação separadas
+  /// navegadores independentes, usados por cada StatefulShellBranch. mantém pilhas de navegação separadas
   static final _rootNavigatorHome = GlobalKey<NavigatorState>(
     debugLabel: 'shellHome',
   );
@@ -36,6 +35,7 @@ class AppNavigation {
     debugLogDiagnostics: true,
     initialLocation: initR,
     navigatorKey: _rootNavigatorKey,
+
     routes: <RouteBase>[
       ///MainNavigation route
       StatefulShellRoute.indexedStack(
@@ -155,11 +155,9 @@ class AppNavigation {
               ),
             ],
           ),
-
         ],
       ),
 
-      // Login route
       GoRoute(
         path: '/login',
         name: 'Login',

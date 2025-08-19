@@ -103,7 +103,7 @@ class _GestaoUsuariosPageState extends State<GestaoUsuariosPage> {
                     child: ListView.separated(
                       controller: scrollController,
                       padding: EdgeInsets.only(right: 15,left: 15,top: 10,bottom: 12),
-                      separatorBuilder: (_, __) => SizedBox(height: 12),
+                      separatorBuilder: (_, _) => SizedBox(height: 12),
                       itemCount: store.appUser.length,
                       itemBuilder: (_, index) {  
                         final forn = store.appUser[index];

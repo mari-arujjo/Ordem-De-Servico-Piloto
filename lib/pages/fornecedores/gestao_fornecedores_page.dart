@@ -103,7 +103,7 @@ class _GestaoFornecedoresPageState extends State<GestaoFornecedoresPage> {
                     child: ListView.separated(
                       controller: scrollController,
                       padding: EdgeInsets.only(right: 15,left: 15,top: 10,bottom: 12),
-                      separatorBuilder: (_, __) => SizedBox(height: 12),
+                      separatorBuilder: (_, _) => SizedBox(height: 12),
                       itemCount: store.fornecedor.length,
                       itemBuilder: (_, index) {  
                         final forn = store.fornecedor[index];
