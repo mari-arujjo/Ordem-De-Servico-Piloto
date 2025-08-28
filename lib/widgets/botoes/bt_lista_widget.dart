@@ -20,7 +20,7 @@ class _ButtonListaState extends State<ButtonLista> {
     final cor = Provider.of<CoresClass>(context);
 
     return SizedBox(
-      height: 50,
+      height: 45,
 
       child: ElevatedButton(
         onPressed: widget.onPressed,

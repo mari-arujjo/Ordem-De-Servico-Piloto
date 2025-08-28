@@ -32,7 +32,7 @@ class _MeuPerfilPageState extends State<MeuPerfilPage> {
                 Stack(
                   alignment: AlignmentDirectional.bottomEnd,
                   children: [
-                    FotoDePerfilWidget(img: 'lib/assets/imgs/eu.png'),
+                    FotoDePerfilWidget(img: 'lib/assets/imgs/eu.png', tam: 65),
                     IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.edit),

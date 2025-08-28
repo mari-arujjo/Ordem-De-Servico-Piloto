@@ -38,7 +38,7 @@ class _NavigationBarState extends State<NavigationBarWidget> {
             indicatorColor: cor.terciaria,
             selectedIndex: _selectedIndex,
             destinations: const <Widget>[
-              NavigationDestination(icon: Icon(Icons.receipt_long), label: 'Ordem de serviço'),
+              NavigationDestination(icon: Icon(Icons.receipt_long), label: 'Gerar OS'),
               NavigationDestination(icon: Icon(Icons.build), label: 'Manutenção'),
               NavigationDestination(icon: Icon(Icons.support_agent), label: 'Atendimento'),
               NavigationDestination(icon: Icon(Icons.settings), label: 'Configurações'),

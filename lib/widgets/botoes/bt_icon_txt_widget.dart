@@ -28,7 +28,7 @@ class _ButtonComIconTextoState extends State<ButtonComIconTexto> {
     final cor = Provider.of<CoresClass>(context);
 
     return SizedBox(
-      height: 50,
+      height: 45,
       width: widget.tam,
 
       child: ElevatedButton(

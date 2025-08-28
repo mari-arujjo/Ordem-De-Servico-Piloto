@@ -26,7 +26,7 @@ class _ButtonPadraoState extends State<ButtonPadrao> {
     final cor = Provider.of<CoresClass>(context);
 
     return SizedBox(
-      height: 50,
+      height: 45,
       width: widget.tam,
 
       child: ElevatedButton(
