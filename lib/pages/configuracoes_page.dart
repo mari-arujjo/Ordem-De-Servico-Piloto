@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/widgets/botoes/bt_padrao_widget.dart';
-import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/foto_widget.dart';
+import 'package:ordem_pro/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_pro/widgets/visualizacao/foto_widget.dart';
 
 class ConfiguracoesPage extends StatefulWidget {
   const ConfiguracoesPage({super.key});
@@ -13,7 +13,6 @@ class ConfiguracoesPage extends StatefulWidget {
 class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(title: Text("Configurações")),
       body: Center(
@@ -29,11 +28,14 @@ class _ConfiguracoesPageState extends State<ConfiguracoesPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Mariana Araújo Silva', style: TextStyle(fontSize: 20),),
-                      Text('mariana@email.com.br')
-                    ]
-                  )
-                ]
+                      Text(
+                        'Mariana Araújo Silva',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      Text('mariana@email.com.br'),
+                    ],
+                  ),
+                ],
               ),
               SizedBox(height: 15),
               ButtonPadrao(

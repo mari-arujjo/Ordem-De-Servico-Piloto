@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/widgets/botoes/bt_padrao_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/ipt_outline_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/ipt_senha_outline_widget.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:ordem_pro/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_pro/widgets/inputs/ipt_outline_widget.dart';
+import 'package:ordem_pro/widgets/inputs/ipt_senha_outline_widget.dart';
+import 'package:ordem_pro/cores.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
@@ -82,8 +82,7 @@ class _LoginState extends State<LoginPage> {
                         SizedBox(height: 20),
                         ButtonPadrao(
                           txt: 'Entrar',
-                          onPressed: () async {
-                          },
+                          onPressed: () async {},
                           tam: 150,
                         ),
                       ],

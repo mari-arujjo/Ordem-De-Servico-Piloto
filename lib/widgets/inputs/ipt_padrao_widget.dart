@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:ordem_pro/cores.dart';
 import 'package:provider/provider.dart';
 
 class InputPadrao extends StatefulWidget {
   final TextEditingController? controller;
   final String? hintText;
   final int? maxLength;
-  const InputPadrao({super.key, this.controller, this.hintText, this.maxLength});
+  const InputPadrao({
+    super.key,
+    this.controller,
+    this.hintText,
+    this.maxLength,
+  });
 
   @override
   State<InputPadrao> createState() => _Input1State();

@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:ordem_de_servico/API/http_client.dart';
-import 'package:ordem_de_servico/entidades/appuser/appuser_model.dart';
+import 'package:ordem_pro/API/http_client.dart';
+import 'package:ordem_pro/entidades/appuser/appuser_model.dart';
 
 class AppUserRepositorio {
   final IHttpClient client;
@@ -21,20 +21,18 @@ class AppUserRepositorio {
 
   Future<String> login(String username, String senha) async {
     final response = await client.post(
-      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/login',
-      headers: <String, String>{'Content-Type': 'application/json; charset=UTF-8'},
-      body: jsonEncode( <String, String> {
-        'username':username,
-        'senha': senha,
-      }),
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/login',
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(<String, String>{'username': username, 'senha': senha}),
     );
 
     try {
       return jsonDecode(response.body)['token'];
-    } catch(e){
+    } catch (e) {
       rethrow;
     }
   }
-
-
 }

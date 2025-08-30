@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:ordem_pro/cores.dart';
 import 'package:provider/provider.dart';
 
 class InputOutline extends StatefulWidget {
@@ -7,7 +7,12 @@ class InputOutline extends StatefulWidget {
   final String txt;
   final Icon ico;
 
-  const InputOutline({super.key, required this.txt, required this.ico, this.controller});
+  const InputOutline({
+    super.key,
+    required this.txt,
+    required this.ico,
+    this.controller,
+  });
 
   @override
   State<InputOutline> createState() => _Input2State();

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:ordem_pro/cores.dart';
 import 'package:provider/provider.dart';
 
 class FotoDePerfilWidget extends StatefulWidget {
@@ -9,7 +9,13 @@ class FotoDePerfilWidget extends StatefulWidget {
   final double tam;
   final Uint8List? imgBytes;
 
-  const FotoDePerfilWidget({super.key, this.imgFile, this.imgBytes, required String img, required this.tam});
+  const FotoDePerfilWidget({
+    super.key,
+    this.imgFile,
+    this.imgBytes,
+    required String img,
+    required this.tam,
+  });
 
   @override
   State<FotoDePerfilWidget> createState() => _FotoDePerfilWidgetState();
@@ -30,7 +36,8 @@ class _FotoDePerfilWidgetState extends State<FotoDePerfilWidget> {
       radius: widget.tam,
       backgroundColor: cor.terciaria,
       backgroundImage: imagem,
-      child: imagem == null
+      child:
+          imagem == null
               ? Icon(Icons.person, size: 40, color: Colors.white)
               : null,
     );

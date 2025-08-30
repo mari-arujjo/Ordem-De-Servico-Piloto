@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/pages/atendimento/atendimento_page.dart';
-import 'package:ordem_de_servico/pages/configuracoes_page.dart';
-import 'package:ordem_de_servico/pages/fornecedores/cadastro_fornecedor_page.dart';
-import 'package:ordem_de_servico/pages/fornecedores/fornecedor_page.dart';
-import 'package:ordem_de_servico/pages/fornecedores/gestao_fornecedores_page.dart';
-import 'package:ordem_de_servico/pages/gestao%20usuarios/cadastro_user_page.dart';
-import 'package:ordem_de_servico/pages/gestao%20usuarios/gestao_user_page.dart';
-import 'package:ordem_de_servico/pages/login_page.dart';
-import 'package:ordem_de_servico/pages/manutencao/manutencao_page.dart';
-import 'package:ordem_de_servico/pages/meu_perfil_page.dart';
-import 'package:ordem_de_servico/pages/ordem_os/ordem_os_page.dart';
-import 'package:ordem_de_servico/navigation.dart';
-import 'package:ordem_de_servico/pages/tema_page.dart';
+import 'package:ordem_pro/pages/atendimento/atendimento_page.dart';
+import 'package:ordem_pro/pages/configuracoes_page.dart';
+import 'package:ordem_pro/pages/fornecedores/cadastro_fornecedor_page.dart';
+import 'package:ordem_pro/pages/fornecedores/fornecedor_page.dart';
+import 'package:ordem_pro/pages/fornecedores/gestao_fornecedores_page.dart';
+import 'package:ordem_pro/pages/gestao%20usuarios/cadastro_user_page.dart';
+import 'package:ordem_pro/pages/gestao%20usuarios/gestao_user_page.dart';
+import 'package:ordem_pro/pages/login_page.dart';
+import 'package:ordem_pro/pages/manutencao/manutencao_page.dart';
+import 'package:ordem_pro/pages/meu_perfil_page.dart';
+import 'package:ordem_pro/pages/ordem_os/ordem_os_page.dart';
+import 'package:ordem_pro/navigation.dart';
+import 'package:ordem_pro/pages/tema_page.dart';
 
 class AppNavigation {
   AppNavigation._();
@@ -77,8 +77,6 @@ class AppNavigation {
               ),
             ],
           ),
-
-          
 
           /// Branch -> Atendimento
           StatefulShellBranch(

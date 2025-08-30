@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/widgets/botoes/bt_icon_txt_widget.dart';
+import 'package:ordem_pro/widgets/botoes/bt_icon_txt_widget.dart';
 
 class NaoLogadoPage extends StatelessWidget {
   const NaoLogadoPage({super.key});

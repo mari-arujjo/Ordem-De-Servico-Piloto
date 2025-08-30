@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/API/http_client.dart';
-import 'package:ordem_de_servico/entidades/fornecedor/f_model.dart';
-import 'package:ordem_de_servico/popup.dart';
+import 'package:ordem_pro/API/http_client.dart';
+import 'package:ordem_pro/entidades/fornecedor/f_model.dart';
+import 'package:ordem_pro/popup.dart';
 
 class FornecedorRepositorio {
   final IHttpClient client;
@@ -10,7 +10,8 @@ class FornecedorRepositorio {
 
   Future<List<FornecedorModel>> obterFornecedores() async {
     final response = await client.get(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor',
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor',
     );
     try {
       final body = jsonDecode(response.body) as List;
@@ -20,9 +21,13 @@ class FornecedorRepositorio {
     }
   }
 
-  Future<FornecedorModel> cadastrarFornecedor(BuildContext context,FornecedorModel forn) async {
+  Future<FornecedorModel> cadastrarFornecedor(
+    BuildContext context,
+    FornecedorModel forn,
+  ) async {
     final response = await client.post(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor',
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor',
       headers: {'Content-type': 'application/json'},
       body: jsonEncode(forn.toMap()),
     );
@@ -44,9 +49,14 @@ class FornecedorRepositorio {
     }
   }
 
-  Future<FornecedorModel> alterarDadosDoFornecedor(BuildContext context, FornecedorModel forn,int id) async {
+  Future<FornecedorModel> alterarDadosDoFornecedor(
+    BuildContext context,
+    FornecedorModel forn,
+    int id,
+  ) async {
     final response = await client.update(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/$id',
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/$id',
       headers: {'Content-type': 'application/json'},
       body: jsonEncode(forn.toMap()),
     );
@@ -71,7 +81,8 @@ class FornecedorRepositorio {
 
   Future<void> deletarFornecedor(int id) async {
     await client.delete(
-      url: 'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/$id',
+      url:
+          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/$id',
     );
     try {
       return;

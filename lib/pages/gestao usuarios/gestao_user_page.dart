@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
-import 'package:ordem_de_servico/entidades/appuser/appuser_store.dart';
-import 'package:ordem_de_servico/widgets/botoes/bt_lista_widget.dart';
-import 'package:ordem_de_servico/widgets/botoes/flutuante_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/search_widget.dart';
-import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/carregando_widget.dart';
+import 'package:ordem_pro/cores.dart';
+import 'package:ordem_pro/entidades/appuser/appuser_store.dart';
+import 'package:ordem_pro/widgets/botoes/bt_lista_widget.dart';
+import 'package:ordem_pro/widgets/botoes/flutuante_widget.dart';
+import 'package:ordem_pro/widgets/inputs/search_widget.dart';
+import 'package:ordem_pro/widgets/visualizacao/carregando_widget.dart';
 import 'package:provider/provider.dart';
 
 class GestaoUsuariosPage extends StatefulWidget {
@@ -21,7 +21,7 @@ class _GestaoUsuariosPageState extends State<GestaoUsuariosPage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask((){
+    Future.microtask(() {
       final store = context.read<AppUserStore>();
       store.getUsuarios();
     });
@@ -31,43 +31,50 @@ class _GestaoUsuariosPageState extends State<GestaoUsuariosPage> {
   Widget build(BuildContext context) {
     final cor = Provider.of<CoresClass>(context);
     final store = context.watch<AppUserStore>();
-    
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Gestão de usuários'),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(60), 
+          preferredSize: Size.fromHeight(60),
           child: SearchBarWidget(
-            onSearch:(termo) => store.filtrarAppUser(termo)
+            onSearch: (termo) => store.filtrarAppUser(termo),
           ),
         ),
       ),
 
-      floatingActionButton: BotaoFlutuanteWidget(onPressed: () => context.goNamed('cadastroUsuarios')),
+      floatingActionButton: BotaoFlutuanteWidget(
+        onPressed: () => context.goNamed('cadastroUsuarios'),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      
+
       body: Builder(
-        builder: (context){
-          if(store.isLoading){
+        builder: (context) {
+          if (store.isLoading) {
             return const Center(child: CarregandoWidget());
           }
 
-          if(store.erro.isNotEmpty){
+          if (store.erro.isNotEmpty) {
             return Center(
               child: Padding(
                 padding: EdgeInsets.all(20),
                 child: Text(
-                  store.erro, 
+                  store.erro,
                   style: const TextStyle(color: Colors.black, fontSize: 20),
                 ),
               ),
             );
           }
 
-          if(store.appUser.isEmpty){
-             return Center(
+          if (store.appUser.isEmpty) {
+            return Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 10,bottom: 20,left: 20,right: 20),
+                padding: EdgeInsets.only(
+                  top: 10,
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                ),
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
@@ -77,17 +84,22 @@ class _GestaoUsuariosPageState extends State<GestaoUsuariosPage> {
                   ),
                   child: Center(
                     child: Text(
-                      'Nenhum registro encontrado', 
+                      'Nenhum registro encontrado',
                       style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
                   ),
                 ),
               ),
             );
-          } else{
+          } else {
             return Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 10,bottom: 20,left: 20,right: 20),
+                padding: EdgeInsets.only(
+                  top: 10,
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                ),
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
@@ -102,27 +114,29 @@ class _GestaoUsuariosPageState extends State<GestaoUsuariosPage> {
 
                     child: ListView.separated(
                       controller: scrollController,
-                      padding: EdgeInsets.only(right: 15,left: 15,top: 10,bottom: 12),
+                      padding: EdgeInsets.only(
+                        right: 15,
+                        left: 15,
+                        top: 10,
+                        bottom: 12,
+                      ),
                       separatorBuilder: (_, _) => SizedBox(height: 12),
                       itemCount: store.appUser.length,
-                      itemBuilder: (_, index) {  
+                      itemBuilder: (_, index) {
                         final forn = store.appUser[index];
                         return ButtonLista(
-                          txt: '@${forn.username} - ${forn.nome}', 
-                          onPressed: (){
-                          }
+                          txt: '@${forn.username} - ${forn.nome}',
+                          onPressed: () {},
                         );
                       },
                     ),
-                  )
+                  ),
                 ),
               ),
             );
           }
-
-        }
+        },
       ),
-
     );
   }
 }

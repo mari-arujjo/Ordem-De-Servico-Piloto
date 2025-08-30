@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/popup.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:ordem_pro/cores.dart';
+import 'package:ordem_pro/popup.dart';
 import 'package:provider/provider.dart';
 
 class NavigationBarWidget extends StatefulWidget {
@@ -38,10 +38,22 @@ class _NavigationBarState extends State<NavigationBarWidget> {
             indicatorColor: cor.terciaria,
             selectedIndex: _selectedIndex,
             destinations: const <Widget>[
-              NavigationDestination(icon: Icon(Icons.receipt_long), label: 'Gerar OS'),
-              NavigationDestination(icon: Icon(Icons.build), label: 'Manutenção'),
-              NavigationDestination(icon: Icon(Icons.support_agent), label: 'Atendimento'),
-              NavigationDestination(icon: Icon(Icons.settings), label: 'Configurações'),
+              NavigationDestination(
+                icon: Icon(Icons.receipt_long),
+                label: 'Gerar OS',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.build),
+                label: 'Manutenção',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.support_agent),
+                label: 'Atendimento',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.settings),
+                label: 'Configurações',
+              ),
             ],
             onDestinationSelected: (int index) {
               setState(() {

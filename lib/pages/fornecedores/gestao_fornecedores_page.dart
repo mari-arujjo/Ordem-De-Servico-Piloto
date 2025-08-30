@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/widgets/botoes/bt_lista_widget.dart';
-import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/carregando_widget.dart';
-import 'package:ordem_de_servico/widgets/botoes/flutuante_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/search_widget.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
-import 'package:ordem_de_servico/entidades/fornecedor/f_store.dart';
+import 'package:ordem_pro/widgets/botoes/bt_lista_widget.dart';
+import 'package:ordem_pro/widgets/visualizacao/carregando_widget.dart';
+import 'package:ordem_pro/widgets/botoes/flutuante_widget.dart';
+import 'package:ordem_pro/widgets/inputs/search_widget.dart';
+import 'package:ordem_pro/cores.dart';
+import 'package:ordem_pro/entidades/fornecedor/f_store.dart';
 import 'package:provider/provider.dart';
 
 class GestaoFornecedoresPage extends StatefulWidget {
@@ -19,9 +19,9 @@ class _GestaoFornecedoresPageState extends State<GestaoFornecedoresPage> {
   final ScrollController scrollController = ScrollController();
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    Future.microtask((){
+    Future.microtask(() {
       final store = context.read<FornecedorStore>();
       store.getFornecedores();
     });
@@ -38,36 +38,43 @@ class _GestaoFornecedoresPageState extends State<GestaoFornecedoresPage> {
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(60),
           child: SearchBarWidget(
-            onSearch: (termo) => store.filtrarFornecedores(termo)
+            onSearch: (termo) => store.filtrarFornecedores(termo),
           ),
         ),
       ),
 
-      floatingActionButton: BotaoFlutuanteWidget(onPressed: () => context.goNamed('cadastroFornecedor')),
+      floatingActionButton: BotaoFlutuanteWidget(
+        onPressed: () => context.goNamed('cadastroFornecedor'),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
       body: Builder(
         builder: (context) {
-          if(store.isLoading){
+          if (store.isLoading) {
             return const Center(child: CarregandoWidget());
           }
 
-          if(store.erro.isNotEmpty){
+          if (store.erro.isNotEmpty) {
             return Center(
               child: Padding(
                 padding: EdgeInsets.all(20),
                 child: Text(
-                  store.erro, 
+                  store.erro,
                   style: const TextStyle(color: Colors.black, fontSize: 20),
                 ),
               ),
             );
           }
 
-          if(store.fornecedor.isEmpty){
-             return Center(
+          if (store.fornecedor.isEmpty) {
+            return Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 10,bottom: 20,left: 20,right: 20),
+                padding: EdgeInsets.only(
+                  top: 10,
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                ),
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
@@ -77,7 +84,7 @@ class _GestaoFornecedoresPageState extends State<GestaoFornecedoresPage> {
                   ),
                   child: Center(
                     child: Text(
-                      'Nenhum registro encontrado', 
+                      'Nenhum registro encontrado',
                       style: const TextStyle(color: Colors.black, fontSize: 20),
                     ),
                   ),
@@ -87,7 +94,12 @@ class _GestaoFornecedoresPageState extends State<GestaoFornecedoresPage> {
           } else {
             return Center(
               child: Padding(
-                padding: EdgeInsets.only(top: 10,bottom: 20,left: 20,right: 20),
+                padding: EdgeInsets.only(
+                  top: 10,
+                  bottom: 20,
+                  left: 20,
+                  right: 20,
+                ),
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
                   padding: EdgeInsets.only(right: 5, top: 5, bottom: 5),
@@ -102,30 +114,35 @@ class _GestaoFornecedoresPageState extends State<GestaoFornecedoresPage> {
 
                     child: ListView.separated(
                       controller: scrollController,
-                      padding: EdgeInsets.only(right: 15,left: 15,top: 10,bottom: 12),
+                      padding: EdgeInsets.only(
+                        right: 15,
+                        left: 15,
+                        top: 10,
+                        bottom: 12,
+                      ),
                       separatorBuilder: (_, _) => SizedBox(height: 12),
                       itemCount: store.fornecedor.length,
-                      itemBuilder: (_, index) {  
+                      itemBuilder: (_, index) {
                         final forn = store.fornecedor[index];
                         return ButtonLista(
-                          txt: '${forn.cnpj_fornecedor} - ${forn.razao_social}', 
-                          onPressed: (){
+                          txt: '${forn.cnpj_fornecedor} - ${forn.razao_social}',
+                          onPressed: () {
                             context.goNamed(
                               'fornecedorDetalhe',
                               pathParameters: {
-                                'id': forn.id_fornecedor.toString()
+                                'id': forn.id_fornecedor.toString(),
                               },
                             );
-                          }
+                          },
                         );
                       },
                     ),
-                  )
+                  ),
                 ),
               ),
             );
           }
-        }
+        },
       ),
     );
   }

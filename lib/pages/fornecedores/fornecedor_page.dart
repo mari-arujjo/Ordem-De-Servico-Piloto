@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:ordem_de_servico/widgets/botoes/bt_padrao_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/ipt_cep_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/ipt_cnpj_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/ipt_telefone_widget.dart';
-import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/carregando_widget.dart';
-import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/container_padrao_widget.dart';
-import 'package:ordem_de_servico/widgets/inputs/ipt_padrao_widget.dart';
-import 'package:ordem_de_servico/widgets/listas/lista_categorias_widget.dart';
-import 'package:ordem_de_servico/widgets/listas/lista_uf_widget.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
-import 'package:ordem_de_servico/API/http_client.dart';
-import 'package:ordem_de_servico/entidades/fornecedor/f_model.dart';
-import 'package:ordem_de_servico/entidades/fornecedor/f_repositorio.dart';
-import 'package:ordem_de_servico/entidades/fornecedor/f_store.dart';
-import 'package:ordem_de_servico/popup.dart';
+import 'package:ordem_pro/widgets/botoes/bt_padrao_widget.dart';
+import 'package:ordem_pro/widgets/inputs/ipt_cep_widget.dart';
+import 'package:ordem_pro/widgets/inputs/ipt_cnpj_widget.dart';
+import 'package:ordem_pro/widgets/inputs/ipt_telefone_widget.dart';
+import 'package:ordem_pro/widgets/visualizacao/carregando_widget.dart';
+import 'package:ordem_pro/widgets/visualizacao/container_padrao_widget.dart';
+import 'package:ordem_pro/widgets/inputs/ipt_padrao_widget.dart';
+import 'package:ordem_pro/widgets/listas/lista_categorias_widget.dart';
+import 'package:ordem_pro/widgets/listas/lista_uf_widget.dart';
+import 'package:ordem_pro/cores.dart';
+import 'package:ordem_pro/API/http_client.dart';
+import 'package:ordem_pro/entidades/fornecedor/f_model.dart';
+import 'package:ordem_pro/entidades/fornecedor/f_repositorio.dart';
+import 'package:ordem_pro/entidades/fornecedor/f_store.dart';
+import 'package:ordem_pro/popup.dart';
 import 'package:provider/provider.dart';
 
 class FornecedorPage extends StatefulWidget {

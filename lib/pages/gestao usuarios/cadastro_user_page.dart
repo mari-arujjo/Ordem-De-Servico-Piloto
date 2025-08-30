@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/widgets/inputs/ipt_padrao_widget.dart';
-import 'package:ordem_de_servico/widgets/visualiza%C3%A7%C3%A3o/container_padrao_widget.dart';
+import 'package:ordem_pro/widgets/inputs/ipt_padrao_widget.dart';
+import 'package:ordem_pro/widgets/visualizacao/container_padrao_widget.dart';
 
 class CadastroUserPage extends StatefulWidget {
   const CadastroUserPage({super.key});
@@ -14,7 +14,8 @@ class _CadastroUserPageState extends State<CadastroUserPage> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController senhaController = TextEditingController();
-  final TextEditingController confirmarSenhaController = TextEditingController();
+  final TextEditingController confirmarSenhaController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,31 +31,28 @@ class _CadastroUserPageState extends State<CadastroUserPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                        /// RAZÃO SOCIAL
-                        Text('Nome:', style: TextStyle(fontSize: 16)),
-                        SizedBox(height: 5),
-                        InputPadrao(controller: nomeController, maxLength: 50),
+                      /// RAZÃO SOCIAL
+                      Text('Nome:', style: TextStyle(fontSize: 16)),
+                      SizedBox(height: 5),
+                      InputPadrao(controller: nomeController, maxLength: 50),
 
-                        /// USERNAME
-                        Text('Usuário:', style: TextStyle(fontSize: 16)),
-                        SizedBox(height: 5),
-                        InputPadrao(controller: nomeController, maxLength: 20),
+                      /// USERNAME
+                      Text('Usuário:', style: TextStyle(fontSize: 16)),
+                      SizedBox(height: 5),
+                      InputPadrao(controller: nomeController, maxLength: 20),
 
-                        /// EMAIL
-                        Text('Email:', style: TextStyle(fontSize: 16)),
-                        SizedBox(height: 5),
-                        InputPadrao(
-                          controller: emailController,
-                          maxLength: 100,
-                        ),
+                      /// EMAIL
+                      Text('Email:', style: TextStyle(fontSize: 16)),
+                      SizedBox(height: 5),
+                      InputPadrao(controller: emailController, maxLength: 100),
                     ],
-                  )
-                )
+                  ),
+                ),
               ),
             ],
           ),
         ),
-      )
+      ),
     );
   }
 }

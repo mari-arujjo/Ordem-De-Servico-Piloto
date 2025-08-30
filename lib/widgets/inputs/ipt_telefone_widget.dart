@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ordem_de_servico/assets/color/cores.dart';
+import 'package:ordem_pro/cores.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:provider/provider.dart';
 
@@ -21,7 +21,9 @@ class _InputTelefoneState extends State<InputTelefone> {
       cursorColor: cor.terciaria,
       keyboardType: TextInputType.phone,
       maxLength: 15,
-      inputFormatters: [PhoneInputFormatter(defaultCountryCode: 'BR',allowEndlessPhone:true)],
+      inputFormatters: [
+        PhoneInputFormatter(defaultCountryCode: 'BR', allowEndlessPhone: true),
+      ],
       decoration: InputDecoration(
         hintText: '(00) 90000-0000',
         hintStyle: TextStyle(color: cor.terciaria),
