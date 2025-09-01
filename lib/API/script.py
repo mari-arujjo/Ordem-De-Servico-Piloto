@@ -1,7 +1,7 @@
 import requests
 import time
 
-url = "https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/2"
+url = "https://api-ordem-de-servico-tfyb.onrender.com/OrdemPro/fornecedor/2"
 i=0
 
 while True:

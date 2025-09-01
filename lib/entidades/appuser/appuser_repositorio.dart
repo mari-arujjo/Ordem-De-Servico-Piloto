@@ -8,8 +8,7 @@ class AppUserRepositorio {
 
   Future<List<AppUserModel>> obterUsuarios() async {
     final response = await client.get(
-      url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/obterTodos',
+      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemPro/account/obterTodos',
     );
     try {
       final body = jsonDecode(response.body) as List;
@@ -21,8 +20,7 @@ class AppUserRepositorio {
 
   Future<String> login(String username, String senha) async {
     final response = await client.post(
-      url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/account/login',
+      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemPro/account/login',
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

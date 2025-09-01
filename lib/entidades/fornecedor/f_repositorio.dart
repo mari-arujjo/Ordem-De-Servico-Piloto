@@ -10,8 +10,7 @@ class FornecedorRepositorio {
 
   Future<List<FornecedorModel>> obterFornecedores() async {
     final response = await client.get(
-      url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor',
+      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemPro/fornecedor'
     );
     try {
       final body = jsonDecode(response.body) as List;
@@ -21,13 +20,9 @@ class FornecedorRepositorio {
     }
   }
 
-  Future<FornecedorModel> cadastrarFornecedor(
-    BuildContext context,
-    FornecedorModel forn,
-  ) async {
+  Future<FornecedorModel> cadastrarFornecedor(BuildContext context,FornecedorModel forn) async {
     final response = await client.post(
-      url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor',
+      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemPro/fornecedor',
       headers: {'Content-type': 'application/json'},
       body: jsonEncode(forn.toMap()),
     );
@@ -49,14 +44,9 @@ class FornecedorRepositorio {
     }
   }
 
-  Future<FornecedorModel> alterarDadosDoFornecedor(
-    BuildContext context,
-    FornecedorModel forn,
-    int id,
-  ) async {
+  Future<FornecedorModel> alterarDadosDoFornecedor(BuildContext context,FornecedorModel forn,int id,) async {
     final response = await client.update(
-      url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/$id',
+      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemPro/fornecedor/$id',
       headers: {'Content-type': 'application/json'},
       body: jsonEncode(forn.toMap()),
     );
@@ -81,8 +71,7 @@ class FornecedorRepositorio {
 
   Future<void> deletarFornecedor(int id) async {
     await client.delete(
-      url:
-          'https://api-ordem-de-servico-tfyb.onrender.com/OrdemDeServico/fornecedor/$id',
+      url:'https://api-ordem-de-servico-tfyb.onrender.com/OrdemPro/fornecedor/$id',
     );
     try {
       return;
